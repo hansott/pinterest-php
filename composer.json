@@ -1,0 +1,30 @@
+{
+    "name": "hansott/pinterest-php",
+    "description": "PHP Wrapper for consuming the Pinterest API.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hans Ott",
+            "email": "hansott@hotmail.be"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "guzzlehttp/guzzle": "6.1.*",
+        "netresearch/jsonmapper": "0.9.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0",
+        "vlucas/phpdotenv": "~2.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pinterest\\": "src/Pinterest/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    }
+}
