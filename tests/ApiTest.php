@@ -1,7 +1,6 @@
 <?php
 
 use Pinterest\Api;
-use Pinterest\Mapper;
 
 class ApiTest extends TestCase
 {
