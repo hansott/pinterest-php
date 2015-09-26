@@ -5,6 +5,11 @@ namespace Pinterest\Http;
 use Pinterest\Http\Exceptions\MalformedJson;
 use Pinterest\Mapper;
 
+/**
+ * The implemented response class.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class Response implements ResponseInterface
 {
     /**

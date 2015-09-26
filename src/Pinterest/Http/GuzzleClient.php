@@ -7,6 +7,11 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Psr\Http\Message\ResponseInterface as GuzzleResponse;
 
+/**
+ * The implemented http client class (uses guzzle).
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class GuzzleClient implements ClientInterface
 {
     private $guzzle;

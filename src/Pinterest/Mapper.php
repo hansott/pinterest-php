@@ -3,11 +3,17 @@
 namespace Pinterest;
 
 use ArrayObject;
+use Pinterest\Objects\PagedList;
 use Pinterest\Http\Response;
 use Pinterest\Http\ResponseError;
 use Pinterest\Objects\BaseObject;
 use JsonMapper;
 
+/**
+ * This class maps an object to a response.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class Mapper
 {
     protected $mapper;
@@ -34,7 +40,7 @@ class Mapper
      *
      * @return array The converted array.
      */
-    private function convertArrayObject(ArrayObject $object)
+    private function convertToArray(ArrayObject $object)
     {
         $arr = [];
         $iterator = $object->getIterator();
@@ -48,13 +54,17 @@ class Mapper
 
     public function toList(Response $response)
     {
-        $data = $response->body->response;
+        $data = $response->body->data;
+        $nextUrl = isset($response->body->page->next) ? $response->body->page->next : null;
+
         $items = $this->mapper->mapArray(
             $data,
             new ArrayObject(),
             get_class($this->class)
         );
 
-        return $this->convertArrayObject($items);
+        $items = $this->convertToArray($items);
+
+        return new PagedList($items, $nextUrl);
     }
 }

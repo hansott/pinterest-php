@@ -8,7 +8,15 @@ use Pinterest\Http\ClientInterface as Client;
 use Pinterest\Http\GuzzleClient;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
+use Pinterest\Objects\User;
+use Pinterest\Objects\Board;
+use Pinterest\Objects\Pin;
 
+/**
+ * The api client.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class Api
 {
     /**
@@ -41,18 +49,6 @@ class Api
     {
         $this->token = $token;
         $this->client = new GuzzleClient(self::BASE_URI);
-    }
-
-    /**
-     * Sets the given client as http client.
-     *
-     * @return self
-     */
-    public function setClient(Client $client)
-    {
-        $this->client = $client;
-
-        return $this;
     }
 
     /**
@@ -101,15 +97,73 @@ class Api
     }
 
     /**
-     * Sets the given access token as token to use.
+     * Fetches a single user and processes the response.
      *
-     * @param string $token The access token to use.
+     * @return Http\Response The response.
      */
-    public function setToken($token)
+    private function fetchUser(Request $request)
     {
-        $this->token = $token;
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\User());
 
-        return $this;
+            return $mapper->toSingle($response);
+        });
+    }
+
+    /**
+     * Fetches a single board and processes the response.
+     *
+     * @return Http\Response The response.
+     */
+    private function fetchBoard(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\Board());
+
+            return $mapper->toSingle($response);
+        });
+    }
+
+    /**
+     * Fetches multiple boards and processes the response.
+     *
+     * @return Http\Response The response.
+     */
+    private function fetchMultipleBoards(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\Board());
+
+            return $mapper->toList($response);
+        });
+    }
+
+    /**
+     * Fetches multiple users and processes the response.
+     *
+     * @return Http\Response The response.
+     */
+    private function fetchMultipleUsers(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\User());
+
+            return $mapper->toList($response);
+        });
+    }
+
+    /**
+     * Fetches multiple boards and processes the response.
+     *
+     * @return Http\Response The response.
+     */
+    private function fetchMultiplePins(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\Pin());
+
+            return $mapper->toList($response);
+        });
     }
 
     /**
@@ -128,21 +182,57 @@ class Api
     }
 
     /**
-     * Fetches a single user and processes the response.
+     * Returns a board by identifier.
+     *
+     * @param  string $id The board identifier.
      *
      * @return Http\Response The response.
      */
-    private function fetchUser(Request $request)
+    public function getBoard($id)
     {
-        return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\User());
+        $request = new Request('GET', sprintf('boards/%s', $id));
 
-            return $mapper->toSingle($response);
-        });
+        return $this->fetchBoard($request);
     }
 
     /**
-     * Returns the current user.
+     * Returns the boards of the authenticated user.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserBoards()
+    {
+        $request = new Request('GET', 'me/boards');
+
+        return $this->fetchMultipleBoards($request);
+    }
+
+    /**
+     * Returns the pins of the authenticated user.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserLikes()
+    {
+        $request = new Request('GET', 'me/likes');
+
+        return $this->fetchMultiplePins($request);
+    }
+
+    /**
+     * Returns the pins of the authenticated user.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserPins()
+    {
+        $request = new Request('GET', 'me/pins');
+
+        return $this->fetchMultiplePins($request);
+    }
+
+    /**
+     * Returns the authenticated user.
      *
      * @return Http\Response The response.
      */
@@ -151,5 +241,53 @@ class Api
         $request = new Request('GET', 'me');
 
         return $this->fetchUser($request);
+    }
+
+    /**
+     * Returns the followers of the authenticated user.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserFollowers()
+    {
+        $request = new Request('GET', 'me/followers');
+
+        return $this->fetchMultipleUsers($request);
+    }
+
+    /**
+     * Returns the boards that the authenticated user follows.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserFollowingBoards()
+    {
+        $request = new Request('GET', 'me/following/boards');
+
+        return $this->fetchMultipleBoards($request);
+    }
+
+    /**
+     * Returns the users that the authenticated user follows.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserFollowing()
+    {
+        $request = new Request('GET', 'me/following/users');
+
+        return $this->fetchMultipleUsers($request);
+    }
+
+    /**
+     * Returns the interests (pins) that the authenticated user follows.
+     *
+     * @return Http\Response The response.
+     */
+    public function getUserInterests()
+    {
+        $request = new Request('GET', 'me/following/interests');
+
+        return $this->fetchMultiplePins($request);
     }
 }

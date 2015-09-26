@@ -2,12 +2,11 @@
 
 namespace Pinterest\Objects;
 
+/**
+ * The base object.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class BaseObject
 {
-    /**
-     * The url to the object on pinterest.
-     *
-     * @var string
-     */
-    public $url;
 }

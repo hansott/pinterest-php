@@ -1,7 +1,12 @@
 <?php
 
-namespace Pinterest;
+namespace Pinterest\Objects;
 
+/**
+ * This class holds all general statistics.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class Stats {
 
     /**

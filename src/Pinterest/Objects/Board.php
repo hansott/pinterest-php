@@ -3,11 +3,11 @@
 namespace Pinterest\Objects;
 
 /**
- * This class represents a user.
+ * This class represents a board.
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class User extends BaseObject
+class Board extends BaseObject
 {
     /**
      * The url to the object on pinterest.
@@ -17,7 +17,7 @@ class User extends BaseObject
     public $url;
 
     /**
-     * The user's id.
+     * The boards's id.
      *
      * @var string
      * @required
@@ -25,51 +25,42 @@ class User extends BaseObject
     public $id;
 
     /**
-     * The user's Pinterest username.
+     * The name of the board.
      *
      * @var string
      */
-    public $username;
+    public $name;
 
     /**
-     * The user's first name.
+     * The description of the board by the creator.
      *
      * @var string
      */
-    public $first_name;
+    public $description;
 
     /**
-     * The user's last name.
+     * The user who created the board.
      *
-     * @var string
+     * @var User
      */
-    public $last_name;
+    public $creator;
 
     /**
-     * The user's bio.
-     *
-     * @var string
-     */
-    public $bio;
-
-    /**
-     * Timestamp of creation date.
+     * ISO 8601 Timestamp of creation date.
      *
      * @var DateTime
      */
     public $created_at;
 
     /**
-     * The stats/counts of the User (follower Pins, likes, boards).
+     * The stats/counts of the Pin (repins,likes, comments).
      *
      * @var Stats
      */
     public $counts;
 
     /**
-     * The images that represents the user.
-     *
-     * This is determined by the request.
+     * Information about the media type, including whether it's an "image" or "video"..
      *
      * @var array
      */

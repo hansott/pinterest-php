@@ -2,6 +2,11 @@
 
 namespace Pinterest\App;
 
+/**
+ * The possible application scopes.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
 class Scope
 {
     const READ_PUBLIC = 'read_public';

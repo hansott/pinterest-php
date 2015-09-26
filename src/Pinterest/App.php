@@ -2,7 +2,12 @@
 
 namespace Pinterest;
 
-class Application
+/**
+ * This class is used to authorize a user.
+ *
+ * @author Hans Ott <hansott@hotmail.be>
+ */
+class App
 {
     /**
      * The client identifier.
