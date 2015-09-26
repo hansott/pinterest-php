@@ -3,11 +3,10 @@
 namespace Pinterest;
 
 use ArrayObject;
-use Pinterest\Objects\PagedList;
-use Pinterest\Http\Response;
-use Pinterest\Http\ResponseError;
-use Pinterest\Objects\BaseObject;
 use JsonMapper;
+use Pinterest\Http\Response;
+use Pinterest\Objects\BaseObject;
+use Pinterest\Objects\PagedList;
 
 /**
  * This class maps an object to a response.

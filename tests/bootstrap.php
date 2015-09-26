@@ -13,10 +13,8 @@ require __DIR__.'/../vendor/autoload.php';
 */
 
 try {
-
     $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
     $dotenv->load();
-
 } catch (InvalidArgumentException $e) {
 
     /*
