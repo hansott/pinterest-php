@@ -28,11 +28,12 @@ class GuzzleClient implements ClientInterface
         ]);
     }
 
-    private function call($method, $endpoint, $params)
+    private function call($method, $endpoint, array $params, array $headers)
     {
         try {
             return $this->guzzle->request($method, $endpoint, [
                 'query' => $params,
+                'headers' => $headers,
             ]);
         } catch (RequestException $e) {
             if ($e->hasResponse()) {
@@ -50,6 +51,13 @@ class GuzzleClient implements ClientInterface
         }
     }
 
+    private function addTokenToHeaders(&$headers, $token)
+    {
+        if ($token !== null) {
+            $headers['Authorization'] = sprintf('BEARER %s', $token);
+        }
+    }
+
     private function convertResponse(Request $request, GuzzleResponse $guzzleResponse)
     {
         $statusCode = $guzzleResponse->getStatusCode();
@@ -63,8 +71,16 @@ class GuzzleClient implements ClientInterface
         $method = $request->getMethod();
         $endpoint = $request->getEndpoint();
         $params = $request->getParams();
-        $this->addToken($params, $token);
-        $guzzleResponse = $this->call($method, $endpoint, $params);
+        $headers = [];
+
+        if ($request->isPost()) {
+            $this->addTokenToHeaders($headers, $token);
+        }
+        else {
+            $this->addToken($params, $token);
+        }
+
+        $guzzleResponse = $this->call($method, $endpoint, $params, $headers);
 
         return $this->convertResponse($request, $guzzleResponse);
     }

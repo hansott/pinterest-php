@@ -2,6 +2,7 @@
 
 namespace Pinterest;
 
+use InvalidArgumentException;
 use Pinterest\Api\Exceptions\TokenMissing;
 use Pinterest\Http\CacheInterface as Cache;
 use Pinterest\Http\ClientInterface as Client;
@@ -69,12 +70,14 @@ class Api
      *
      * @return Response The response.
      */
-    private function processResponse(Response &$response, callable $processor)
+    private function processResponse(Response $response, callable $processor)
     {
         if ($response->ok()) {
             $result = $processor($response);
             $response->setResult($result);
         }
+
+        return $response;
     }
 
     /**
@@ -87,7 +90,7 @@ class Api
         if ($this->hasToken()) {
             $response = $this->client->execute($request, $this->token);
             if (is_callable($processor)) {
-                $this->processResponse($response, $processor);
+                $response = $this->processResponse($response, $processor);
             }
 
             return $response;
@@ -289,5 +292,25 @@ class Api
         $request = new Request('GET', 'me/following/interests');
 
         return $this->fetchMultiplePins($request);
+    }
+
+    /**
+     * Follows a user.
+     *
+     * @param  User $user The user to follow.
+     *
+     * @return Http\Response The response.
+     */
+    public function followUser(User $user)
+    {
+        if (empty($user->username)) {
+            throw new InvalidArgumentException('Username is required.');
+        }
+
+        $request = new Request('POST', 'me/following/users', [
+            'user' => $user->username
+        ]);
+
+        return $this->execute($request);
     }
 }

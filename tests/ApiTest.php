@@ -2,6 +2,7 @@
 
 use Pinterest\Api;
 use Pinterest\Mapper;
+use Pinterest\Objects\User;
 
 class ApiTest extends TestCase
 {
@@ -61,5 +62,18 @@ class ApiTest extends TestCase
     public function testGetUserInterests()
     {
         $this->assertMultiplePins($this->api->getUserInterests());
+    }
+
+    public function testFollowUser()
+    {
+        $user = new User();
+        $user->username = 'engagor';
+        $response = $this->api->followUser($user);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+
+        $this->setExpectedException('InvalidArgumentException');
+        $user = new User();
+        $this->api->followUser($user);
     }
 }

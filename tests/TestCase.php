@@ -4,7 +4,7 @@ use Pinterest\Http\Response;
 
 class TestCase extends \PHPUnit_Framework_TestCase
 {
-    private function assertResponse(Response $response)
+    protected function assertResponse(Response $response)
     {
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
