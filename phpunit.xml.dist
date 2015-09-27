@@ -13,7 +13,7 @@
          verbose="true"
 >
     <testsuites>
-        <testsuite name="Engagor PHP SDK Tests">
+        <testsuite name="Tests">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
