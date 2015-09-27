@@ -9,9 +9,6 @@ env:
   global:
     - setup=basic
 
-services:
-    - redis
-
 cache:
   directories:
     - vendor
