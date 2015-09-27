@@ -4,14 +4,12 @@ namespace Pinterest;
 
 use InvalidArgumentException;
 use Pinterest\Api\Exceptions\TokenMissing;
-use Pinterest\Http\CacheInterface as Cache;
 use Pinterest\Http\ClientInterface as Client;
 use Pinterest\Http\GuzzleClient;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
-use Pinterest\Objects\User;
 use Pinterest\Objects\Board;
-use Pinterest\Objects\Pin;
+use Pinterest\Objects\User;
 
 /**
  * The api client.
@@ -187,7 +185,7 @@ class Api
     /**
      * Returns a board by identifier.
      *
-     * @param  string $id The board identifier.
+     * @param string $id The board identifier.
      *
      * @return Http\Response The response.
      */

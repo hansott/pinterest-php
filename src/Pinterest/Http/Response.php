@@ -3,7 +3,6 @@
 namespace Pinterest\Http;
 
 use Pinterest\Http\Exceptions\MalformedJson;
-use Pinterest\Mapper;
 
 /**
  * The implemented response class.
