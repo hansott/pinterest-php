@@ -1,6 +1,6 @@
 # Pinterest PHP SDK [![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master) [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master)
 
-A wrapper class to communicate with the Pinterest API.
+A wrapper library for the Pinterest API.
 
 **Work in progress!**
 
