@@ -3,11 +3,11 @@
 namespace Pinterest\Http;
 
 /**
- * The implemented request class.
+ * The request class.
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class Request implements RequestInterface
+final class Request
 {
     /**
      * The http method.
