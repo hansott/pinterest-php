@@ -3,13 +3,11 @@
 namespace Pinterest;
 
 use InvalidArgumentException;
-use Pinterest\Api\Exceptions\TokenMissing;
-use Pinterest\Http\ClientInterface as Client;
-use Pinterest\Http\GuzzleClient;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
+use Pinterest\Objects\Pin;
 
 /**
  * The api client.
@@ -19,45 +17,20 @@ use Pinterest\Objects\User;
 class Api
 {
     /**
-     * The API base uri.
+     * The authentication client to use.
      *
-     * @var string
-     */
-    const BASE_URI = 'https://api.pinterest.com/v1/';
-
-    /**
-     * The access token to use.
-     *
-     * @var string
-     */
-    private $token;
-
-    /**
-     * The http client to use.
-     *
-     * @var Http\ClientInterface
+     * @var Authentication
      */
     private $client;
 
     /**
      * The constructor.
      *
-     * @param string $token The access token to use.
+     * @param Authentication $client The authentication client to use.
      */
-    public function __construct($token)
+    public function __construct(Authentication $client)
     {
-        $this->token = $token;
-        $this->client = new GuzzleClient(self::BASE_URI);
-    }
-
-    /**
-     * Checks if an access token is set.
-     *
-     * @return bool Whether an access token is set.
-     */
-    private function hasToken()
-    {
-        return !empty($this->token);
+        $this->client = $client;
     }
 
     /**
@@ -85,16 +58,13 @@ class Api
      */
     private function execute(Request $request, callable $processor = null)
     {
-        if ($this->hasToken()) {
-            $response = $this->client->execute($request, $this->token);
-            if (is_callable($processor)) {
-                $response = $this->processResponse($response, $processor);
-            }
+        $response = $this->client->execute($request, $this->token);
 
-            return $response;
-        } else {
-            throw new TokenMissing();
+        if (is_callable($processor)) {
+            $response = $this->processResponse($response, $processor);
         }
+
+        return $response;
     }
 
     /**

@@ -9,5 +9,12 @@ namespace Pinterest\Http;
  */
 interface ClientInterface
 {
-    public function execute(Request $request, $token);
+    /**
+     * Execute an Http request
+     *
+     * @param Request $request The Http Request
+     *
+     * @return Response The Http Response
+     */
+    public function execute(Request $request);
 }
