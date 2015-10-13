@@ -16,16 +16,9 @@ class GuzzleClient implements ClientInterface
 {
     private $guzzle;
 
-    /**
-     * The base URL of the API.
-     *
-     * @param string $baseUri
-     */
-    public function __construct($baseUri)
+    public function __construct()
     {
-        $this->guzzle = new Client([
-            'base_uri' => $baseUri,
-        ]);
+        $this->guzzle = new Client();
     }
 
     private function call($method, $endpoint, array $params, array $headers)
@@ -44,20 +37,6 @@ class GuzzleClient implements ClientInterface
         }
     }
 
-    private function addToken(&$params, $token)
-    {
-        if ($token !== null) {
-            $params['access_token'] = $token;
-        }
-    }
-
-    private function addTokenToHeaders(&$headers, $token)
-    {
-        if ($token !== null) {
-            $headers['Authorization'] = sprintf('BEARER %s', $token);
-        }
-    }
-
     private function convertResponse(Request $request, GuzzleResponse $guzzleResponse)
     {
         $statusCode = $guzzleResponse->getStatusCode();
@@ -66,18 +45,19 @@ class GuzzleClient implements ClientInterface
         return new Response($request, $statusCode, $rawBody);
     }
 
-    public function execute(Request $request, $token)
+    /**
+     * Execute an Http request
+     *
+     * @param Request $request The Http Request
+     *
+     * @return Response The Http Response
+     */
+    public function execute(Request $request)
     {
         $method = $request->getMethod();
         $endpoint = $request->getEndpoint();
         $params = $request->getParams();
-        $headers = [];
-
-        if ($request->isPost()) {
-            $this->addTokenToHeaders($headers, $token);
-        } else {
-            $this->addToken($params, $token);
-        }
+        $headers = $request->getHeaders();
 
         $guzzleResponse = $this->call($method, $endpoint, $params, $headers);
 
