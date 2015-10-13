@@ -75,8 +75,7 @@ class GuzzleClient implements ClientInterface
 
         if ($request->isPost()) {
             $this->addTokenToHeaders($headers, $token);
-        }
-        else {
+        } else {
             $this->addToken($params, $token);
         }
 
