@@ -46,7 +46,7 @@ class GuzzleClient implements ClientInterface
     }
 
     /**
-     * Execute an Http request
+     * Execute an Http request.
      *
      * @param Request $request The Http Request
      *

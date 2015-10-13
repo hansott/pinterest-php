@@ -1,7 +1,7 @@
 <?php
 
-use Pinterest\Authentication;
 use Pinterest\App\Scope;
+use Pinterest\Authentication;
 use Pinterest\Http\GuzzleClient;
 
 class AuthenticationTest extends TestCase

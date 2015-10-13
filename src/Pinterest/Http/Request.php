@@ -32,11 +32,11 @@ final class Request
      */
     private $params;
 
-    /**
-     * The headers to pass.
-     *
-     * @var array
-     */
+     /**
+      * The headers to pass.
+      *
+      * @var array
+      */
      private $headers;
 
     /**
@@ -56,7 +56,7 @@ final class Request
     }
 
     /**
-     * Get the Http method
+     * Get the Http method.
      *
      * @return string
      */
@@ -66,7 +66,7 @@ final class Request
     }
 
     /**
-     * Get the Http endpoint
+     * Get the Http endpoint.
      *
      * @return string
      */
@@ -76,7 +76,7 @@ final class Request
     }
 
     /**
-     * Get the Http parameters
+     * Get the Http parameters.
      *
      * @return array
      */
@@ -86,7 +86,7 @@ final class Request
     }
 
     /**
-     * Get the Http headers
+     * Get the Http headers.
      *
      * @return array
      */
