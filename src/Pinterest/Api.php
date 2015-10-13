@@ -295,7 +295,7 @@ class Api
     /**
      * Follows a user.
      *
-     * @param  User $user The user to follow.
+     * @param User $user The user to follow.
      *
      * @return Http\Response The response.
      */
@@ -306,7 +306,7 @@ class Api
         }
 
         $request = new Request('POST', 'me/following/users', [
-            'user' => $user->username
+            'user' => $user->username,
         ]);
 
         return $this->execute($request);
