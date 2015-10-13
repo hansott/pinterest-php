@@ -100,7 +100,7 @@ class Api
     /**
      * Fetches a single user and processes the response.
      *
-     * @return Http\Response The response.
+     * @return Objects\User The User.
      */
     private function fetchUser(Request $request)
     {
@@ -114,7 +114,7 @@ class Api
     /**
      * Fetches a single board and processes the response.
      *
-     * @return Http\Response The response.
+     * @return Objects\Board The Board.
      */
     private function fetchBoard(Request $request)
     {
@@ -128,7 +128,7 @@ class Api
     /**
      * Fetches multiple boards and processes the response.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Board] A list of Boards.
      */
     private function fetchMultipleBoards(Request $request)
     {
@@ -142,7 +142,7 @@ class Api
     /**
      * Fetches multiple users and processes the response.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\User] A list of Users.
      */
     private function fetchMultipleUsers(Request $request)
     {
@@ -156,7 +156,7 @@ class Api
     /**
      * Fetches multiple boards and processes the response.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Pin] A list of Pins.
      */
     private function fetchMultiplePins(Request $request)
     {
@@ -172,7 +172,7 @@ class Api
      *
      * @param $usernameOrId string The username or identifier of the user.
      *
-     * @return Http\Response The response.
+     * @return Objects\User The User.
      */
     public function getUser($usernameOrId)
     {
@@ -187,7 +187,7 @@ class Api
      *
      * @param string $id The board identifier.
      *
-     * @return Http\Response The response.
+     * @return Objects\Board The Board.
      */
     public function getBoard($id)
     {
@@ -199,7 +199,7 @@ class Api
     /**
      * Returns the boards of the authenticated user.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Board] A list of Boards.
      */
     public function getUserBoards()
     {
@@ -211,7 +211,7 @@ class Api
     /**
      * Returns the pins of the authenticated user.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Pin] A list of Likes.
      */
     public function getUserLikes()
     {
@@ -223,7 +223,7 @@ class Api
     /**
      * Returns the pins of the authenticated user.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Pin] A list of Pins.
      */
     public function getUserPins()
     {
@@ -235,7 +235,7 @@ class Api
     /**
      * Returns the authenticated user.
      *
-     * @return Http\Response The response.
+     * @return Objects\User The current User.
      */
     public function getCurrentUser()
     {
@@ -247,7 +247,7 @@ class Api
     /**
      * Returns the followers of the authenticated user.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\User] The current User's followers.
      */
     public function getUserFollowers()
     {
@@ -259,7 +259,7 @@ class Api
     /**
      * Returns the boards that the authenticated user follows.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Board] The Boards the current user follows.
      */
     public function getUserFollowingBoards()
     {
@@ -271,7 +271,7 @@ class Api
     /**
      * Returns the users that the authenticated user follows.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\User] A list of users.
      */
     public function getUserFollowing()
     {
@@ -283,7 +283,7 @@ class Api
     /**
      * Returns the interests (pins) that the authenticated user follows.
      *
-     * @return Http\Response The response.
+     * @return PagedList[Objects\Pin] The current User's interests.
      */
     public function getUserInterests()
     {
