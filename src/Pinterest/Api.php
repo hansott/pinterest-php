@@ -17,9 +17,7 @@ use Pinterest\Objects\Pin;
 class Api
 {
     /**
-     * The authentication client to use.
-     *
-     * @var Authentication
+     * @var Authentication The authentication client to use.
      */
     private $client;
 
@@ -58,7 +56,7 @@ class Api
      */
     private function execute(Request $request, callable $processor = null)
     {
-        $response = $this->client->execute($request, $this->token);
+        $response = $this->client->execute($request);
 
         if (is_callable($processor)) {
             $response = $this->processResponse($response, $processor);

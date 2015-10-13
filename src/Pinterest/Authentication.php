@@ -12,15 +12,28 @@ use Pinterest\Api\Exceptions\TooManyScopesGiven;
 final class Authentication implements ClientInterface
 {
     /**
-     * The API base uri.
-     *
-     * @var string
+     * @var string The API base uri.
      */
     const BASE_URI = 'https://api.pinterest.com/v1/';
 
+    /**
+     * @var ClientInterface The http client to use.
+     */
     private $httpClient;
+
+    /**
+     * @var string The client ID.
+     */
     private $clientId;
+
+    /**
+     * @var string The client secret.
+     */
     private $clientSecret;
+
+    /**
+     * @var string The access token to use.
+     */
     private $accessToken;
 
     /**
@@ -30,7 +43,7 @@ final class Authentication implements ClientInterface
      * @param string          $clientId     The client id
      * @param string          $clientSecret The client secret
      */
-    public function __construct(ClientInterface $client, $clientId, $clientSecret) 
+    public function __construct(ClientInterface $client, $clientId, $clientSecret)
     {
         $this->httpClient = $client;
         $this->clientId = $clientId;
@@ -40,10 +53,10 @@ final class Authentication implements ClientInterface
     /**
      * Alternative constructor for when we already have an accessToken
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client
-     * @param string          $clientId     The client id
-     * @param string          $clientSecret The client secret
-     * @param string          $accessToken  The OAuth access token
+     * @param ClientInterface $client       The (un-authenticated) Http client.
+     * @param string          $clientId     The client id.
+     * @param string          $clientSecret The client secret.
+     * @param string          $accessToken  The OAuth access token.
      */
     public static function withAccessToken(
         ClientInterface $client,
@@ -62,8 +75,8 @@ final class Authentication implements ClientInterface
      *
      * ATTENTION: only the execute method will work, as the others need client id and secret
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client
-     * @param string          $accessToken  The OAuth access token
+     * @param ClientInterface $client       The (un-authenticated) Http client.
+     * @param string          $accessToken  The OAuth access token.
      */
     public static function onlyAccessToken(
         ClientInterface $client,
@@ -76,13 +89,13 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * First step of the OAuth process
+     * First step of the OAuth process.
      *
-     * @param string $redirectUrl The OAuth redirect url (where code gets sent)
-     * @param array  $scopes      An array of scopes (see assertValidScopes)
-     * @param string $state       A state you can use to check if this is a valid redirect
+     * @param string $redirectUrl The OAuth redirect url (where code gets sent).
+     * @param array  $scopes      An array of scopes (see assertValidScopes).
+     * @param string $state       A state you can use to check if this is a valid redirect.
      *
-     * @return string The redirect url
+     * @return string The redirect url.
      */
     public function getAuthenticationUrl($redirectUrl, array $scopes, $state)
     {
@@ -101,13 +114,13 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Check if an array of given scopes contains only valid scopes (and at least one)
+     * Checks if an array of given scopes contains only valid scopes (and at least one).
      *
-     * @param array $scopes The array of scopes to check
+     * @param array $scopes The array of scopes to check.
      *
-     * @throws InvalidScopeException when invalid scope in the given array
-     * @throws AtLeastOneScopeNeeded when no scopes given
-     * @throws TooManyScopesGiven when double scopes in the list
+     * @throws InvalidScopeException When invalid scope in the given array.
+     * @throws AtLeastOneScopeNeeded When no scopes given.
+     * @throws TooManyScopesGiven When double scopes in the list.
      */
     private function assertValidScopes(array $scopes)
     {
@@ -134,11 +147,11 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Second step of the OAuth process
+     * Second step of the OAuth process.
      *
-     * @param string $code The OAuth code, caught from the redirect page
+     * @param string $code The OAuth code, caught from the redirect page.
      *
-     * @return string The OAuth access token
+     * @return string The OAuth access token.
      */
     public function requestAccessToken($code)
     {
@@ -168,11 +181,11 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Execute an authenticated Http request
+     * Executes a http request.
      *
-     * @param Request $request The Http Request
+     * @param Request $request The http request.
      *
-     * @return Response The Http Response
+     * @return Response The http response.
      */
     public function execute(Request $request)
     {
@@ -190,9 +203,9 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Get the access token for persisting in some storage
+     * Returns the access token for persisting in some storage.
      *
-     * @return string The OAuth access token
+     * @return string The OAuth access token.
      */
     public function getAccessToken()
     {
