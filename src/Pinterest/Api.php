@@ -3,13 +3,11 @@
 namespace Pinterest;
 
 use InvalidArgumentException;
-use Pinterest\Api\Exceptions\TokenMissing;
-use Pinterest\Http\ClientInterface as Client;
-use Pinterest\Http\GuzzleClient;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
+use Pinterest\Objects\Pin;
 
 /**
  * The api client.
