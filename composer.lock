@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f3254764816f69512ac9f44151c46a31",
+    "hash": "0029cb4baa71523683d88358b3e74061",
+    "content-hash": "c6d6f7e505205a314d9c7f85eafaab70",
     "packages": [
         {
             "name": "guzzlehttp/guzzle",
@@ -16,7 +17,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/768b4c0e3e0712a53eb35eaf3ba0d96910225389",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/6d6c3a68fbea09c50b251553d59b9209b475e272",
                 "reference": "768b4c0e3e0712a53eb35eaf3ba0d96910225389",
                 "shasum": ""
             },
@@ -440,7 +441,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/ef1ca6835468857944d5c3b48fa503d5554cff2f",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/eabf68b476ac7d0f73793aada060f1c1a9bf8979",
                 "reference": "ef1ca6835468857944d5c3b48fa503d5554cff2f",
                 "shasum": ""
             },
@@ -680,7 +681,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/73fad41adb5b7bc3a494bb930d90648df1d5e74b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/00194eb95989190a73198390ceca081ad3441a7f",
                 "reference": "73fad41adb5b7bc3a494bb930d90648df1d5e74b",
                 "shasum": ""
             },
@@ -752,7 +753,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/5e2645ad49d196e020b85598d7c97e482725786a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/ac8e7a3db35738d56ee9a76e78a4e03d97628983",
                 "reference": "5e2645ad49d196e020b85598d7c97e482725786a",
                 "shasum": ""
             },
@@ -1041,7 +1042,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/23af31f402993cfd94e99cbc4b782e9a78eb0e97",
+                "url": "https://api.github.com/repos/sebastianbergmann/global-state/zipball/80e75e39bd6895a2240f5f959a5fec2df501d339",
                 "reference": "23af31f402993cfd94e99cbc4b782e9a78eb0e97",
                 "shasum": ""
             },
@@ -1175,12 +1176,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Yaml.git",
-                "reference": "b68154f3ee23d8294936433fd31725a83bd02f71"
+                "url": "https://github.com/symfony/yaml.git",
+                "reference": "d4a6e1a210b2e84d956fe5b976d9b91a4ba8f7d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/b68154f3ee23d8294936433fd31725a83bd02f71",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/d4a6e1a210b2e84d956fe5b976d9b91a4ba8f7d4",
                 "reference": "b68154f3ee23d8294936433fd31725a83bd02f71",
                 "shasum": ""
             },
@@ -1217,7 +1218,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-09-14 14:15:24"
+            "time": "2015-10-12 11:09:16"
         },
         {
             "name": "vlucas/phpdotenv",
