@@ -2,13 +2,13 @@
 
 namespace Pinterest;
 
-use Pinterest\Http\ClientInterface;
-use Pinterest\Http\Request;
-use Pinterest\Api\Exceptions\TokenMissing;
-use Pinterest\Api\Exceptions\InvalidScopeException;
 use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
+use Pinterest\Api\Exceptions\InvalidScopeException;
+use Pinterest\Api\Exceptions\TokenMissing;
 use Pinterest\Api\Exceptions\TooManyScopesGiven;
 use Pinterest\App\Scope;
+use Pinterest\Http\ClientInterface;
+use Pinterest\Http\Request;
 
 final class Authentication implements ClientInterface
 {
@@ -38,7 +38,7 @@ final class Authentication implements ClientInterface
     private $accessToken;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param ClientInterface $client       The (un-authenticated) Http client
      * @param string          $clientId     The client id
@@ -52,7 +52,7 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Alternative constructor for when we already have an accessToken
+     * Alternative constructor for when we already have an accessToken.
      *
      * @param ClientInterface $client       The (un-authenticated) Http client.
      * @param string          $clientId     The client id.
@@ -72,12 +72,12 @@ final class Authentication implements ClientInterface
     }
 
     /**
-     * Alternative constructor for when we only have an accessToken
+     * Alternative constructor for when we only have an accessToken.
      *
      * ATTENTION: only the execute method will work, as the others need client id and secret
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client.
-     * @param string          $accessToken  The OAuth access token.
+     * @param ClientInterface $client      The (un-authenticated) Http client.
+     * @param string          $accessToken The OAuth access token.
      */
     public static function onlyAccessToken(
         ClientInterface $client,
@@ -103,15 +103,15 @@ final class Authentication implements ClientInterface
         $this->assertValidScopes($scopes);
 
         $url = 'https://api.pinterest.com/oauth/?';
-        $params = array(
+        $params = [
             'response_type' => 'code',
-            'redirect_uri' => (string) $redirectUrl,
-            'client_id' => $this->clientId,
-            'scope' => implode(',', $scopes),
-            'state' => (string) $state,
-        );
+            'redirect_uri'  => (string) $redirectUrl,
+            'client_id'     => $this->clientId,
+            'scope'         => implode(',', $scopes),
+            'state'         => (string) $state,
+        ];
 
-        return $url . http_build_query($params);
+        return $url.http_build_query($params);
     }
 
     /**
@@ -121,16 +121,16 @@ final class Authentication implements ClientInterface
      *
      * @throws InvalidScopeException When invalid scope in the given array.
      * @throws AtLeastOneScopeNeeded When no scopes given.
-     * @throws TooManyScopesGiven When double scopes in the list.
+     * @throws TooManyScopesGiven    When double scopes in the list.
      */
     private function assertValidScopes(array $scopes)
     {
-        $allowedScopes = array(
+        $allowedScopes = [
             Scope::READ_PUBLIC,
             Scope::WRITE_PUBLIC,
             Scope::READ_RELATIONSHIPS,
             Scope::WRITE_RELATIONSHIPS,
-        );
+        ];
 
         foreach ($scopes as $scope) {
             if (!in_array($scope, $allowedScopes)) {
@@ -158,13 +158,13 @@ final class Authentication implements ClientInterface
     {
         $request = new Request(
             'POST',
-            static::BASE_URI . 'oauth/token',
-            array(
-                'grant_type' => 'authorization_code',
-                'client_id' => $this->clientId,
+            static::BASE_URI.'oauth/token',
+            [
+                'grant_type'    => 'authorization_code',
+                'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'code' => $code,
-            )
+                'code'          => $code,
+            ]
         );
 
         $response = $this->httpClient->execute($request);
@@ -195,7 +195,7 @@ final class Authentication implements ClientInterface
 
         $authenticatedRequest = new Request(
             $request->getMethod(),
-            static::BASE_URI . $request->getEndpoint(),
+            static::BASE_URI.$request->getEndpoint(),
             $request->getParams(),
             $headers
         );
