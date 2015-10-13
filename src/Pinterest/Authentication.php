@@ -8,6 +8,7 @@ use Pinterest\Api\Exceptions\TokenMissing;
 use Pinterest\Api\Exceptions\InvalidScopeException;
 use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
 use Pinterest\Api\Exceptions\TooManyScopesGiven;
+use Pinterest\App\Scope;
 
 final class Authentication implements ClientInterface
 {
@@ -125,10 +126,10 @@ final class Authentication implements ClientInterface
     private function assertValidScopes(array $scopes)
     {
         $allowedScopes = array(
-            'read_public',
-            'write_public',
-            'read_relationships',
-            'write_relationships',
+            Scope::READ_PUBLIC,
+            Scope::WRITE_PUBLIC,
+            Scope::READ_RELATIONSHIPS,
+            Scope::WRITE_RELATIONSHIPS,
         );
 
         foreach ($scopes as $scope) {
