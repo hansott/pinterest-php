@@ -32,7 +32,7 @@ class GuzzleClient implements ClientInterface
     {
         try {
             return $this->guzzle->request($method, $endpoint, [
-                'query' => $params,
+                'query'   => $params,
                 'headers' => $headers,
             ]);
         } catch (RequestException $e) {
