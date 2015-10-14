@@ -28,13 +28,14 @@ Replace the `$clientId` and `$clientSecret` variables with the data of [https://
 You can now let your user authenticate with your application be redirecting them to the URL obtained by a call to `$auth->getAuthenticationUrl()`, like this:
 
 ```php
+
 $url = $auth->getAuthenticationUrl(
     'https://your/redirect/url/here',
     array(
-        'read_public',
-        'write_public',
-        'read_relationships',
-        'write_relationships',
+        Scope::READ_PUBLIC,
+        Scope::WRITE_PUBLIC,
+        Scope::READ_RELATIONSHIPS,
+        Scope::WRITE_RELATIONSHIPS,
     ),
     'validation-state-0149281'
 );
