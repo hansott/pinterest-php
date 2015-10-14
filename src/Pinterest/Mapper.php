@@ -41,7 +41,7 @@ class Mapper
      */
     private function convertToArray(ArrayObject $object)
     {
-        $arr = [];
+        $arr = array();
         $iterator = $object->getIterator();
         while ($iterator->valid()) {
             $arr[] = $iterator->current();
