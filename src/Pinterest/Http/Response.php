@@ -131,7 +131,7 @@ final class Response
     }
 
     /**
-     * Get Headers
+     * Get Headers.
      *
      * @return array
      */

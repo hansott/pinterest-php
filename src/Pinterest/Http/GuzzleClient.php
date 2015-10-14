@@ -44,7 +44,7 @@ class GuzzleClient implements ClientInterface
 
         $headers = $guzzleResponse->getHeaders();
         $headers = array_map(
-            function($value) {
+            function ($value) {
                 return implode(' ', $value);
             },
             $headers
