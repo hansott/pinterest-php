@@ -32,10 +32,10 @@ You can now let your user authenticate with your application be redirecting them
 $url = $auth->getAuthenticationUrl(
     'https://your/redirect/url/here',
     array(
-        Scope::READ_PUBLIC,
-        Scope::WRITE_PUBLIC,
-        Scope::READ_RELATIONSHIPS,
-        Scope::WRITE_RELATIONSHIPS,
+        Pinterest\App\Scope::READ_PUBLIC,
+        Pinterest\App\Scope::WRITE_PUBLIC,
+        Pinterest\App\Scope::READ_RELATIONSHIPS,
+        Pinterest\App\Scope::WRITE_RELATIONSHIPS,
     ),
     'validation-state-0149281'
 );
