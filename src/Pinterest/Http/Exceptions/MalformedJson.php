@@ -1,6 +1,8 @@
 <?php
 
-namespace Engagor\Http\Exceptions;
+namespace Pinterest\Http\Exceptions;
+
+use Exception;
 
 /**
  * This exception is thrown when the response is no valid json.

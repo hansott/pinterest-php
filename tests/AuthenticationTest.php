@@ -2,7 +2,7 @@
 
 use Pinterest\App\Scope;
 use Pinterest\Authentication;
-use Pinterest\Http\GuzzleClient;
+use Pinterest\Http\BuzzClient;
 
 class AuthenticationTest extends TestCase
 {
