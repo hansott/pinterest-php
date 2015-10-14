@@ -8,7 +8,7 @@ class AuthenticationTest extends TestCase
 {
     public function getHttpClient()
     {
-        return new GuzzleClient();
+        return new BuzzClient();
     }
 
     public function testConstructWithAccessToken()
