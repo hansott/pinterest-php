@@ -33,6 +33,13 @@ final class Response
     private $rawBody;
 
     /**
+     * The HTTP headers.
+     *
+     * @var array
+     */
+    private $headers;
+
+    /**
      * The processed result.
      *
      * @var mixed
@@ -52,13 +59,15 @@ final class Response
      * @param Request $request    The request object.
      * @param int     $statusCode The status code.
      * @param string  $rawBody    The raw response body.
+     * @param array   $headers    A key => value representation of response headers
      */
-    public function __construct(Request $request, $statusCode, $rawBody)
+    public function __construct(Request $request, $statusCode, $rawBody, array $headers)
     {
         $this->request = $request;
         $this->statusCode = (int) $statusCode;
         $this->rawBody = (string) $rawBody;
         $this->body = $this->parseJson($this->rawBody);
+        $this->headers = $headers;
     }
 
     /**
@@ -119,5 +128,15 @@ final class Response
     public function getRequest()
     {
         return $this->request;
+    }
+
+    /**
+     * Get Headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
     }
 }
