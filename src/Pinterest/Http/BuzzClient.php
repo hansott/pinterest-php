@@ -56,7 +56,12 @@ class BuzzClient implements ClientInterface
         $headers = $request->getHeaders();
 
         try {
-            $buzzResponse = $this->client->call($endpoint, $method, $headers, $params);
+            $buzzResponse = $this->client->call(
+                $endpoint . '?' . http_build_query($params),
+                $method,
+                $headers,
+                array()
+            );
         } catch (RequestException $e) {
             throw new Exception($e->getMessage());
         }
