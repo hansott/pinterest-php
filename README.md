@@ -39,7 +39,7 @@ $url = $auth->getAuthenticationUrl(
     'validation-state-0149281'
 );
 
-header ("Location: " . $url);
+header('Location: ' . $url);
 exit;
 ```
 
