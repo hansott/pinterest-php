@@ -262,13 +262,13 @@ class Api
     /**
      * Follows a user.
      *
-     * @param User $user The user to follow.
+     * @param string $username The username of the user to follow.
      *
      * @return Http\Response The response.
      */
-    public function followUser(User $user)
+    public function followUser($username)
     {
-        if (empty($user->username)) {
+        if (empty($username)) {
             throw new InvalidArgumentException('Username is required.');
         }
 
@@ -276,7 +276,7 @@ class Api
             'POST',
             'me/following/users',
             array(
-                'user' => $user->username,
+                'user' => $username,
             )
         );
 
