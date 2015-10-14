@@ -77,7 +77,10 @@ final class Response
      */
     public function ok()
     {
-        return isset($this->body->data) && $this->statusCode === 200;
+        return
+            !isset($this->body->error)
+            && $this->statusCode >= 200
+            && $this->statusCode < 300;
     }
 
     /**
