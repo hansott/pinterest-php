@@ -12,7 +12,7 @@ class PagedList extends BaseObject
     private $items;
     private $nextUrl;
 
-    public function __construct(array $items = [], $nextUrl = null)
+    public function __construct(array $items = array(), $nextUrl = null)
     {
         $this->items = $items;
         $this->nextUrl = $nextUrl;

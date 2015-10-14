@@ -6,11 +6,16 @@
         {
             "name": "Hans Ott",
             "email": "hansott@hotmail.be"
+        },
+        {
+            "name": "Toon Daelman",
+            "email": "spinnewebber_toon@hotmail.com",
+            "homepage": "http://turanct.wordpress.com"
         }
     ],
     "minimum-stability": "dev",
     "require": {
-        "guzzlehttp/guzzle": "6.1.*",
+        "kriswallsmith/buzz": "v0.15",
         "netresearch/jsonmapper": "0.9.0"
     },
     "require-dev": {

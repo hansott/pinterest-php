@@ -2,7 +2,7 @@
 
 use Pinterest\Api;
 use Pinterest\Authentication;
-use Pinterest\Http\GuzzleClient;
+use Pinterest\Http\BuzzClient;
 use Pinterest\Objects\User;
 
 class ApiTest extends TestCase
@@ -11,7 +11,7 @@ class ApiTest extends TestCase
 
     public function setUp()
     {
-        $client = new GuzzleClient();
+        $client = new BuzzClient();
         $auth = Authentication::withAccessToken($client, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
     }

@@ -38,7 +38,7 @@ class Api
      *
      * @return Response The response.
      */
-    private function processResponse(Response $response, callable $processor)
+    private function processResponse(Response $response, $processor)
     {
         if ($response->ok()) {
             $result = $processor($response);
@@ -53,7 +53,7 @@ class Api
      *
      * @return Http\Response The response.
      */
-    private function execute(Request $request, callable $processor = null)
+    private function execute(Request $request, $processor = null)
     {
         $response = $this->client->execute($request);
 
@@ -272,9 +272,13 @@ class Api
             throw new InvalidArgumentException('Username is required.');
         }
 
-        $request = new Request('POST', 'me/following/users', [
-            'user' => $user->username,
-        ]);
+        $request = new Request(
+            'POST',
+            'me/following/users',
+            array(
+                'user' => $user->username,
+            )
+        );
 
         return $this->execute($request);
     }
