@@ -42,7 +42,15 @@ class GuzzleClient implements ClientInterface
         $statusCode = $guzzleResponse->getStatusCode();
         $rawBody = (string) $guzzleResponse->getBody();
 
-        return new Response($request, $statusCode, $rawBody);
+        $headers = $guzzleResponse->getHeaders();
+        $headers = array_map(
+            function($value) {
+                return implode(' ', $value);
+            },
+            $headers
+        );
+
+        return new Response($request, $statusCode, $rawBody, $headers);
     }
 
     /**
