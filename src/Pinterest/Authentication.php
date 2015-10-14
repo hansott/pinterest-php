@@ -103,13 +103,13 @@ final class Authentication implements ClientInterface
         $this->assertValidScopes($scopes);
 
         $url = 'https://api.pinterest.com/oauth/?';
-        $params = [
+        $params = array(
             'response_type' => 'code',
             'redirect_uri'  => (string) $redirectUrl,
             'client_id'     => $this->clientId,
             'scope'         => implode(',', $scopes),
             'state'         => (string) $state,
-        ];
+        );
 
         return $url.http_build_query($params);
     }
@@ -125,12 +125,12 @@ final class Authentication implements ClientInterface
      */
     private function assertValidScopes(array $scopes)
     {
-        $allowedScopes = [
+        $allowedScopes = array(
             Scope::READ_PUBLIC,
             Scope::WRITE_PUBLIC,
             Scope::READ_RELATIONSHIPS,
             Scope::WRITE_RELATIONSHIPS,
-        ];
+        );
 
         foreach ($scopes as $scope) {
             if (!in_array($scope, $allowedScopes)) {
@@ -159,12 +159,12 @@ final class Authentication implements ClientInterface
         $request = new Request(
             'POST',
             static::BASE_URI.'oauth/token',
-            [
+            array(
                 'grant_type'    => 'authorization_code',
                 'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
                 'code'          => $code,
-            ]
+            )
         );
 
         $response = $this->httpClient->execute($request);

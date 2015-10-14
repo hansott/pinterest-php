@@ -47,7 +47,7 @@ final class Request
      * @param array  $params   The parameters.
      * @param array  $headers  The headers.
      */
-    public function __construct($method, $endpoint, array $params = [], array $headers = [])
+    public function __construct($method, $endpoint, array $params = array(), array $headers = array())
     {
         $this->method = (string) $method;
         $this->endpoint = (string) $endpoint;

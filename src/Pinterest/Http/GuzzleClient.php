@@ -24,10 +24,14 @@ class GuzzleClient implements ClientInterface
     private function call($method, $endpoint, array $params, array $headers)
     {
         try {
-            return $this->guzzle->request($method, $endpoint, [
-                'query'   => $params,
-                'headers' => $headers,
-            ]);
+            return $this->guzzle->request(
+                $method,
+                $endpoint,
+                array(
+                    'query'   => $params,
+                    'headers' => $headers,
+                )
+            );
         } catch (RequestException $e) {
             if ($e->hasResponse()) {
                 return $e->getResponse();
