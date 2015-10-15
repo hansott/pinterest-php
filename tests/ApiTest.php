@@ -80,16 +80,29 @@ class ApiTest extends TestCase
         $this->api->followUser($username);
     }
 
-    public function testCreatePin()
+    /**
+     * @dataProvider imageProvider
+     */
+    public function testCreatePin(Image $image, $note)
     {
         $response = $this->api->createPin(
             7670330554511789,
-            'Test Pin',
-            // Image::url('https://wordpress-engagor.netdna-ssl.com/assets/img/hero/team.jpg')
-            Image::file('/Users/Toon/Desktop/test.png')
+            $note,
+            $image
         );
 
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
+    }
+
+    public function imageProvider()
+    {
+        $imageFixture = __DIR__ . '/fixtures/test.png';
+
+        return array(
+            array(Image::url('https://wordpress-engagor.netdna-ssl.com/assets/img/hero/team.jpg'), 'Test pin url'),
+            array(Image::file($imageFixture), 'Test pin file'),
+            array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
+        );
     }
 }
