@@ -5,6 +5,7 @@ namespace Pinterest;
 use InvalidArgumentException;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
+use Pinterest\Http\Exceptions\RateLimited;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
 
@@ -56,6 +57,10 @@ class Api
     private function execute(Request $request, $processor = null)
     {
         $response = $this->client->execute($request);
+
+        if ($response->rateLimited()) {
+            throw new RateLimited($response);
+        }
 
         if (is_callable($processor)) {
             $response = $this->processResponse($response, $processor);
