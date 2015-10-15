@@ -69,14 +69,13 @@ class ApiTest extends TestCase
 
     public function testFollowUser()
     {
-        $user = new User();
-        $user->username = 'engagor';
-        $response = $this->api->followUser($user);
+        $username = 'engagor';
+        $response = $this->api->followUser($username);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
 
         $this->setExpectedException('InvalidArgumentException');
-        $user = new User();
-        $this->api->followUser($user);
+        $username = '';
+        $this->api->followUser($username);
     }
 }

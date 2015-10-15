@@ -276,7 +276,7 @@ class Api
             'POST',
             'me/following/users',
             array(
-                'user' => $username,
+                'user' => (string) $username,
             )
         );
 
