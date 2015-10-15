@@ -9,12 +9,15 @@ use Pinterest\Objects\User;
 class ApiTest extends TestCase
 {
     protected $api;
+    protected $board;
 
     public function setUp()
     {
         $client = new BuzzClient();
         $auth = Authentication::withAccessToken($client, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
+
+        $this->board = getenv('BOARD_ID');
     }
 
     public function testGetUser()
@@ -86,7 +89,7 @@ class ApiTest extends TestCase
     public function testCreatePin(Image $image, $note)
     {
         $response = $this->api->createPin(
-            7670330554511789,
+            $this->board,
             $note,
             $image
         );
@@ -112,7 +115,7 @@ class ApiTest extends TestCase
     {
         $data = $this->imageProvider();
         $createResponse = $this->api->createPin(
-            7670330554511789,
+            $this->board,
             $data[0][1],
             $data[0][0]
         );
