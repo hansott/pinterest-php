@@ -274,7 +274,7 @@ class Api
 
         $request = new Request(
             'POST',
-            'me/following/users',
+            'me/following/users/',
             array(
                 'user' => (string) $username,
             )
