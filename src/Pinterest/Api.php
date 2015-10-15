@@ -282,4 +282,42 @@ class Api
 
         return $this->execute($request);
     }
+
+    /**
+     * Create a Pin
+     *
+     * @param string $pin The pin to create
+     *
+     * @return Http\Response The response
+     */
+    public function createPin($boardId, $note, Image $image, $link = null)
+    {
+        if (empty($boardId)) {
+            throw new InvalidArgumentException('board id should not be empty');
+        }
+
+        if (empty($note)) {
+            throw new InvalidArgumentException('note should not be empty');
+        }
+
+        $params = array(
+            'board' => $boardId,
+            'note' => $note,
+        );
+
+        if (!empty($link)) {
+            $params['link'] = $link;
+        }
+
+        $imageKey = $image->isUrl() ? 'image_url' : ($image->isBase64() ? 'image_base64' : 'image');
+        if ($image->isFile()) {
+            $params[$imageKey] = $image;
+        } else {
+        $params[$imageKey] = $image->getData();
+        }
+
+        $request = new Request('POST', 'pins/', $params);
+
+        return $this->execute($request);
+    }
 }

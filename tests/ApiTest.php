@@ -2,6 +2,7 @@
 
 use Pinterest\Api;
 use Pinterest\Authentication;
+use Pinterest\Image;
 use Pinterest\Http\BuzzClient;
 use Pinterest\Objects\User;
 
@@ -77,5 +78,18 @@ class ApiTest extends TestCase
         $this->setExpectedException('InvalidArgumentException');
         $username = '';
         $this->api->followUser($username);
+    }
+
+    public function testCreatePin()
+    {
+        $response = $this->api->createPin(
+            7670330554511789,
+            'Test Pin',
+            // Image::url('https://wordpress-engagor.netdna-ssl.com/assets/img/hero/team.jpg')
+            Image::file('/Users/Toon/Desktop/test.png')
+        );
+
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
     }
 }

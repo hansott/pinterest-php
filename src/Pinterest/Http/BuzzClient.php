@@ -2,9 +2,12 @@
 
 namespace Pinterest\Http;
 
+use Pinterest\Image;
 use Buzz\Browser;
 use Buzz\Client\Curl;
 use Buzz\Message\Response as BuzzResponse;
+use Buzz\Message\Form\FormRequest;
+use Buzz\Message\Form\FormUpload;
 use Exception;
 use Buzz\Exception\RequestException;
 
@@ -56,12 +59,29 @@ class BuzzClient implements ClientInterface
         $headers = $request->getHeaders();
 
         try {
-            $buzzResponse = $this->client->call(
-                $endpoint . '?' . http_build_query($params),
-                $method,
-                $headers,
-                array()
-            );
+            if ($method == 'GET') {
+                $buzzResponse = $this->client->call(
+                    $endpoint . '?' . http_build_query($params),
+                    $method,
+                    $headers,
+                    array()
+                );
+            } else {
+                $buzzRequest = new FormRequest();
+                $buzzRequest->fromUrl($endpoint);
+                $buzzRequest->setMethod($method);
+                $buzzRequest->setHeaders($headers);
+                foreach($params as $key => $value) {
+                    if ($value instanceof Image) {
+                        $value = new FormUpload($value->getData());
+                    }
+
+                    $buzzRequest->setField($key, $value);
+                }
+
+                $buzzResponse = new BuzzResponse();
+                $this->client->send($buzzRequest, $buzzResponse);
+            }
         } catch (RequestException $e) {
             throw new Exception($e->getMessage());
         }
