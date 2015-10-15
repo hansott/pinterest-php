@@ -93,6 +93,8 @@ class ApiTest extends TestCase
 
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
+
+        $response = $this->api->deletePin($response->result()->id);
     }
 
     public function imageProvider()
