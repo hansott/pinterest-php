@@ -93,6 +93,20 @@ class Api
     }
 
     /**
+     * Fetches a single pin and processes the response.
+     *
+     * @return Objects\Pin The Board.
+     */
+    private function fetchPin(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\Pin());
+
+            return $mapper->toSingle($response);
+        });
+    }
+
+    /**
      * Fetches multiple boards and processes the response.
      *
      * @return PagedList[Objects\Board] A list of Boards.
@@ -318,6 +332,6 @@ class Api
 
         $request = new Request('POST', 'pins/', $params);
 
-        return $this->execute($request);
+        return $this->fetchPin($request);
     }
 }
