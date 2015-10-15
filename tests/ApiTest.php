@@ -105,4 +105,20 @@ class ApiTest extends TestCase
             array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
         );
     }
+
+    public function testDeletePin()
+    {
+        $data = $this->imageProvider();
+        $createResponse = $this->api->createPin(
+            7670330554511789,
+            $data[0][1],
+            $data[0][0]
+        );
+        $pinId = $createResponse->result()->id;
+
+        $response = $this->api->deletePin($pinId);
+
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+    }
 }

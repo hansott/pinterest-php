@@ -334,4 +334,22 @@ class Api
 
         return $this->fetchPin($request);
     }
+
+    /**
+     * Delete a Pin
+     *
+     * @param string $pinId The id of the pin to delete
+     *
+     * @return Http\Response The response
+     */
+    public function deletePin($pinId)
+    {
+        if (empty($pinId)) {
+            throw new InvalidArgumentException('board id should not be empty');
+        }
+
+        $request = new Request('DELETE', 'pins/' . $pinId . '/');
+
+        return $this->execute($request);
+    }
 }
