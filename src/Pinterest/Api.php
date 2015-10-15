@@ -5,6 +5,7 @@ namespace Pinterest;
 use InvalidArgumentException;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
+use Pinterest\Http\Exceptions\RateLimited;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
 
@@ -57,6 +58,10 @@ class Api
     {
         $response = $this->client->execute($request);
 
+        if ($response->rateLimited()) {
+            throw new RateLimited($response);
+        }
+
         if (is_callable($processor)) {
             $response = $this->processResponse($response, $processor);
         }
@@ -87,6 +92,20 @@ class Api
     {
         return $this->execute($request, function (Response $response) {
             $mapper = new Mapper(new Objects\Board());
+
+            return $mapper->toSingle($response);
+        });
+    }
+
+    /**
+     * Fetches a single pin and processes the response.
+     *
+     * @return Objects\Pin The Board.
+     */
+    private function fetchPin(Request $request)
+    {
+        return $this->execute($request, function (Response $response) {
+            $mapper = new Mapper(new Objects\Pin());
 
             return $mapper->toSingle($response);
         });
@@ -262,23 +281,79 @@ class Api
     /**
      * Follows a user.
      *
-     * @param User $user The user to follow.
+     * @param string $username The username of the user to follow.
      *
      * @return Http\Response The response.
      */
-    public function followUser(User $user)
+    public function followUser($username)
     {
-        if (empty($user->username)) {
+        if (empty($username)) {
             throw new InvalidArgumentException('Username is required.');
         }
 
         $request = new Request(
             'POST',
-            'me/following/users',
+            'me/following/users/',
             array(
-                'user' => $user->username,
+                'user' => (string) $username,
             )
         );
+
+        return $this->execute($request);
+    }
+
+    /**
+     * Create a Pin
+     *
+     * @param string $pin The pin to create
+     *
+     * @return Http\Response The response
+     */
+    public function createPin($boardId, $note, Image $image, $link = null)
+    {
+        if (empty($boardId)) {
+            throw new InvalidArgumentException('board id should not be empty');
+        }
+
+        if (empty($note)) {
+            throw new InvalidArgumentException('note should not be empty');
+        }
+
+        $params = array(
+            'board' => $boardId,
+            'note' => $note,
+        );
+
+        if (!empty($link)) {
+            $params['link'] = $link;
+        }
+
+        $imageKey = $image->isUrl() ? 'image_url' : ($image->isBase64() ? 'image_base64' : 'image');
+        if ($image->isFile()) {
+            $params[$imageKey] = $image;
+        } else {
+        $params[$imageKey] = $image->getData();
+        }
+
+        $request = new Request('POST', 'pins/', $params);
+
+        return $this->fetchPin($request);
+    }
+
+    /**
+     * Delete a Pin
+     *
+     * @param string $pinId The id of the pin to delete
+     *
+     * @return Http\Response The response
+     */
+    public function deletePin($pinId)
+    {
+        if (empty($pinId)) {
+            throw new InvalidArgumentException('board id should not be empty');
+        }
+
+        $request = new Request('DELETE', 'pins/' . $pinId . '/');
 
         return $this->execute($request);
     }

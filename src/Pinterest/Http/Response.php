@@ -84,6 +84,16 @@ final class Response
     }
 
     /**
+     * Checks if the response is rate-limited.
+     *
+     * @return bool Whether the response is rate-limited.
+     */
+    public function rateLimited()
+    {
+        return $this->statusCode == 429;
+    }
+
+    /**
      * Parses the response json in php data.
      *
      * @param string $rawBody The raw response body.

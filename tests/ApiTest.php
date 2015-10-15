@@ -2,18 +2,22 @@
 
 use Pinterest\Api;
 use Pinterest\Authentication;
+use Pinterest\Image;
 use Pinterest\Http\BuzzClient;
 use Pinterest\Objects\User;
 
 class ApiTest extends TestCase
 {
     protected $api;
+    protected $board;
 
     public function setUp()
     {
         $client = new BuzzClient();
         $auth = Authentication::withAccessToken($client, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
+
+        $this->board = getenv('BOARD_ID');
     }
 
     public function testGetUser()
@@ -69,14 +73,57 @@ class ApiTest extends TestCase
 
     public function testFollowUser()
     {
-        $user = new User();
-        $user->username = 'engagor';
-        $response = $this->api->followUser($user);
+        $username = 'engagor';
+        $response = $this->api->followUser($username);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
 
         $this->setExpectedException('InvalidArgumentException');
-        $user = new User();
-        $this->api->followUser($user);
+        $username = '';
+        $this->api->followUser($username);
+    }
+
+    /**
+     * @dataProvider imageProvider
+     */
+    public function testCreatePin(Image $image, $note)
+    {
+        $response = $this->api->createPin(
+            $this->board,
+            $note,
+            $image
+        );
+
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+
+        $response = $this->api->deletePin($response->result()->id);
+    }
+
+    public function imageProvider()
+    {
+        $imageFixture = __DIR__ . '/fixtures/test.png';
+
+        return array(
+            array(Image::url('https://wordpress-engagor.netdna-ssl.com/assets/img/hero/team.jpg'), 'Test pin url'),
+            array(Image::file($imageFixture), 'Test pin file'),
+            array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
+        );
+    }
+
+    public function testDeletePin()
+    {
+        $data = $this->imageProvider();
+        $createResponse = $this->api->createPin(
+            $this->board,
+            $data[0][1],
+            $data[0][0]
+        );
+        $pinId = $createResponse->result()->id;
+
+        $response = $this->api->deletePin($pinId);
+
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
     }
 }
