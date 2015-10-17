@@ -2,7 +2,7 @@
 
 A wrapper library for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/).
 
-**Work in progress, but ready for production.!**
+**Work in progress, but ready for production.**
 
 ![Pinterest PHP](banner.png)
 
