@@ -1,6 +1,6 @@
-![Pinterest PHP SDK](banner.png)
-
 # Pinterest PHP SDK
+
+![Pinterest PHP SDK](banner.png)
 
 [![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master)
