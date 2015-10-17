@@ -4,7 +4,9 @@ A wrapper library for the [Pinterest API](https://developers.pinterest.com/tools
 
 **Work in progress, but ready for production.**
 
-![Pinterest PHP](banner.png)
+<p align="center">
+    <img src="banner.png" alt="Pinterest PHP">
+</p>
 
 <p align="center">
     <a href="https://travis-ci.org/hansott/pinterest-php"><img src="https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square" alt="Build Status"></a>
