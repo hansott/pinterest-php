@@ -1,5 +1,3 @@
-# Pinterest PHP SDK
-
 ![Pinterest PHP SDK](banner.png)
 
 [![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php)
@@ -8,7 +6,7 @@
 
 A wrapper library for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/).
 
-**Work in progress!**
+**Work in progress, but ready for production.!**
 
 ## Install
 
