@@ -4,6 +4,11 @@ namespace Pinterest;
 
 use InvalidArgumentException;
 
+/**
+ * This class represents an image.
+ *
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
+ */
 final class Image
 {
     const TYPE_URL = 'url';

@@ -1,10 +1,11 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "14679526dc44be1d8cc0378796d3bcf2",
+    "hash": "4107ca5bcc00110d9cf2f44d99be1f5c",
+    "content-hash": "642e3e33dba4a30c42efe6d28ab8514d",
     "packages": [
         {
             "name": "kriswallsmith/buzz",

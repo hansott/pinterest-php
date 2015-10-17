@@ -7,8 +7,32 @@ namespace Pinterest\Objects;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class Pin extends BaseObject
+final class Pin implements BaseObject
 {
+    /**
+     * The required fields.
+     *
+     * @return array The required fields.
+     */
+    public static function fields()
+    {
+        return array(
+            'url',
+            'id',
+            'link',
+            'creator',
+            'board',
+            'created_at',
+            'note',
+            'color',
+            'counts',
+            'media',
+            'attribution',
+            'image',
+            'metadata',
+        );
+    }
+
     /**
      * The url to the object on pinterest.
      *
@@ -48,7 +72,7 @@ class Pin extends BaseObject
     /**
      * ISO 8601 Timestamp of creation date.
      *
-     * @var DateTime
+     * @var \DateTime
      */
     public $created_at;
 

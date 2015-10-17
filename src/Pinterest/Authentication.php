@@ -10,45 +10,60 @@ use Pinterest\App\Scope;
 use Pinterest\Http\ClientInterface;
 use Pinterest\Http\Request;
 
+/**
+ * This class is responsible for authenticating requests.
+ *
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
+ */
 final class Authentication implements ClientInterface
 {
     /**
-     * @var string The API base uri.
+     * The API base uri.
+     *
+     * @var string
      */
     const BASE_URI = 'https://api.pinterest.com/v1/';
 
     /**
-     * @var ClientInterface The http client to use.
+     * The http client.
+     *
+     * @var ClientInterface
      */
-    private $httpClient;
+    private $http;
 
     /**
-     * @var string The client ID.
+     * The client ID.
+     *
+     * @var string
      */
     private $clientId;
 
     /**
-     * @var string The client secret.
+     * The client secret.
+     *
+     * @var string
      */
     private $clientSecret;
 
     /**
-     * @var string The access token to use.
+     * The access token.
+     *
+     * @var string
      */
     private $accessToken;
 
     /**
-     * Constructor.
+     * The Constructor.
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client
-     * @param string          $clientId     The client id
-     * @param string          $clientSecret The client secret
+     * @param ClientInterface $client       The http client.
+     * @param string          $clientId     The client id.
+     * @param string          $clientSecret The client secret.
      */
     public function __construct(ClientInterface $client, $clientId, $clientSecret)
     {
-        $this->httpClient = $client;
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
+        $this->http = $client;
+        $this->clientId = (string) $clientId;
+        $this->clientSecret = (string) $clientSecret;
     }
 
     /**
@@ -66,7 +81,7 @@ final class Authentication implements ClientInterface
         $accessToken
     ) {
         $authentication = new static($client, $clientId, $clientSecret);
-        $authentication->accessToken = $accessToken;
+        $authentication->accessToken = (string) $accessToken;
 
         return $authentication;
     }
@@ -74,9 +89,9 @@ final class Authentication implements ClientInterface
     /**
      * Alternative constructor for when we only have an accessToken.
      *
-     * ATTENTION: only the execute method will work, as the others need client id and secret
+     * ATTENTION: only the execute method will work, as the others need client id and secret.
      *
-     * @param ClientInterface $client      The (un-authenticated) Http client.
+     * @param ClientInterface $client      The http client.
      * @param string          $accessToken The OAuth access token.
      */
     public static function onlyAccessToken(
@@ -84,7 +99,7 @@ final class Authentication implements ClientInterface
         $accessToken
     ) {
         $authentication = new static($client, null, null);
-        $authentication->accessToken = $accessToken;
+        $authentication->accessToken = (string) $accessToken;
 
         return $authentication;
     }
@@ -102,7 +117,6 @@ final class Authentication implements ClientInterface
     {
         $this->assertValidScopes($scopes);
 
-        $url = 'https://api.pinterest.com/oauth/?';
         $params = array(
             'response_type' => 'code',
             'redirect_uri'  => (string) $redirectUrl,
@@ -111,7 +125,10 @@ final class Authentication implements ClientInterface
             'state'         => (string) $state,
         );
 
-        return $url.http_build_query($params);
+        return sprintf(
+            'https://api.pinterest.com/oauth/?%s',
+            http_build_query($params)
+        );
     }
 
     /**
@@ -158,7 +175,7 @@ final class Authentication implements ClientInterface
     {
         $request = new Request(
             'POST',
-            static::BASE_URI.'oauth/token',
+            static::BASE_URI . 'oauth/token',
             array(
                 'grant_type'    => 'authorization_code',
                 'client_id'     => $this->clientId,
@@ -167,7 +184,7 @@ final class Authentication implements ClientInterface
             )
         );
 
-        $response = $this->httpClient->execute($request);
+        $response = $this->http->execute($request);
 
         if (
             !isset($response->body)
@@ -195,12 +212,12 @@ final class Authentication implements ClientInterface
 
         $authenticatedRequest = new Request(
             $request->getMethod(),
-            static::BASE_URI.$request->getEndpoint(),
+            static::BASE_URI . $request->getEndpoint(),
             $request->getParams(),
             $headers
         );
 
-        return $this->httpClient->execute($authenticatedRequest);
+        return $this->http->execute($authenticatedRequest);
     }
 
     /**

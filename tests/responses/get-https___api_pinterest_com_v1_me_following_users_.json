@@ -1,0 +1,51 @@
+{
+    "body": {
+        "data": {
+            "0": {
+                "username": "engagor",
+                "bio": "All-in-one social media management tool.",
+                "first_name": "Engagor",
+                "last_name": "",
+                "url": "https:\/\/www.pinterest.com\/engagor\/",
+                "created_at": "2012-02-21T08:17:20",
+                "image": {
+                    "60x60": {
+                        "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/engagor_1374509045_60.jpg",
+                        "width": 60,
+                        "height": 60
+                    }
+                },
+                "counts": {
+                    "pins": 148,
+                    "following": 84,
+                    "followers": 84,
+                    "boards": 9,
+                    "likes": 1
+                },
+                "id": "144889450420243528"
+            }
+        },
+        "page": {
+            "cursor": null,
+            "next": null
+        }
+    },
+    "statusCode": 200,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "516885843998",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "910",
+        "X-Varnish": "3014184431",
+        "Content-Length": "492",
+        "Date": "Sat, 17 Oct 2015 13:05:15 GMT",
+        "Connection": "keep-alive"
+    }
+}

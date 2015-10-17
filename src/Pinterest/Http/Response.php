@@ -8,6 +8,7 @@ use Pinterest\Http\Exceptions\MalformedJson;
  * The response class.
  *
  * @author Hans Ott <hansott@hotmail.be>
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
  */
 final class Response
 {
@@ -59,7 +60,7 @@ final class Response
      * @param Request $request    The request object.
      * @param int     $statusCode The status code.
      * @param string  $rawBody    The raw response body.
-     * @param array   $headers    A key => value representation of response headers
+     * @param array   $headers    A key => value representation of response headers.
      */
     public function __construct(Request $request, $statusCode, $rawBody, array $headers)
     {
@@ -81,6 +82,16 @@ final class Response
             !isset($this->body->error)
             && $this->statusCode >= 200
             && $this->statusCode < 300;
+    }
+
+    /**
+     * Returns the statuscode.
+     *
+     * @return int The statuscode.
+     */
+    public function getStatusCode()
+    {
+        return $this->statusCode;
     }
 
     /**

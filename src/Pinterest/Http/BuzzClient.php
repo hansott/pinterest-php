@@ -13,18 +13,38 @@ use Buzz\Exception\RequestException;
 
 /**
  * The implemented http client class (uses Buzz).
+ *
+ * @link https://github.com/kriswallsmith/Buzz
+ *
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
  */
 class BuzzClient implements ClientInterface
 {
+    /**
+     * Buzz browser.
+     *
+     * @var Buzz\Browser
+     */
     private $client;
 
+    /**
+     * Creates a new buzz client.
+     */
     public function __construct()
     {
         $curl = new Curl();
         $this->client = new Browser($curl);
     }
 
-    private function convertResponse(Request $request, BuzzResponse $buzzResponse)
+    /**
+     * Converts a buzz response to a pinterest response.
+     *
+     * @param  Request      $request      The request.
+     * @param  BuzzResponse $buzzResponse The buzz response.
+     *
+     * @return Response The response.
+     */
+    private static function convertResponse(Request $request, BuzzResponse $buzzResponse)
     {
         $statusCode = $buzzResponse->getStatusCode();
         $rawBody = (string) $buzzResponse->getContent();
@@ -45,11 +65,11 @@ class BuzzClient implements ClientInterface
     }
 
     /**
-     * Execute an Http request.
+     * Executes a http request.
      *
-     * @param Request $request The Http Request
+     * @param Request $request The http request.
      *
-     * @return Response The Http Response
+     * @return Response The http response.
      */
     public function execute(Request $request)
     {
@@ -86,6 +106,6 @@ class BuzzClient implements ClientInterface
             throw new Exception($e->getMessage());
         }
 
-        return $this->convertResponse($request, $buzzResponse);
+        return static::convertResponse($request, $buzzResponse);
     }
 }

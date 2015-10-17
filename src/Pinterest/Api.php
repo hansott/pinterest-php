@@ -8,27 +8,31 @@ use Pinterest\Http\Response;
 use Pinterest\Http\Exceptions\RateLimited;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
+use Pinterest\Objects\Pin;
 
 /**
  * The api client.
  *
  * @author Hans Ott <hansott@hotmail.be>
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
  */
 class Api
 {
     /**
-     * @var Authentication The authentication client to use.
+     *  The authentication client.
+     *
+     * @var Authentication
      */
-    private $client;
+    private $auth;
 
     /**
      * The constructor.
      *
-     * @param Authentication $client The authentication client to use.
+     * @param Authentication $client The authentication client.
      */
-    public function __construct(Authentication $client)
+    public function __construct(Authentication $auth)
     {
-        $this->client = $client;
+        $this->auth = $auth;
     }
 
     /**
@@ -54,12 +58,12 @@ class Api
      *
      * @return Http\Response The response.
      */
-    private function execute(Request $request, $processor = null)
+    public function execute(Request $request, $processor = null)
     {
-        $response = $this->client->execute($request);
+        $response = $this->auth->execute($request);
 
         if ($response->rateLimited()) {
-            throw new RateLimited($response);
+            throw new RateLimitedReached($response);
         }
 
         if (is_callable($processor)) {
@@ -72,12 +76,14 @@ class Api
     /**
      * Fetches a single user and processes the response.
      *
-     * @return Objects\User The User.
+     * @return Http\Response The response.
      */
     private function fetchUser(Request $request)
     {
+        $request->setFields(User::fields());
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\User());
+            $mapper = new Mapper(new User());
 
             return $mapper->toSingle($response);
         });
@@ -86,12 +92,14 @@ class Api
     /**
      * Fetches a single board and processes the response.
      *
-     * @return Objects\Board The Board.
+     * @return Http\Response The response.
      */
     private function fetchBoard(Request $request)
     {
+        $request->setFields(Board::fields());
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\Board());
+            $mapper = new Mapper(new Board());
 
             return $mapper->toSingle($response);
         });
@@ -100,12 +108,14 @@ class Api
     /**
      * Fetches a single pin and processes the response.
      *
-     * @return Objects\Pin The Board.
+     * @return Http\Response The response.
      */
     private function fetchPin(Request $request)
     {
+        $request->setFields(Pin::fields());
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\Pin());
+            $mapper = new Mapper(new Pin());
 
             return $mapper->toSingle($response);
         });
@@ -114,12 +124,15 @@ class Api
     /**
      * Fetches multiple boards and processes the response.
      *
-     * @return PagedList[Objects\Board] A list of Boards.
+     * @return Http\Response The response.
      */
-    private function fetchMultipleBoards(Request $request)
+    private function fetchMultipleBoards(Request $request, array $fields = null)
     {
+        $fields = $fields ? $fields : Board::fields();
+        $request->setFields($fields);
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\Board());
+            $mapper = new Mapper(new Board());
 
             return $mapper->toList($response);
         });
@@ -128,26 +141,33 @@ class Api
     /**
      * Fetches multiple users and processes the response.
      *
-     * @return PagedList[Objects\User] A list of Users.
+     * @return Http\Response The response.
      */
     private function fetchMultipleUsers(Request $request)
     {
+        $request->setFields(User::fields());
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\User());
+            $mapper = new Mapper(new User());
 
             return $mapper->toList($response);
         });
     }
 
     /**
-     * Fetches multiple boards and processes the response.
+     * Fetches multiple pins and processes the response.
      *
-     * @return PagedList[Objects\Pin] A list of Pins.
+     * @param $fields array The fields to require.
+     *
+     * @return Http\Response The response.
      */
-    private function fetchMultiplePins(Request $request)
+    private function fetchMultiplePins(Request $request, array $fields = null)
     {
+        $fields = $fields ? $fields : Pin::fields();
+        $request->setFields($fields);
+
         return $this->execute($request, function (Response $response) {
-            $mapper = new Mapper(new Objects\Pin());
+            $mapper = new Mapper(new Pin());
 
             return $mapper->toList($response);
         });
@@ -158,12 +178,15 @@ class Api
      *
      * @param $usernameOrId string The username or identifier of the user.
      *
-     * @return Objects\User The User.
+     * @return Objects\User The user.
      */
     public function getUser($usernameOrId)
     {
-        $endpoint = sprintf('users/%s', $usernameOrId);
-        $request = new Request('GET', $endpoint);
+        if (empty($usernameOrId)) {
+            throw new InvalidArgumentException('The username or id should not be empty.');
+        }
+
+        $request = new Request('GET', sprintf('users/%s/', $usernameOrId));
 
         return $this->fetchUser($request);
     }
@@ -173,11 +196,11 @@ class Api
      *
      * @param string $id The board identifier.
      *
-     * @return Objects\Board The Board.
+     * @return Objects\Board The board.
      */
     public function getBoard($id)
     {
-        $request = new Request('GET', sprintf('boards/%s', $id));
+        $request = new Request('GET', sprintf('boards/%s/', $id));
 
         return $this->fetchBoard($request);
     }
@@ -185,11 +208,11 @@ class Api
     /**
      * Returns the boards of the authenticated user.
      *
-     * @return PagedList[Objects\Board] A list of Boards.
+     * @return PagedList[Objects\Board] A list of boards.
      */
     public function getUserBoards()
     {
-        $request = new Request('GET', 'me/boards');
+        $request = new Request('GET', 'me/boards/');
 
         return $this->fetchMultipleBoards($request);
     }
@@ -197,11 +220,11 @@ class Api
     /**
      * Returns the pins of the authenticated user.
      *
-     * @return PagedList[Objects\Pin] A list of Likes.
+     * @return PagedList[Objects\Pin] A list of likes.
      */
     public function getUserLikes()
     {
-        $request = new Request('GET', 'me/likes');
+        $request = new Request('GET', 'me/likes/');
 
         return $this->fetchMultiplePins($request);
     }
@@ -209,11 +232,11 @@ class Api
     /**
      * Returns the pins of the authenticated user.
      *
-     * @return PagedList[Objects\Pin] A list of Pins.
+     * @return PagedList[Objects\Pin] A list of pins.
      */
     public function getUserPins()
     {
-        $request = new Request('GET', 'me/pins');
+        $request = new Request('GET', 'me/pins/');
 
         return $this->fetchMultiplePins($request);
     }
@@ -221,11 +244,11 @@ class Api
     /**
      * Returns the authenticated user.
      *
-     * @return Objects\User The current User.
+     * @return Objects\User The authenticated user.
      */
     public function getCurrentUser()
     {
-        $request = new Request('GET', 'me');
+        $request = new Request('GET', 'me/');
 
         return $this->fetchUser($request);
     }
@@ -237,7 +260,7 @@ class Api
      */
     public function getUserFollowers()
     {
-        $request = new Request('GET', 'me/followers');
+        $request = new Request('GET', 'me/followers/');
 
         return $this->fetchMultipleUsers($request);
     }
@@ -249,7 +272,7 @@ class Api
      */
     public function getUserFollowingBoards()
     {
-        $request = new Request('GET', 'me/following/boards');
+        $request = new Request('GET', 'me/following/boards/');
 
         return $this->fetchMultipleBoards($request);
     }
@@ -261,21 +284,23 @@ class Api
      */
     public function getUserFollowing()
     {
-        $request = new Request('GET', 'me/following/users');
+        $request = new Request('GET', 'me/following/users/');
 
         return $this->fetchMultipleUsers($request);
     }
 
     /**
-     * Returns the interests (pins) that the authenticated user follows.
+     * Return the Interests the logged in user follows.
      *
-     * @return PagedList[Objects\Pin] The current User's interests.
+     * @link https://www.pinterest.com/explore/901179409185
+     *
+     * @return PagedList[Objects\Board] The user's interests.
      */
     public function getUserInterests()
     {
-        $request = new Request('GET', 'me/following/interests');
+        $request = new Request('GET', 'me/following/interests/');
 
-        return $this->fetchMultiplePins($request);
+        return $this->fetchMultipleBoards($request, array('id', 'name'));
     }
 
     /**
@@ -303,20 +328,20 @@ class Api
     }
 
     /**
-     * Create a Pin
+     * Creates a Pin.
      *
-     * @param string $pin The pin to create
+     * @param string $pin The pin to create.
      *
-     * @return Http\Response The response
+     * @return Http\Response The response.
      */
     public function createPin($boardId, $note, Image $image, $link = null)
     {
         if (empty($boardId)) {
-            throw new InvalidArgumentException('board id should not be empty');
+            throw new InvalidArgumentException('The board id should not be empty.');
         }
 
         if (empty($note)) {
-            throw new InvalidArgumentException('note should not be empty');
+            throw new InvalidArgumentException('The note should not be empty.');
         }
 
         $params = array(
@@ -332,7 +357,7 @@ class Api
         if ($image->isFile()) {
             $params[$imageKey] = $image;
         } else {
-        $params[$imageKey] = $image->getData();
+            $params[$imageKey] = $image->getData();
         }
 
         $request = new Request('POST', 'pins/', $params);
@@ -341,19 +366,19 @@ class Api
     }
 
     /**
-     * Delete a Pin
+     * Deletes a Pin.
      *
-     * @param string $pinId The id of the pin to delete
+     * @param string $pinId The id of the pin to delete.
      *
-     * @return Http\Response The response
+     * @return Http\Response The response.
      */
     public function deletePin($pinId)
     {
         if (empty($pinId)) {
-            throw new InvalidArgumentException('board id should not be empty');
+            throw new InvalidArgumentException('The pin id should not be empty.');
         }
 
-        $request = new Request('DELETE', 'pins/' . $pinId . '/');
+        $request = new Request('DELETE', sprintf('pins/%d/', $pinId));
 
         return $this->execute($request);
     }

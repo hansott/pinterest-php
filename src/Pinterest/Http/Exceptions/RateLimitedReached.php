@@ -2,10 +2,14 @@
 
 namespace Pinterest\Http\Exceptions;
 
-use Exception;
 use Pinterest\Http\Response;
 
-final class RateLimited extends Exception
+/**
+ * This exception will be thrown when the rate limit is reached.
+ *
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
+ */
+final class RateLimitedReached extends \Exception
 {
     private $response;
 
@@ -13,7 +17,7 @@ final class RateLimited extends Exception
     {
         $this->response = $response;
 
-        parent::__construct('Rate Limited');
+        parent::__construct('Rate limit reached.');
     }
 
     public function getResponse()

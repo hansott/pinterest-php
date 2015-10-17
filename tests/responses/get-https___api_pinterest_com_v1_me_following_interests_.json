@@ -1,0 +1,48 @@
+{
+    "body": {
+        "data": {
+            "0": {
+                "id": "901179409185",
+                "name": "Modern Architecture"
+            },
+            "1": {
+                "id": "937343245678",
+                "name": "Funny Quotes"
+            },
+            "2": {
+                "id": "902065567321",
+                "name": "Design"
+            },
+            "3": {
+                "id": "916919860042",
+                "name": "Gadgets"
+            },
+            "4": {
+                "id": "905661505034",
+                "name": "Technology"
+            }
+        },
+        "page": {
+            "cursor": null,
+            "next": null
+        }
+    },
+    "statusCode": 200,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "790678020628",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "902",
+        "X-Varnish": "3596725349",
+        "Content-Length": "284",
+        "Date": "Sat, 17 Oct 2015 13:18:10 GMT",
+        "Connection": "keep-alive"
+    }
+}

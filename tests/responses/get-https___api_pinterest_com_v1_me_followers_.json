@@ -1,0 +1,51 @@
+{
+    "body": {
+        "data": {
+            "0": {
+                "username": "toondaelman",
+                "bio": "",
+                "first_name": "Eng",
+                "last_name": "Agor",
+                "url": "https:\/\/www.pinterest.com\/toondaelman\/",
+                "created_at": "2015-10-13T13:00:05",
+                "image": {
+                    "60x60": {
+                        "url": "https:\/\/s-passets-cache-ak0.pinimg.com\/images\/user\/default_60.png",
+                        "width": 60,
+                        "height": 60
+                    }
+                },
+                "counts": {
+                    "pins": 3,
+                    "following": 2,
+                    "followers": 0,
+                    "boards": 1,
+                    "likes": 0
+                },
+                "id": "7670399273821775"
+            }
+        },
+        "page": {
+            "cursor": null,
+            "next": null
+        }
+    },
+    "statusCode": 200,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "390869824726",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "912",
+        "X-Varnish": "3590363474",
+        "Content-Length": "449",
+        "Date": "Sat, 17 Oct 2015 13:05:15 GMT",
+        "Connection": "keep-alive"
+    }
+}

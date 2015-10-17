@@ -13,10 +13,11 @@ class ApiTest extends TestCase
 
     public function setUp()
     {
+        $cacheDir = sprintf('%s/responses', __DIR__);
         $client = new BuzzClient();
-        $auth = Authentication::withAccessToken($client, null, null, getenv('ACCESS_TOKEN'));
+        $mocked = new MockClient($client, $cacheDir);
+        $auth = Authentication::withAccessToken($mocked, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
-
         $this->board = getenv('BOARD_ID');
     }
 
@@ -24,6 +25,9 @@ class ApiTest extends TestCase
     {
         $this->assertUser($this->api->getUser('otthans'));
         $this->assertUser($this->api->getUser('314196648911734959'));
+
+        $this->setExpectedException('InvalidArgumentException');
+        $this->api->getUser('');
     }
 
     public function testGetBoard()
@@ -68,7 +72,7 @@ class ApiTest extends TestCase
 
     public function testGetUserInterests()
     {
-        $this->assertMultiplePins($this->api->getUserInterests());
+        $this->assertMultipleBoards($this->api->getUserInterests());
     }
 
     public function testFollowUser()
@@ -119,10 +123,11 @@ class ApiTest extends TestCase
             $data[0][1],
             $data[0][0]
         );
+        $this->assertInstanceOf('Pinterest\Http\Response', $createResponse);
+        $this->assertTrue($createResponse->ok());
+
         $pinId = $createResponse->result()->id;
-
         $response = $this->api->deletePin($pinId);
-
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
     }

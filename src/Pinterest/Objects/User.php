@@ -7,8 +7,28 @@ namespace Pinterest\Objects;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class User extends BaseObject
+final class User implements BaseObject
 {
+    /**
+     * The required fields.
+     *
+     * @return array The required fields.
+     */
+    public static function fields()
+    {
+        return array(
+            'url',
+            'id',
+            'username',
+            'first_name',
+            'last_name',
+            'bio',
+            'created_at',
+            'counts',
+            'image',
+        );
+    }
+
     /**
      * The url to the object on pinterest.
      *
@@ -55,7 +75,7 @@ class User extends BaseObject
     /**
      * Timestamp of creation date.
      *
-     * @var DateTime
+     * @var \DateTime
      */
     public $created_at;
 

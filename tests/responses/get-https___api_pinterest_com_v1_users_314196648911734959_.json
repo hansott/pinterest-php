@@ -1,0 +1,45 @@
+{
+    "body": {
+        "data": {
+            "username": "otthans",
+            "bio": "",
+            "first_name": "Hans",
+            "last_name": "Ott",
+            "url": "https:\/\/www.pinterest.com\/otthans\/",
+            "created_at": "2014-08-31T12:45:22",
+            "image": {
+                "60x60": {
+                    "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/otthans_1409489123_60.jpg",
+                    "width": 60,
+                    "height": 60
+                }
+            },
+            "counts": {
+                "pins": 2,
+                "following": 0,
+                "followers": 24,
+                "boards": 1,
+                "likes": 1
+            },
+            "id": "314196648911734959"
+        }
+    },
+    "statusCode": 200,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "681855634860",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "918",
+        "X-Varnish": "3702098953",
+        "Content-Length": "407",
+        "Date": "Sat, 17 Oct 2015 13:05:12 GMT",
+        "Connection": "keep-alive"
+    }
+}

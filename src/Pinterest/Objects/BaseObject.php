@@ -7,6 +7,7 @@ namespace Pinterest\Objects;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class BaseObject
+interface BaseObject
 {
+    public static function fields();
 }

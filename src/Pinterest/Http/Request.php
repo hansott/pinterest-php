@@ -6,6 +6,7 @@ namespace Pinterest\Http;
  * The request class.
  *
  * @author Hans Ott <hansott@hotmail.be>
+ * @author Toon Daelman <spinnewebber_toon@hotmail.com>
  */
 final class Request
 {
@@ -32,12 +33,12 @@ final class Request
      */
     private $params;
 
-     /**
-      * The headers to pass.
-      *
-      * @var array
-      */
-     private $headers;
+    /**
+     * The headers to pass.
+     *
+     * @var array
+     */
+    private $headers;
 
     /**
      * The constructor.
@@ -56,17 +57,34 @@ final class Request
     }
 
     /**
-     * Get the Http method.
+     * Sets the fields.
+     *
+     * @param array The fields to return.
+     *
+     * @return Request The current Request instance.
+     */
+    public function setFields(array $fields)
+    {
+        $merge = array(
+            'fields' => implode(',', $fields)
+        );
+        $this->params = array_replace($this->params, $merge);
+
+        return $this;
+    }
+
+    /**
+     * Get the http (lowercase) method.
      *
      * @return string
      */
     public function getMethod()
     {
-        return $this->method;
+        return strtolower($this->method);
     }
 
     /**
-     * Get the Http endpoint.
+     * Get the http endpoint.
      *
      * @return string
      */
@@ -76,7 +94,7 @@ final class Request
     }
 
     /**
-     * Get the Http parameters.
+     * Get the http parameters.
      *
      * @return array
      */
@@ -86,7 +104,7 @@ final class Request
     }
 
     /**
-     * Get the Http headers.
+     * Get the http headers.
      *
      * @return array
      */
@@ -102,7 +120,7 @@ final class Request
      */
     public function isPost()
     {
-        return strtolower($this->method) === 'post';
+        return $this->getMethod() === 'post';
     }
 
     /**
@@ -112,6 +130,6 @@ final class Request
      */
     public function isGet()
     {
-        return strtolower($this->method) === 'get';
+        return $this->getMethod() === 'get';
     }
 }

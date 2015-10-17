@@ -7,7 +7,7 @@ namespace Pinterest\Objects;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class Stats
+final class Stats
 {
     /**
      * The amount of repins.

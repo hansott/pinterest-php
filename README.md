@@ -1,25 +1,31 @@
-# Pinterest PHP SDK [![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php) [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master) [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master)
+# Pinterest PHP SDK
 
-A wrapper library for the Pinterest API.
+[![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square)](https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master)
+
+A wrapper library for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/).
 
 **Work in progress!**
 
-## Get started
+## Install
 
-### Installing
+Via Composer
 
-`$ composer require hansott/pinterest-php`
+```bash
+$ composer require hansott/pinterest-php
+```
 
-### The basics
+## Usage
 
-#### Authentication
+### Authentication
 
 To use the API, you need an Access Token from pinterest. [https://developers.pinterest.com/apps/](Create a new Pinterest application) if you haven't already. You then get a client ID and a client secret, specific for that application.
 
-Back in your PHP application, create a Client instance (the default is `GuzzleClient`) and use it to create an Authentication instance:
+Back in your PHP application, create a Client instance (the default is `BuzzClient`) and use it to create an Authentication instance:
 
 ```php
-$client = new Pinterest\Http\GuzzleClient();
+$client = new Pinterest\Http\BuzzClient();
 $auth = new Pinterest\Authentication($client, $clientId, $clientSecret);
 ```
 
@@ -28,16 +34,17 @@ Replace the `$clientId` and `$clientSecret` variables with the data of [https://
 You can now let your user authenticate with your application be redirecting them to the URL obtained by a call to `$auth->getAuthenticationUrl()`, like this:
 
 ```php
+use Pinterest\App\Scope;
 
 $url = $auth->getAuthenticationUrl(
     'https://your/redirect/url/here',
     array(
-        Pinterest\App\Scope::READ_PUBLIC,
-        Pinterest\App\Scope::WRITE_PUBLIC,
-        Pinterest\App\Scope::READ_RELATIONSHIPS,
-        Pinterest\App\Scope::WRITE_RELATIONSHIPS,
+        Scope::READ_PUBLIC,
+        Scope::WRITE_PUBLIC,
+        Scope::READ_RELATIONSHIPS,
+        Scope::WRITE_RELATIONSHIPS,
     ),
-    'validation-state-0149281'
+    'random-string'
 );
 
 header('Location: ' . $url);
@@ -59,7 +66,6 @@ $token = $auth->requestAccessToken($code);
 
 You should persist that token safely at this point. You can use it from now on to connect to the Pinterest API from your application, on behalf of the user.
 
-#### Usage
 Initialize the Api class:
 
 ```php
@@ -71,9 +77,17 @@ Using the `Pinterest\Api` instance in `$api`, you can now make authenticated API
 
 ## Contributing
 
-This library uses the PSR-2 coding standard.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
-To run the unit tests:  
-`$ vendor/bin/phpunit`  
+## Security
 
-(Don't forget to rename the .env-example to .env and set your own credentials)
+If you discover any security related issues, please email [hansott@hotmail.be](mailto:hansott@hotmail.be) instead of using the issue tracker.
+
+## Credits
+
+- [Hans Ott][https://github.com/hansott]
+- [Toon Daelman][https://github.com/turanct]
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

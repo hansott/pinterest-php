@@ -1,0 +1,27 @@
+{
+    "body": {
+        "data": {},
+        "page": {
+            "cursor": null,
+            "next": null
+        }
+    },
+    "statusCode": 200,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "681790140530",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "914",
+        "X-Varnish": "3764202282",
+        "Content-Length": "52",
+        "Date": "Sat, 17 Oct 2015 13:05:14 GMT",
+        "Connection": "keep-alive"
+    }
+}
