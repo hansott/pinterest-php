@@ -1,5 +1,9 @@
 <?php
 
+if (!defined('JSON_PRETTY_PRINT')) {
+    define('JSON_PRETTY_PRINT', true);
+}
+
 use Pinterest\Http\Response;
 
 class TestCase extends \PHPUnit_Framework_TestCase
