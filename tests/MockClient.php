@@ -127,11 +127,7 @@ class MockClient implements ClientInterface
         $resp->statusCode = $response->getStatusCode();
         $resp->headers = $response->getHeaders();
 
-        if (version_compare(PHP_VERSION, '5.4.0') >= 0) {
-            return json_encode($resp, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
-        }
-
-        return json_encode($resp, JSON_FORCE_OBJECT);
+        return json_encode($resp, JSON_PRETTY_PRINT | JSON_FORCE_OBJECT);
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 if (!defined('JSON_PRETTY_PRINT')) {
-    define('JSON_PRETTY_PRINT', true);
+    define('JSON_PRETTY_PRINT', 128);
 }
 
 use Pinterest\Http\Response;
