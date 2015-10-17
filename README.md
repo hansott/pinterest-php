@@ -85,8 +85,8 @@ If you discover any security related issues, please email [hansott@hotmail.be](m
 
 ## Credits
 
-- [Hans Ott][https://github.com/hansott]
-- [Toon Daelman][https://github.com/turanct]
+- [Hans Ott](https://github.com/hansott)
+- [Toon Daelman](https://github.com/turanct)
 
 ## License
 
