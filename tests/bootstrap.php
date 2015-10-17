@@ -16,11 +16,7 @@ try {
     $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
     $dotenv->load();
 } catch (InvalidArgumentException $e) {
-
-    /*
-     * It's okay to fail here.
-     * Because env variables are set with Travis.
-     */
+    // It's okay to fail here. Because env variables are set with Travis.
 }
 
 /*

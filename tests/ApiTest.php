@@ -8,6 +8,8 @@ use Pinterest\Objects\User;
 
 class ApiTest extends TestCase
 {
+    const TEST_BOARD = 35395615760506113;
+
     protected $api;
     protected $board;
 
@@ -18,7 +20,7 @@ class ApiTest extends TestCase
         $mocked = new MockClient($client, $cacheDir);
         $auth = Authentication::withAccessToken($mocked, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
-        $this->board = getenv('BOARD_ID');
+        $this->board = getenv('BOARD_ID') ? getenv('BOARD_ID') : static::TEST_BOARD;
     }
 
     public function testGetUser()

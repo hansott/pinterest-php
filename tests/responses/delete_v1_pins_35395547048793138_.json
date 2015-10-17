@@ -1,10 +1,6 @@
 {
     "body": {
-        "data": {},
-        "page": {
-            "cursor": null,
-            "next": null
-        }
+        "data": null
     },
     "statusCode": 200,
     "headers": {
@@ -16,12 +12,12 @@
         "Pinterest-Version": "5e87b73",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "681790140530",
+        "X-Pinterest-RID": "735358135977",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "914",
-        "X-Varnish": "3764202282",
-        "Content-Length": "52",
-        "Date": "Sat, 17 Oct 2015 13:05:14 GMT",
+        "X-Ratelimit-Remaining": "918",
+        "X-Varnish": "1178812481",
+        "Content-Length": "14",
+        "Date": "Sat, 17 Oct 2015 13:50:11 GMT",
         "Connection": "keep-alive"
     }
 }

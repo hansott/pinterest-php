@@ -3,6 +3,7 @@
 use Pinterest\Http\ClientInterface;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
+use Pinterest\Authentication as Auth;
 
 /**
  * This http client mocks responses.
@@ -52,6 +53,28 @@ class MockClient implements ClientInterface
         return $this->makeResponse($request);
     }
 
+    private static function getPath($url)
+    {
+        return parse_url($url, PHP_URL_PATH);
+    }
+
+    private static function paramsToString($params)
+    {
+        $imageParams = array(
+            'image_url',
+            'image_base64',
+            'image'
+        );
+
+        foreach ($imageParams as $param) {
+            if (isset($params[$param])) {
+                $params[$param] = 'data';
+            }
+        }
+
+        return implode('_', $params);
+    }
+
     /**
      * Returns the caching file for a request.
      *
@@ -62,10 +85,14 @@ class MockClient implements ClientInterface
     private function getFilePath(Request $request)
     {
         $endpoint = $request->getEndpoint();
-        $name = static::str_replace(array('/', ':', '.'), '_', $endpoint);
+        $path = static::getPath($endpoint);
         $method = strtolower($request->getMethod());
+        $params = static::paramsToString($request->getParams());
+        $file = $method . $path . $params;
+        $chars = array('/', ':', '.', ',', ' ');
+        $file = static::str_replace($chars, '_', $file);
 
-        return sprintf('%s/%s-%s.json', $this->cacheDir, $method, $name);
+        return sprintf('%s/%s.json', $this->cacheDir, $file);
     }
 
     /**
