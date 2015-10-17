@@ -1,6 +1,10 @@
 <?php
 
-require __DIR__.'/../vendor/autoload.php';
+if (!defined('JSON_PRETTY_PRINT')) {
+    define('JSON_PRETTY_PRINT', 128);
+}
+
+require __DIR__.'/../../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------

@@ -1,5 +1,7 @@
 <?php
 
+namespace Pinterest\Tests;
+
 use Pinterest\Api;
 use Pinterest\Authentication;
 use Pinterest\Image;

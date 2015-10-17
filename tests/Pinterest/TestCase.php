@@ -1,12 +1,11 @@
 <?php
 
-if (!defined('JSON_PRETTY_PRINT')) {
-    define('JSON_PRETTY_PRINT', 128);
-}
+namespace Pinterest\Tests;
 
 use Pinterest\Http\Response;
+use PHPUnit_Framework_TestCase;
 
-class TestCase extends \PHPUnit_Framework_TestCase
+class TestCase extends PHPUnit_Framework_TestCase
 {
     protected function assertResponse(Response $response)
     {

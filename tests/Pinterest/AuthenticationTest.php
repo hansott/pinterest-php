@@ -1,5 +1,7 @@
 <?php
 
+namespace Pinterest\Tests;
+
 use Pinterest\App\Scope;
 use Pinterest\Authentication;
 use Pinterest\Http\BuzzClient;

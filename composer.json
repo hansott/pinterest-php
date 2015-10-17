@@ -28,9 +28,8 @@
         }
     },
     "autoload-dev": {
-        "classmap": [
-            "tests/TestCase.php",
-            "tests/MockClient.php"
-        ]
+        "psr-4": {
+            "Pinterest\\Tests\\": "tests/Pinterest/"
+        }
     }
 }

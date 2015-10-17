@@ -1,3 +1,5 @@
+![Pinterest PHP SDK](banner.png)
+
 # Pinterest PHP SDK
 
 [![Build Status](https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square)](https://travis-ci.org/hansott/pinterest-php)

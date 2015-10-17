@@ -1,5 +1,7 @@
 <?php
 
+namespace Pinterest\Tests;
+
 use Pinterest\Http\ClientInterface;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;

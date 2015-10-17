@@ -1,8 +1,9 @@
 <?php
 
-namespace Pinterest;
+namespace Pinterest\Tests;
 
 use PHPUnit_Framework_TestCase;
+use Pinterest\Image;
 
 class ImageTest extends PHPUnit_Framework_TestCase
 {
