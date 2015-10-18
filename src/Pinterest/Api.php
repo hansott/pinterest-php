@@ -192,15 +192,15 @@ class Api
     }
 
     /**
-     * Returns a board by identifier.
+     * Get a board.
      *
-     * @param string $id The board identifier.
+     * @param string $boardId The board id.
      *
      * @return Objects\Board The board.
      */
-    public function getBoard($id)
+    public function getBoard($boardId)
     {
-        $request = new Request('GET', sprintf('boards/%s/', $id));
+        $request = new Request('GET', sprintf('boards/%s/', $boardId));
 
         return $this->fetchBoard($request);
     }
