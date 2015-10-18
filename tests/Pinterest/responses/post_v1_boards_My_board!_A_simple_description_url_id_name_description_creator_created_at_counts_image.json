@@ -1,0 +1,47 @@
+{
+    "body": {
+        "data": {
+            "description": "A simple description",
+            "creator": {
+                "url": "https:\/\/www.pinterest.com\/hansengagor\/",
+                "first_name": "Hans",
+                "last_name": "Engagor",
+                "id": "35395684479821614"
+            },
+            "url": "https:\/\/www.pinterest.com\/hansengagor\/my-board\/",
+            "created_at": "2015-10-18T00:18:08",
+            "image": {
+                "60x60": {
+                    "url": null,
+                    "width": 60,
+                    "height": 60
+                }
+            },
+            "counts": {
+                "pins": 0,
+                "collaborators": 0,
+                "followers": 1
+            },
+            "id": "35395615760507096",
+            "name": "My board!"
+        }
+    },
+    "statusCode": 201,
+    "headers": {
+        "Accept-Ranges": "bytes",
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Generated-By": "None",
+        "Pinterest-Version": "5e87b73",
+        "Server": "nginx",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "505065601063",
+        "X-Ratelimit-Limit": "1000",
+        "X-Ratelimit-Remaining": "944",
+        "X-Varnish": "3175235978",
+        "Content-Length": "448",
+        "Date": "Sun, 18 Oct 2015 00:18:08 GMT",
+        "Connection": "keep-alive"
+    }
+}

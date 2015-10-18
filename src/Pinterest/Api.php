@@ -328,9 +328,57 @@ class Api
     }
 
     /**
-     * Creates a Pin.
+     * Creates a board.
      *
-     * @param string $pin The pin to create.
+     * @param  string $name        The board name.
+     * @param  string $description The board description.
+     *
+     * @return Http\Response The response.
+     */
+    public function createBoard($name, $description = null)
+    {
+        if (empty($name)) {
+            throw new InvalidArgumentException('The name should not be empty.');
+        }
+
+        $params = array(
+            'name' => (string) $name,
+        );
+
+        if (!empty($description)) {
+            $params['description'] = (string) $description;
+        }
+
+        $request = new Request('POST', 'boards/', $params);
+
+        return $this->fetchBoard($request);
+    }
+
+    /**
+     * Deletes a board.
+     *
+     * @param int $boardId The board id.
+     *
+     * @return Http\Response The response.
+     */
+    public function deleteBoard($boardId)
+    {
+        if (empty($boardId)) {
+            throw new InvalidArgumentException('The board id should not be empty.');
+        }
+
+        $request = new Request('DELETE', sprintf('boards/%d/', $boardId));
+
+        return $this->execute($request);
+    }
+
+    /**
+     * Creates a pin on a board.
+     *
+     * @param string      $boardId The board id.
+     * @param string      $note    The note.
+     * @param Image       $image   The image.
+     * @param string|null $link    The link (Optional).
      *
      * @return Http\Response The response.
      */
@@ -345,12 +393,12 @@ class Api
         }
 
         $params = array(
-            'board' => $boardId,
-            'note' => $note,
+            'board' => (int) $boardId,
+            'note' => (string) $note,
         );
 
         if (!empty($link)) {
-            $params['link'] = $link;
+            $params['link'] = (string) $link;
         }
 
         $imageKey = $image->isUrl() ? 'image_url' : ($image->isBase64() ? 'image_base64' : 'image');

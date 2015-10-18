@@ -109,7 +109,7 @@ final class Authentication implements ClientInterface
      *
      * @param string $redirectUrl The OAuth redirect url (where code gets sent).
      * @param array  $scopes      An array of scopes (see assertValidScopes).
-     * @param string $state       A state you can use to check if this is a valid redirect.
+     * @param string $state       A unique code you can use to check if the redirect is not spoofed.
      *
      * @return string The redirect url.
      */
@@ -180,7 +180,7 @@ final class Authentication implements ClientInterface
                 'grant_type'    => 'authorization_code',
                 'client_id'     => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'code'          => $code,
+                'code'          => (string) $code,
             )
         );
 

@@ -6,6 +6,7 @@ use Pinterest\Http\ClientInterface;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Authentication as Auth;
+use stdClass;
 
 /**
  * This http client mocks responses.
@@ -62,13 +63,14 @@ class MockClient implements ClientInterface
 
     private static function paramsToString($params)
     {
-        $imageParams = array(
+        $hiddenParams = array(
             'image_url',
             'image_base64',
-            'image'
+            'image',
+            'board'
         );
 
-        foreach ($imageParams as $param) {
+        foreach ($hiddenParams as $param) {
             if (isset($params[$param])) {
                 $params[$param] = 'data';
             }
@@ -207,7 +209,15 @@ class MockClient implements ClientInterface
         }
 
         $response = $this->http->execute($request);
-        $this->writeToFile($request, $response);
+
+        if ($response->ok()) {
+            $this->writeToFile($request, $response);
+        } else {
+            echo PHP_EOL . 'Request failed:' . PHP_EOL;
+            var_dump($request->getEndpoint());
+            echo PHP_EOL;
+            print_r($response->body);
+        }
 
         return $response;
     }

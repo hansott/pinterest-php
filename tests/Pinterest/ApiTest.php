@@ -10,8 +10,6 @@ use Pinterest\Objects\User;
 
 class ApiTest extends TestCase
 {
-    const TEST_BOARD = 35395615760506113;
-
     protected $api;
     protected $board;
 
@@ -22,7 +20,7 @@ class ApiTest extends TestCase
         $mocked = new MockClient($client, $cacheDir);
         $auth = Authentication::withAccessToken($mocked, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
-        $this->board = getenv('BOARD_ID') ? getenv('BOARD_ID') : static::TEST_BOARD;
+        $this->board = getenv('BOARD_ID');
     }
 
     public function testGetUser()
@@ -132,6 +130,19 @@ class ApiTest extends TestCase
 
         $pinId = $createResponse->result()->id;
         $response = $this->api->deletePin($pinId);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+    }
+
+    public function testCreateAndDeleteBoard()
+    {
+        $createResponse = $this->api->createBoard('My board!', 'A simple description');
+        $this->assertInstanceOf('Pinterest\Http\Response', $createResponse);
+        $this->assertInstanceOf('Pinterest\Objects\Board', $createResponse->result());
+        $this->assertTrue($createResponse->ok());
+
+        $boardId = $createResponse->result()->id;
+        $response = $this->api->deleteBoard($boardId);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
     }

@@ -11,13 +11,13 @@ require __DIR__.'/../../vendor/autoload.php';
 | Load environments variables
 |--------------------------------------------------------------------------
 |
-| To keep our access token a secret,
-| we'll use dotenv to define our access token in a .env file.
+| To keep our credentials a secret,
+| we'll use dotenv to store them in a .env file.
 |
 */
 
 try {
-    $dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+    $dotenv = new Dotenv\Dotenv(__DIR__.'/../../');
     $dotenv->load();
 } catch (InvalidArgumentException $e) {
     // It's okay to fail here. Because env variables are set with Travis.
