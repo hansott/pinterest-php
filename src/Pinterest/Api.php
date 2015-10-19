@@ -5,7 +5,7 @@ namespace Pinterest;
 use InvalidArgumentException;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
-use Pinterest\Http\Exceptions\RateLimited;
+use Pinterest\Http\Exceptions\RateLimitedReached;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\User;
 use Pinterest\Objects\Pin;
