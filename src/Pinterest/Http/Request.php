@@ -50,7 +50,7 @@ final class Request
      */
     public function __construct($method, $endpoint, array $params = array(), array $headers = array())
     {
-        $this->method = (string) $method;
+        $this->method = strtoupper((string) $method);
         $this->endpoint = (string) $endpoint;
         $this->params = $params;
         $this->headers = $headers;
@@ -80,7 +80,7 @@ final class Request
      */
     public function getMethod()
     {
-        return strtolower($this->method);
+        return $this->method;
     }
 
     /**
