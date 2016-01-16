@@ -13,15 +13,15 @@
         "Cache-Control": "private",
         "Content-Type": "application\/json",
         "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "5e87b73",
+        "Pinterest-Version": "ed7874b",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "532149263330",
+        "X-Pinterest-RID": "288624971204",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "954",
-        "X-Varnish": "467994415",
+        "X-Ratelimit-Remaining": "974",
+        "X-Varnish": "625236193",
         "Content-Length": "52",
-        "Date": "Sun, 18 Oct 2015 00:18:02 GMT",
+        "Date": "Sat, 16 Jan 2016 16:31:03 GMT",
         "Connection": "keep-alive"
     }
 }

@@ -103,7 +103,7 @@ class ApiTest extends TestCase
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
 
-        $response = $this->api->deletePin($response->result()->id);
+        $this->api->deletePin($response->result()->id);
     }
 
     public function imageProvider()
@@ -111,7 +111,7 @@ class ApiTest extends TestCase
         $imageFixture = __DIR__ . '/fixtures/test.png';
 
         return array(
-            array(Image::url('https://wordpress-engagor.netdna-ssl.com/assets/img/hero/team.jpg'), 'Test pin url'),
+            array(Image::url('http://www.engagor.com/wp-content/uploads/2015/10/company-hero-3.jpg'), 'Test pin url'),
             array(Image::file($imageFixture), 'Test pin file'),
             array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
         );
@@ -134,14 +134,22 @@ class ApiTest extends TestCase
         $this->assertTrue($response->ok());
     }
 
-    public function testCreateAndDeleteBoard()
+    public function test_it_creates_and_updates_and_deletes_a_board()
     {
-        $createResponse = $this->api->createBoard('My board!', 'A simple description');
-        $this->assertInstanceOf('Pinterest\Http\Response', $createResponse);
-        $this->assertInstanceOf('Pinterest\Objects\Board', $createResponse->result());
-        $this->assertTrue($createResponse->ok());
+        $response = $this->api->createBoard('My board!', 'A simple description');
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertInstanceOf('Pinterest\Objects\Board', $response->result());
+        $this->assertTrue($response->ok());
 
-        $boardId = $createResponse->result()->id;
+        $board = $response->result();
+        $boardId = $board->id;
+        $board->name = 'Updated My board!';
+
+        $response = $this->api->updateBoard($board);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertInstanceOf('Pinterest\Objects\Board', $response->result());
+        $this->assertTrue($response->ok());
+
         $response = $this->api->deleteBoard($boardId);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());

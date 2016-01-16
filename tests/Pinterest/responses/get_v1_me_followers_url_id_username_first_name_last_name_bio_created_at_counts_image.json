@@ -10,16 +10,16 @@
                 "created_at": "2015-10-13T13:00:05",
                 "image": {
                     "60x60": {
-                        "url": "https:\/\/s-passets-cache-ak0.pinimg.com\/images\/user\/default_60.png",
+                        "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/toondaelman_1445949785_60.jpg",
                         "width": 60,
                         "height": 60
                     }
                 },
                 "counts": {
-                    "pins": 3,
-                    "following": 2,
-                    "followers": 0,
-                    "boards": 1,
+                    "pins": 19,
+                    "following": 3,
+                    "followers": 3,
+                    "boards": 2,
                     "likes": 0
                 },
                 "id": "7670399273821775"
@@ -37,15 +37,15 @@
         "Cache-Control": "private",
         "Content-Type": "application\/json",
         "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "5e87b73",
+        "Pinterest-Version": "ed7874b",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "358359237171",
+        "X-Pinterest-RID": "741903066095",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "955",
-        "X-Varnish": "4186747123",
-        "Content-Length": "449",
-        "Date": "Sun, 18 Oct 2015 00:18:02 GMT",
+        "X-Ratelimit-Remaining": "975",
+        "X-Varnish": "946394256",
+        "Content-Length": "459",
+        "Date": "Sat, 16 Jan 2016 16:31:03 GMT",
         "Connection": "keep-alive"
     }
 }

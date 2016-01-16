@@ -2,11 +2,12 @@
 
 namespace Pinterest;
 
+use Pinterest\Http\Exceptions\RateLimitedReached;
 use InvalidArgumentException;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
-use Pinterest\Http\Exceptions\RateLimited;
 use Pinterest\Objects\Board;
+use Pinterest\Objects\PagedList;
 use Pinterest\Objects\User;
 use Pinterest\Objects\Pin;
 
@@ -28,7 +29,7 @@ class Api
     /**
      * The constructor.
      *
-     * @param Authentication $client The authentication client.
+     * @param Authentication $auth The authentication client.
      */
     public function __construct(Authentication $auth)
     {
@@ -56,7 +57,13 @@ class Api
     /**
      * Executes the given http request.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @param callable|null $processor
+     *
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     public function execute(Request $request, $processor = null)
     {
@@ -92,7 +99,11 @@ class Api
     /**
      * Fetches a single board and processes the response.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     private function fetchBoard(Request $request)
     {
@@ -108,7 +119,11 @@ class Api
     /**
      * Fetches a single pin and processes the response.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     private function fetchPin(Request $request)
     {
@@ -124,7 +139,13 @@ class Api
     /**
      * Fetches multiple boards and processes the response.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @param array|null $fields
+     *
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     private function fetchMultipleBoards(Request $request, array $fields = null)
     {
@@ -141,7 +162,11 @@ class Api
     /**
      * Fetches multiple users and processes the response.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     private function fetchMultipleUsers(Request $request)
     {
@@ -157,9 +182,12 @@ class Api
     /**
      * Fetches multiple pins and processes the response.
      *
+     * @param Request $request
      * @param $fields array The fields to require.
      *
-     * @return Http\Response The response.
+     * @return Response The response.
+     *
+     * @throws RateLimitedReached
      */
     private function fetchMultiplePins(Request $request, array $fields = null)
     {
@@ -200,7 +228,39 @@ class Api
      */
     public function getBoard($boardId)
     {
+        if (empty($boardId)) {
+            throw new InvalidArgumentException('The board id should not be empty.');
+        }
+
         $request = new Request('GET', sprintf('boards/%s/', $boardId));
+
+        return $this->fetchBoard($request);
+    }
+
+    /**
+     * Updates a board.
+     *
+     * @param Board $board The updated board.
+     *
+     * @return Http\Response The response.
+     */
+    public function updateBoard(Board $board)
+    {
+        $params = array();
+
+        if (empty($board->id)) {
+            throw new InvalidArgumentException('The board id is required.');
+        }
+
+        if (!empty($board->name)) {
+            $params['name'] = (string) $board->name;
+        }
+
+        if (!empty($board->description)) {
+            $params['description'] = (string) $board->description;
+        }
+
+        $request = new Request('PATCH', sprintf('boards/%s/', $board->id), $params);
 
         return $this->fetchBoard($request);
     }
@@ -290,7 +350,7 @@ class Api
     }
 
     /**
-     * Return the Interests the logged in user follows.
+     * Return the interests that the authenticated user follows.
      *
      * @link https://www.pinterest.com/explore/901179409185
      *
@@ -402,6 +462,7 @@ class Api
         }
 
         $imageKey = $image->isUrl() ? 'image_url' : ($image->isBase64() ? 'image_base64' : 'image');
+
         if ($image->isFile()) {
             $params[$imageKey] = $image;
         } else {

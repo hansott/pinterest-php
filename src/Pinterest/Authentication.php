@@ -69,10 +69,12 @@ final class Authentication implements ClientInterface
     /**
      * Alternative constructor for when we already have an accessToken.
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client.
-     * @param string          $clientId     The client id.
-     * @param string          $clientSecret The client secret.
-     * @param string          $accessToken  The OAuth access token.
+     * @param ClientInterface $client The (un-authenticated) Http client.
+     * @param string $clientId The client id.
+     * @param string $clientSecret The client secret.
+     * @param string $accessToken The OAuth access token.
+     *
+     * @return static
      */
     public static function withAccessToken(
         ClientInterface $client,
@@ -91,8 +93,10 @@ final class Authentication implements ClientInterface
      *
      * ATTENTION: only the execute method will work, as the others need client id and secret.
      *
-     * @param ClientInterface $client      The http client.
-     * @param string          $accessToken The OAuth access token.
+     * @param ClientInterface $client The http client.
+     * @param string $accessToken The OAuth access token.
+     *
+     * @return static
      */
     public static function onlyAccessToken(
         ClientInterface $client,
@@ -170,6 +174,8 @@ final class Authentication implements ClientInterface
      * @param string $code The OAuth code, caught from the redirect page.
      *
      * @return string The OAuth access token.
+     *
+     * @throws TokenMissing
      */
     public function requestAccessToken($code)
     {
@@ -203,7 +209,7 @@ final class Authentication implements ClientInterface
      *
      * @param Request $request The http request.
      *
-     * @return Response The http response.
+     * @return Http\Response The http response.
      */
     public function execute(Request $request)
     {

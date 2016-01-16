@@ -56,18 +56,34 @@ class MockClient implements ClientInterface
         return $this->makeResponse($request);
     }
 
+    /**
+     * Get the path of a url.
+     *
+     * @param $url
+     *
+     * @return string
+     */
     private static function getPath($url)
     {
         return parse_url($url, PHP_URL_PATH);
     }
 
-    private static function paramsToString($params)
+    /**
+     * Convert parameters to a string.
+     *
+     * Note: It hides certain fields (like image data).
+     *
+     * @param $params
+     *
+     * @return string
+     */
+    private static function paramsToString(array $params)
     {
         $hiddenParams = array(
             'image_url',
             'image_base64',
             'image',
-            'board'
+            'board',
         );
 
         foreach ($hiddenParams as $param) {
@@ -80,7 +96,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Returns the caching file for a request.
+     * Get the caching file for a request.
      *
      * @param Request $request The request.
      *
@@ -100,7 +116,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Replaces a set of characters with another char in a string.
+     * Replace a set of characters with another char in a string.
      *
      * @param array  $chars   The chars to replace.
      * @param string $replace The replacement char.
@@ -118,7 +134,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Encodes a response in json format.
+     * Encode a response in json format.
      *
      * @param Response $response The response.
      *
@@ -135,7 +151,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Decodes a json encoded response.
+     * Decode a json encoded response.
      *
      * @param Request $request The request.
      * @param string  $json    The json encoded response.
@@ -167,7 +183,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Builds the response object for a stored json response.
+     * Build the response object for a stored json response.
      *
      * @param Request $request The request.
      *
@@ -182,7 +198,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Checks whether a response exists.
+     * Check whether a response exists.
      *
      * @param Request $request The request.
      *
@@ -196,7 +212,7 @@ class MockClient implements ClientInterface
     }
 
     /**
-     * Makes a response for a request.
+     * Make a response for a request.
      *
      * @param Request $request The request.
      *
@@ -213,10 +229,9 @@ class MockClient implements ClientInterface
         if ($response->ok()) {
             $this->writeToFile($request, $response);
         } else {
-            echo PHP_EOL . 'Request failed:' . PHP_EOL;
-            var_dump($request->getEndpoint());
+            echo PHP_EOL . 'Request failed >>> ' . $request->getMethod() . ': ' . $request->getEndpoint() . PHP_EOL;
+            print_r($response);
             echo PHP_EOL;
-            print_r($response->body);
         }
 
         return $response;
