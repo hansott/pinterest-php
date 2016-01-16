@@ -40,8 +40,7 @@ try {
 |--------------------------------------------------------------------------
 |
 | Here we will set the default timezone for PHP. PHP is notoriously mean
-| if the timezone is not explicitly set. This will be used by each of
-| the PHP date and date-time functions throughout the application.
+| if the timezone is not explicitly set.
 |
 */
 
