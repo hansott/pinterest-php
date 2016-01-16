@@ -2,6 +2,7 @@
 
 namespace Pinterest\Tests;
 
+use Pinterest\Tests\TestCase;
 use Pinterest\Api;
 use Pinterest\Authentication;
 use Pinterest\Image;
