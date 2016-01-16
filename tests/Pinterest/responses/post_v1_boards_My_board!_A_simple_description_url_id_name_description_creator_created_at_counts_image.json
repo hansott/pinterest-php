@@ -9,7 +9,7 @@
                 "id": "35395684479821614"
             },
             "url": "https:\/\/www.pinterest.com\/hansengagor\/my-board\/",
-            "created_at": "2016-01-16T16:54:52",
+            "created_at": "2016-01-16T17:03:49",
             "image": {
                 "60x60": {
                     "url": null,
@@ -22,7 +22,7 @@
                 "collaborators": 0,
                 "followers": 1
             },
-            "id": "35395615760533363",
+            "id": "35395615760533364",
             "name": "My board!"
         }
     },
@@ -36,12 +36,12 @@
         "Pinterest-Version": "ed7874b",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "606102336233",
+        "X-Pinterest-RID": "574528337067",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "948",
-        "X-Varnish": "1279767633",
+        "X-Ratelimit-Remaining": "927",
+        "X-Varnish": "583360072",
         "Content-Length": "448",
-        "Date": "Sat, 16 Jan 2016 16:54:52 GMT",
+        "Date": "Sat, 16 Jan 2016 17:03:50 GMT",
         "Connection": "keep-alive"
     }
 }

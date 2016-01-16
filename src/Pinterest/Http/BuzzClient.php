@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Http;
 
 use Buzz\Browser;
@@ -39,8 +50,8 @@ class BuzzClient implements ClientInterface
     /**
      * Converts a buzz response to a pinterest response.
      *
-     * @param  Request      $request      The request.
-     * @param  BuzzResponse $buzzResponse The buzz response.
+     * @param Request      $request      The request.
+     * @param BuzzResponse $buzzResponse The buzz response.
      *
      * @return Response The response.
      */
@@ -79,9 +90,9 @@ class BuzzClient implements ClientInterface
         $headers = $request->getHeaders();
 
         try {
-            if ($method == 'GET') {
+            if ($method === 'GET') {
                 $buzzResponse = $this->client->call(
-                    $endpoint . '?' . http_build_query($params),
+                    $endpoint.'?'.http_build_query($params),
                     $method,
                     $headers,
                     array()
@@ -91,7 +102,7 @@ class BuzzClient implements ClientInterface
                 $buzzRequest->fromUrl($endpoint);
                 $buzzRequest->setMethod($method);
                 $buzzRequest->setHeaders($headers);
-                foreach($params as $key => $value) {
+                foreach ($params as $key => $value) {
                     if ($value instanceof Image) {
                         $value = new FormUpload($value->getData());
                     }

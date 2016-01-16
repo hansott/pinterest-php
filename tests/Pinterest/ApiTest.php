@@ -1,13 +1,22 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Tests;
 
-use Pinterest\Tests\TestCase;
 use Pinterest\Api;
 use Pinterest\Authentication;
-use Pinterest\Image;
 use Pinterest\Http\BuzzClient;
-use Pinterest\Objects\User;
+use Pinterest\Image;
 
 class ApiTest extends TestCase
 {
@@ -109,7 +118,7 @@ class ApiTest extends TestCase
 
     public function imageProvider()
     {
-        $imageFixture = __DIR__ . '/fixtures/test.png';
+        $imageFixture = __DIR__.'/fixtures/test.png';
 
         return array(
             array(Image::url('http://www.engagor.com/wp-content/uploads/2015/10/company-hero-3.jpg'), 'Test pin url'),

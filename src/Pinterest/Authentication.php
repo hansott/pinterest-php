@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest;
 
 use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
@@ -69,10 +80,10 @@ final class Authentication implements ClientInterface
     /**
      * Alternative constructor for when we already have an accessToken.
      *
-     * @param ClientInterface $client The (un-authenticated) Http client.
-     * @param string $clientId The client id.
-     * @param string $clientSecret The client secret.
-     * @param string $accessToken The OAuth access token.
+     * @param ClientInterface $client       The (un-authenticated) Http client.
+     * @param string          $clientId     The client id.
+     * @param string          $clientSecret The client secret.
+     * @param string          $accessToken  The OAuth access token.
      *
      * @return static
      */
@@ -93,8 +104,8 @@ final class Authentication implements ClientInterface
      *
      * ATTENTION: only the execute method will work, as the others need client id and secret.
      *
-     * @param ClientInterface $client The http client.
-     * @param string $accessToken The OAuth access token.
+     * @param ClientInterface $client      The http client.
+     * @param string          $accessToken The OAuth access token.
      *
      * @return static
      */
@@ -123,10 +134,10 @@ final class Authentication implements ClientInterface
 
         $params = array(
             'response_type' => 'code',
-            'redirect_uri'  => (string) $redirectUrl,
-            'client_id'     => $this->clientId,
-            'scope'         => implode(',', $scopes),
-            'state'         => (string) $state,
+            'redirect_uri' => (string) $redirectUrl,
+            'client_id' => $this->clientId,
+            'scope' => implode(',', $scopes),
+            'state' => (string) $state,
         );
 
         return sprintf(
@@ -154,7 +165,7 @@ final class Authentication implements ClientInterface
         );
 
         foreach ($scopes as $scope) {
-            if (!in_array($scope, $allowedScopes)) {
+            if (!in_array($scope, $allowedScopes, true)) {
                 throw new InvalidScopeException($scope);
             }
         }
@@ -181,12 +192,12 @@ final class Authentication implements ClientInterface
     {
         $request = new Request(
             'POST',
-            static::BASE_URI . 'oauth/token',
+            static::BASE_URI.'oauth/token',
             array(
-                'grant_type'    => 'authorization_code',
-                'client_id'     => $this->clientId,
+                'grant_type' => 'authorization_code',
+                'client_id' => $this->clientId,
                 'client_secret' => $this->clientSecret,
-                'code'          => (string) $code,
+                'code' => (string) $code,
             )
         );
 
@@ -218,7 +229,7 @@ final class Authentication implements ClientInterface
 
         $authenticatedRequest = new Request(
             $request->getMethod(),
-            static::BASE_URI . $request->getEndpoint(),
+            static::BASE_URI.$request->getEndpoint(),
             $request->getParams(),
             $headers
         );

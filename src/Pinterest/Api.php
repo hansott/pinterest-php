@@ -1,15 +1,26 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest;
 
-use Pinterest\Http\Exceptions\RateLimitedReached;
 use InvalidArgumentException;
+use Pinterest\Http\Exceptions\RateLimitedReached;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
 use Pinterest\Objects\PagedList;
-use Pinterest\Objects\User;
 use Pinterest\Objects\Pin;
+use Pinterest\Objects\User;
 
 /**
  * The api client.
@@ -57,8 +68,7 @@ class Api
     /**
      * Executes the given http request.
      *
-     * @param Request $request
-     *
+     * @param Request       $request
      * @param callable|null $processor
      *
      * @return Response The response.
@@ -139,8 +149,7 @@ class Api
     /**
      * Fetches multiple boards and processes the response.
      *
-     * @param Request $request
-     *
+     * @param Request    $request
      * @param array|null $fields
      *
      * @return Response The response.
@@ -390,8 +399,8 @@ class Api
     /**
      * Creates a board.
      *
-     * @param  string $name        The board name.
-     * @param  string $description The board description.
+     * @param string $name        The board name.
+     * @param string $description The board description.
      *
      * @return Http\Response The response.
      */

@@ -1,11 +1,21 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Tests;
 
 use Pinterest\Http\ClientInterface;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
-use Pinterest\Authentication as Auth;
 use stdClass;
 
 /**
@@ -108,7 +118,7 @@ class MockClient implements ClientInterface
         $path = static::getPath($endpoint);
         $method = strtolower($request->getMethod());
         $params = static::paramsToString($request->getParams());
-        $file = $method . $path . $params;
+        $file = $method.$path.$params;
         $chars = array('/', ':', '.', ',', ' ');
         $file = static::str_replace($chars, '_', $file);
 
@@ -142,7 +152,7 @@ class MockClient implements ClientInterface
      */
     private static function encode(Response $response)
     {
-        $resp = new stdClass;
+        $resp = new stdClass();
         $resp->body = $response->body;
         $resp->statusCode = $response->getStatusCode();
         $resp->headers = $response->getHeaders();
@@ -229,7 +239,7 @@ class MockClient implements ClientInterface
         if ($response->ok()) {
             $this->writeToFile($request, $response);
         } else {
-            echo PHP_EOL . 'Request failed >>> ' . $request->getMethod() . ': ' . $request->getEndpoint() . PHP_EOL;
+            echo PHP_EOL.'Request failed >>> '.$request->getMethod().': '.$request->getEndpoint().PHP_EOL;
             print_r($response);
             echo PHP_EOL;
         }

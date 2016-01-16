@@ -19,7 +19,7 @@
                     }
                 },
                 "counts": {
-                    "pins": 2,
+                    "pins": 0,
                     "collaborators": 0,
                     "followers": 1
                 },
@@ -27,31 +27,6 @@
                 "name": "Toon's pins"
             },
             "1": {
-                "description": "A simple description",
-                "creator": {
-                    "url": "https:\/\/www.pinterest.com\/hansengagor\/",
-                    "first_name": "Hans",
-                    "last_name": "Engagor",
-                    "id": "35395684479821614"
-                },
-                "url": "https:\/\/www.pinterest.com\/hansengagor\/my-board\/",
-                "created_at": "2015-10-18T00:36:19",
-                "image": {
-                    "60x60": {
-                        "url": null,
-                        "width": 60,
-                        "height": 60
-                    }
-                },
-                "counts": {
-                    "pins": 0,
-                    "collaborators": 0,
-                    "followers": 1
-                },
-                "id": "35395615760507098",
-                "name": "My board!"
-            },
-            "2": {
                 "description": "dfgdfgdfg",
                 "creator": {
                     "url": "https:\/\/www.pinterest.com\/hansengagor\/",
@@ -76,7 +51,7 @@
                 "id": "35395615760505684",
                 "name": "dfgdfgdfg"
             },
-            "3": {
+            "2": {
                 "description": "qsfsqddfsds",
                 "creator": {
                     "url": "https:\/\/www.pinterest.com\/hansengagor\/",
@@ -112,12 +87,12 @@
         "Pinterest-Version": "ed7874b",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "921048201264",
+        "X-Pinterest-RID": "802286217688",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "979",
-        "X-Varnish": "465315710",
-        "Date": "Sat, 16 Jan 2016 16:31:01 GMT",
-        "Content-Length": "1818",
+        "X-Ratelimit-Remaining": "942",
+        "X-Varnish": "1761661836",
+        "Date": "Sat, 16 Jan 2016 17:03:40 GMT",
+        "Content-Length": "1378",
         "Connection": "keep-alive"
     }
 }

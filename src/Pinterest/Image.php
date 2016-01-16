@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest;
 
 use InvalidArgumentException;
@@ -20,9 +31,9 @@ final class Image
 
     private function __construct($type, $data)
     {
-        $allowedTypes = array(Image::TYPE_URL, Image::TYPE_BASE64, Image::TYPE_FILE);
-        if (!in_array($type, $allowedTypes)) {
-            throw new InvalidArgumentException('Type ' . $type . ' is not allowed.');
+        $allowedTypes = array(self::TYPE_URL, self::TYPE_BASE64, self::TYPE_FILE);
+        if (!in_array($type, $allowedTypes, true)) {
+            throw new InvalidArgumentException('Type '.$type.' is not allowed.');
         }
 
         $this->type = $type;

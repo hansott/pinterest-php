@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Http;
 
 /**
@@ -66,7 +77,7 @@ final class Request
     public function setFields(array $fields)
     {
         $merge = array(
-            'fields' => implode(',', $fields)
+            'fields' => implode(',', $fields),
         );
         $this->params = array_replace($this->params, $merge);
 

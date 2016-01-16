@@ -16,12 +16,12 @@
         "Pinterest-Version": "ed7874b",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "288624971204",
+        "X-Pinterest-RID": "573981316824",
         "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "974",
-        "X-Varnish": "625236193",
+        "X-Ratelimit-Remaining": "937",
+        "X-Varnish": "437987384",
         "Content-Length": "52",
-        "Date": "Sat, 16 Jan 2016 16:31:03 GMT",
+        "Date": "Sat, 16 Jan 2016 17:03:42 GMT",
         "Connection": "keep-alive"
     }
 }

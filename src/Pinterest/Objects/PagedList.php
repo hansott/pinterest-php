@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Objects;
 
 /**
@@ -48,7 +59,7 @@ final class PagedList
     /**
      * Returns whether the paged list has more items.
      *
-     * @return boolean Whether there are more items.
+     * @return bool Whether there are more items.
      */
     public function hasNext()
     {
