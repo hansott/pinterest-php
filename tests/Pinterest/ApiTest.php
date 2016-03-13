@@ -37,7 +37,7 @@ class ApiTest extends TestCase
         $this->board = getenv('BOARD_ID');
     }
 
-    public function testGetUser()
+    public function test_it_gets_users()
     {
         $this->assertUser($this->api->getUser('otthans'));
         $this->assertUser($this->api->getUser('314196648911734959'));
@@ -46,52 +46,52 @@ class ApiTest extends TestCase
         $this->api->getUser('');
     }
 
-    public function testGetBoard()
+    public function test_it_gets_a_board()
     {
         $this->assertBoard($this->api->getBoard('314196580192594085'));
     }
 
-    public function testGetUserBoards()
+    public function test_it_gets_the_users_boards()
     {
         $this->assertMultipleBoards($this->api->getUserBoards());
     }
 
-    public function testGetUserLikes()
+    public function test_it_gets_the_users_likes()
     {
         $this->assertMultiplePins($this->api->getUserLikes());
     }
 
-    public function testGetUserPins()
+    public function test_it_gets_the_users_pins()
     {
         $this->assertMultiplePins($this->api->getUserPins());
     }
 
-    public function testGetCurrentUser()
+    public function test_it_gets_the_current_user()
     {
         $this->assertUser($this->api->getCurrentUser());
     }
 
-    public function testGetUserFollowers()
+    public function test_it_get_the_users_followers()
     {
         $this->assertMultipleUsers($this->api->getUserFollowers());
     }
 
-    public function testGetUserFollowingBoards()
+    public function test_it_gets_the_boards_that_the_user_follows()
     {
         $this->assertMultipleBoards($this->api->getUserFollowingBoards());
     }
 
-    public function testGetUserFollowing()
+    public function test_it_gets_the_users_that_the_user_follows()
     {
         $this->assertMultipleUsers($this->api->getUserFollowing());
     }
 
-    public function testGetUserInterests()
+    public function test_it_gets_the_users_interests()
     {
         $this->assertMultipleBoards($this->api->getUserInterests());
     }
 
-    public function testFollowUser()
+    public function test_it_follows_a_user()
     {
         $username = 'engagor';
         $response = $this->api->followUser($username);
@@ -106,7 +106,7 @@ class ApiTest extends TestCase
     /**
      * @dataProvider imageProvider
      */
-    public function testCreatePin(Image $image, $note)
+    public function test_it_creates_a_pin(Image $image, $note)
     {
         $response = $this->api->createPin(
             $this->board,
@@ -130,13 +130,13 @@ class ApiTest extends TestCase
         $imageFixture = __DIR__.'/fixtures/test.png';
 
         return array(
-            array(Image::url('http://www.engagor.com/wp-content/uploads/2015/10/company-hero-3.jpg'), 'Test pin url'),
+            array(Image::url('http://lorempixel.com/g/400/200/cats/'), 'Test pin url'),
             array(Image::file($imageFixture), 'Test pin file'),
             array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
         );
     }
 
-    public function testDeletePin()
+    public function test_it_deletes_a_pin()
     {
         $data = $this->imageProvider();
         $createResponse = $this->api->createPin(
