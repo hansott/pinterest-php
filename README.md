@@ -119,7 +119,7 @@ if ($response->ok()) {
 ```php
 $response = $api->getBoard('314196580192594085');
 if (!$response->ok()) {
-    // Handle error
+    echo $response->getError();
 }
 
 $board = $response->result(); // $board instanceof Objects\Board
@@ -127,7 +127,7 @@ $board->name = 'New board name';
 $board->description = 'New board description';
 $response = $api->updateBoard($board);
 if (!$response->ok()) {
-    // Handle error
+    echo $response->getError();
 }
 
 $updatedBoard = $response->result(); // $updatedBoard instanceof Objects\Board

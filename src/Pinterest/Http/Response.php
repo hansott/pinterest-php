@@ -96,13 +96,23 @@ final class Response
     }
 
     /**
-     * Returns the status code.
+     * Get the HTTP status code.
      *
-     * @return int The status code.
+     * @return int
      */
     public function getStatusCode()
     {
         return $this->statusCode;
+    }
+
+    /**
+     * Get the error message.
+     *
+     * @return null|string
+     */
+    public function getError()
+    {
+        return !empty($this->body->message) ? (string) $this->body->message : null;
     }
 
     /**
@@ -116,7 +126,7 @@ final class Response
     }
 
     /**
-     * Parses the response json in php data.
+     * Parse the response json.
      *
      * @param string $rawBody The raw response body.
      * @param bool $toArray Return as array?
@@ -136,7 +146,7 @@ final class Response
     }
 
     /**
-     * Returns the processed result.
+     * Get the processed result.
      *
      * @return mixed The processed result.
      */
@@ -146,7 +156,7 @@ final class Response
     }
 
     /**
-     * Sets the processed result.
+     * Set the processed result.
      *
      * @param mixed $result The result.
      *
@@ -160,7 +170,7 @@ final class Response
     }
 
     /**
-     * Gets the request object.
+     * Get the request object.
      *
      * @return Request
      */
@@ -170,7 +180,7 @@ final class Response
     }
 
     /**
-     * Get Headers.
+     * Get the HTTP Headers.
      *
      * @return array
      */
@@ -180,9 +190,9 @@ final class Response
     }
 
     /**
-     * Get a specific header.
+     * Get a specific HTTP header.
      *
-     * @param $header
+     * @param string $header
      *
      * @return string|null The header value.
      */
