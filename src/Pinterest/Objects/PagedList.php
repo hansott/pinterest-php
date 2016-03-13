@@ -13,6 +13,8 @@
 
 namespace Pinterest\Objects;
 
+use InvalidArgumentException;
+
 /**
  * This class represents a paged list.
  *
@@ -42,6 +44,7 @@ final class PagedList
      */
     public function __construct(array $items = array(), $nextUrl = null)
     {
+        $this->guardThatTheseAreAllPinterestObjects($items);
         $this->items = $items;
         $this->nextUrl = $nextUrl;
     }
@@ -74,5 +77,24 @@ final class PagedList
     public function getNextUrl()
     {
         return $this->nextUrl;
+    }
+
+    /**
+     * Checks if all items are pinterest objects.
+     *
+     * @param array $items
+     *
+     * @throws InvalidArgumentException
+     */
+    private function guardThatTheseAreAllPinterestObjects(array $items)
+    {
+        foreach ($items as $item) {
+            if (! ($item instanceof BaseObject)) {
+                throw new InvalidArgumentException(sprintf(
+                    'Expected "Pinterest\Objects\BaseObject" but instead got: "%s"',
+                    is_object($item) ? get_class($item) : gettype($item)
+                ));
+            }
+        }
     }
 }
