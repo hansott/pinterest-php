@@ -153,6 +153,8 @@ if ($response->ok()) {
 }
 ```
 
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
+
 ### Get the followers of the authenticated user
 
 ```php
@@ -162,6 +164,8 @@ if ($response->ok()) {
     $users = $pagedList->items(); // array of Objects\User objects
 }
 ```
+
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ### Get the boards that the authenticated user follows
 
@@ -173,6 +177,8 @@ if ($response->ok()) {
 }
 ```
 
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
+
 ### Get the users that the authenticated user follows
 
 ```php
@@ -182,6 +188,8 @@ if ($response->ok()) {
     $users = $pagedList->items(); // array of Objects\User objects
 }
 ```
+
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ### Get the interests that the authenticated user follows
 
@@ -194,6 +202,8 @@ if ($response->ok()) {
     $boards = $pagedList->items(); // array of Objects\Board objects
 }
 ```
+
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ### Follow a user
 
@@ -259,6 +269,20 @@ $response = $api->deletePin($pinId);
 if ($response->ok()) {
     // Succeeded
 }
+```
+
+### Get the next items of a paged list
+
+```php
+$hasMoreItems = $pagedList->hasNext();
+if (!$hasMoreItems) {
+    return;
+}
+$response = $api->getNextItems($pagedList);
+if (!$response->ok()) {
+    echo $response->getError();
+}
+$nextPagedList = $response->result();
 ```
 
 ## Contributing

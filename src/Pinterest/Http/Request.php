@@ -70,7 +70,7 @@ final class Request
     /**
      * Sets the fields.
      *
-     * @param array The fields to return.
+     * @param array $fields The fields to return.
      *
      * @return Request The current Request instance.
      */

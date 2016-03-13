@@ -18,6 +18,7 @@ use Pinterest\Http\Exceptions\RateLimitedReached;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
+use Pinterest\Objects\PagedList;
 use Pinterest\Objects\Pin;
 use Pinterest\Objects\User;
 
@@ -500,5 +501,68 @@ class Api
         $request = new Request('DELETE', sprintf('pins/%d/', $pinId));
 
         return $this->execute($request);
+    }
+
+    /**
+     * Get the next items for a paged list.
+     *
+     * @param PagedList $pagedList
+     *
+     * @return Response
+     */
+    public function getNextItems(PagedList $pagedList)
+    {
+        if (!$pagedList->hasNext()) {
+            throw new InvalidArgumentException('The list has no more items');
+        }
+
+        $items = $pagedList->items();
+
+        if (empty($items)) {
+            throw new InvalidArgumentException(
+                'Unable to detect object type because the list contains no items'
+            );
+        }
+
+        $item = reset($items);
+        $objectClassName = get_class($item);
+        $objectInstance = new $objectClassName();
+
+        $request = $this->buildRequestForPagedList($pagedList);
+
+        return $this->execute($request, function (Response $response) use ($objectInstance) {
+            $mapper = new Mapper($objectInstance);
+
+            return $mapper->toList($response);
+        });
+    }
+
+    /**
+     * Build a request to get the next items of a paged list.
+     *
+     * @param PagedList $pagedList
+     *
+     * @return Request
+     */
+    private function buildRequestForPagedList(PagedList $pagedList)
+    {
+        $nextItemsUri = $pagedList->getNextUrl();
+
+        if (strpos($nextItemsUri, Authentication::BASE_URI) !== 0) {
+            throw new InvalidArgumentException(
+                'The paged list has an invalid uri'
+            );
+        }
+
+        $params = array();
+        $components = parse_url($nextItemsUri);
+        parse_str($components['query'], $params);
+
+        $path = $components['path'];
+        $versionPath = '/v1/';
+        $versionPathLength = strlen($versionPath);
+        $path = substr($path, $versionPathLength);
+
+        return new Request('GET', $path, $params);
     }
 }
