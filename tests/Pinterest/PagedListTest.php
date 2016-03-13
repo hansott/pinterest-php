@@ -13,10 +13,10 @@ class PagedListTest extends TestCase
     {
         new PagedList(array(new User()));
 
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException('InvalidArgumentException');
         new PagedList(array(1));
 
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException('InvalidArgumentException');
         new PagedList(array(1, new User()));
     }
 
@@ -24,7 +24,7 @@ class PagedListTest extends TestCase
     {
         new PagedList(array(new User()), Authentication::BASE_URI.'/me');
 
-        $this->setExpectedException(InvalidArgumentException::class);
+        $this->setExpectedException('InvalidArgumentException');
         new PagedList(array(new User()), 'next-uri');
     }
 
