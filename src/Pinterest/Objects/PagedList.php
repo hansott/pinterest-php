@@ -14,6 +14,7 @@
 namespace Pinterest\Objects;
 
 use InvalidArgumentException;
+use Pinterest\Authentication;
 
 /**
  * This class represents a paged list.
@@ -45,6 +46,7 @@ final class PagedList
     public function __construct(array $items = array(), $nextUrl = null)
     {
         $this->guardThatTheseAreAllPinterestObjects($items);
+        $this->assertValidUri($nextUrl);
         $this->items = $items;
         $this->nextUrl = $nextUrl;
     }
@@ -95,6 +97,26 @@ final class PagedList
                     is_object($item) ? get_class($item) : gettype($item)
                 ));
             }
+        }
+    }
+
+    /**
+     * Checks if the next uri is valid.
+     *
+     * @throws InvalidArgumentException
+     *
+     * @param $nextUri
+     */
+    private function assertValidUri($nextUri)
+    {
+        if ($nextUri === null) {
+            return;
+        }
+
+        if (strpos($nextUri, Authentication::BASE_URI) === false) {
+            throw new InvalidArgumentException(
+                'Not a pinterest api uri'
+            );
         }
     }
 }

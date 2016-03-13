@@ -548,12 +548,6 @@ class Api
     {
         $nextItemsUri = $pagedList->getNextUrl();
 
-        if (strpos($nextItemsUri, Authentication::BASE_URI) !== 0) {
-            throw new InvalidArgumentException(
-                'The paged list has an invalid uri'
-            );
-        }
-
         $params = array();
         $components = parse_url($nextItemsUri);
         parse_str($components['query'], $params);

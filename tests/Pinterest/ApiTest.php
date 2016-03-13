@@ -13,10 +13,13 @@
 
 namespace Pinterest\Tests;
 
+use InvalidArgumentException;
 use Pinterest\Api;
 use Pinterest\Authentication;
 use Pinterest\Http\BuzzClient;
 use Pinterest\Image;
+use Pinterest\Objects\PagedList;
+use Pinterest\Objects\User;
 use RuntimeException;
 
 class ApiTest extends TestCase
@@ -176,5 +179,12 @@ class ApiTest extends TestCase
         $response = $this->api->deleteBoard($boardId);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
+    }
+
+    public function test_it_cannot_get_more_items_for_an_empty_list()
+    {
+        $pagedList = new PagedList(array(), null);
+        $this->setExpectedException(InvalidArgumentException::class);
+        $this->api->getNextItems($pagedList);
     }
 }
