@@ -96,9 +96,9 @@ final class Response
     }
 
     /**
-     * Returns the statuscode.
+     * Returns the status code.
      *
-     * @return int The statuscode.
+     * @return int The status code.
      */
     public function getStatusCode()
     {
@@ -119,7 +119,9 @@ final class Response
      * Parses the response json in php data.
      *
      * @param string $rawBody The raw response body.
-     * @param bool   $toArray Return as array?
+     * @param bool $toArray Return as array?
+     *
+     * @throws MalformedJson
      *
      * @return mixed The parsed json.
      */
@@ -147,6 +149,8 @@ final class Response
      * Sets the processed result.
      *
      * @param mixed $result The result.
+     *
+     * @return $this
      */
     public function setResult($result)
     {

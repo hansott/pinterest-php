@@ -66,14 +66,14 @@ class Api
     }
 
     /**
-     * Executes the given http request.
+     * Execute the given http request.
      *
      * @param Request       $request
      * @param callable|null $processor
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     public function execute(Request $request, $processor = null)
     {
@@ -91,9 +91,11 @@ class Api
     }
 
     /**
-     * Fetches a single user and processes the response.
+     * Fetch a single user and processes the response.
      *
-     * @return Http\Response The response.
+     * @param Request $request
+     *
+     * @return Response The response.
      */
     private function fetchUser(Request $request)
     {
@@ -107,13 +109,13 @@ class Api
     }
 
     /**
-     * Fetches a single board and processes the response.
+     * Fetch a single board and processes the response.
      *
      * @param Request $request
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     private function fetchBoard(Request $request)
     {
@@ -127,13 +129,13 @@ class Api
     }
 
     /**
-     * Fetches a single pin and processes the response.
+     * Fetch a single pin and processes the response.
      *
      * @param Request $request
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     private function fetchPin(Request $request)
     {
@@ -147,14 +149,14 @@ class Api
     }
 
     /**
-     * Fetches multiple boards and processes the response.
+     * Fetch multiple boards and processes the response.
      *
      * @param Request    $request
      * @param array|null $fields
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     private function fetchMultipleBoards(Request $request, array $fields = null)
     {
@@ -169,13 +171,13 @@ class Api
     }
 
     /**
-     * Fetches multiple users and processes the response.
+     * Fetch multiple users and processes the response.
      *
      * @param Request $request
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     private function fetchMultipleUsers(Request $request)
     {
@@ -194,9 +196,9 @@ class Api
      * @param Request $request
      * @param $fields array The fields to require.
      *
-     * @return Response The response.
-     *
      * @throws RateLimitedReached
+     *
+     * @return Response The response.
      */
     private function fetchMultiplePins(Request $request, array $fields = null)
     {
@@ -211,9 +213,9 @@ class Api
     }
 
     /**
-     * Returns a single user.
+     * Get a user.
      *
-     * @param $usernameOrId string The username or identifier of the user.
+     * @param string $usernameOrId The username or identifier of the user.
      *
      * @return Objects\User The user.
      */
@@ -247,7 +249,7 @@ class Api
     }
 
     /**
-     * Updates a board.
+     * Update a board.
      *
      * @param Board $board The updated board.
      *
@@ -275,7 +277,7 @@ class Api
     }
 
     /**
-     * Returns the boards of the authenticated user.
+     * Get the boards of the authenticated user.
      *
      * @return PagedList[Objects\Board] A list of boards.
      */
@@ -287,7 +289,7 @@ class Api
     }
 
     /**
-     * Returns the pins of the authenticated user.
+     * Get the pins of the authenticated user.
      *
      * @return PagedList[Objects\Pin] A list of likes.
      */
@@ -299,7 +301,7 @@ class Api
     }
 
     /**
-     * Returns the pins of the authenticated user.
+     * Get the pins of the authenticated user.
      *
      * @return PagedList[Objects\Pin] A list of pins.
      */
@@ -311,7 +313,7 @@ class Api
     }
 
     /**
-     * Returns the authenticated user.
+     * Get the authenticated user.
      *
      * @return Objects\User The authenticated user.
      */
@@ -323,7 +325,7 @@ class Api
     }
 
     /**
-     * Returns the followers of the authenticated user.
+     * Get the followers of the authenticated user.
      *
      * @return PagedList[Objects\User] The current User's followers.
      */
@@ -335,7 +337,7 @@ class Api
     }
 
     /**
-     * Returns the boards that the authenticated user follows.
+     * Get the boards that the authenticated user follows.
      *
      * @return PagedList[Objects\Board] The Boards the current user follows.
      */
@@ -347,7 +349,7 @@ class Api
     }
 
     /**
-     * Returns the users that the authenticated user follows.
+     * Get the users that the authenticated user follows.
      *
      * @return PagedList[Objects\User] A list of users.
      */
@@ -359,7 +361,7 @@ class Api
     }
 
     /**
-     * Return the interests that the authenticated user follows.
+     * Get the interests that the authenticated user follows.
      *
      * @link https://www.pinterest.com/explore/901179409185
      *
@@ -373,7 +375,7 @@ class Api
     }
 
     /**
-     * Follows a user.
+     * Follow a user.
      *
      * @param string $username The username of the user to follow.
      *
@@ -397,7 +399,7 @@ class Api
     }
 
     /**
-     * Creates a board.
+     * Create a board.
      *
      * @param string $name        The board name.
      * @param string $description The board description.
@@ -424,7 +426,7 @@ class Api
     }
 
     /**
-     * Deletes a board.
+     * Delete a board.
      *
      * @param int $boardId The board id.
      *
@@ -442,7 +444,7 @@ class Api
     }
 
     /**
-     * Creates a pin on a board.
+     * Create a pin on a board.
      *
      * @param string      $boardId The board id.
      * @param string      $note    The note.
@@ -484,7 +486,7 @@ class Api
     }
 
     /**
-     * Deletes a Pin.
+     * Delete a Pin.
      *
      * @param string $pinId The id of the pin to delete.
      *

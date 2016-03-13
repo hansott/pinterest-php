@@ -82,6 +82,185 @@ $api = new Pinterest\Api($auth);
 
 Using the `Pinterest\Api` instance in `$api`, you can now make authenticated API requests to Pinterest's API on behalf of the user.
 
+### Get the authenticated user
+
+```php
+$response = $api->getCurrentUser();
+if ($response->ok()) {
+    $user = $response->result(); // $user instanceof Objects\User
+}
+```
+
+### Get a user
+
+```php
+// Get user by username
+$response = $api->getUser('otthans');
+
+// Get user by user id
+$response = $api->getUser('314196648911734959');
+
+if ($response->ok()) {
+    $user = $response->result(); // $user instanceof Objects\User
+}
+```
+
+### Get a board
+
+```php
+$response = $api->getBoard('314196580192594085');
+if ($response->ok()) {
+    $board = $response->result(); // $board instanceof Objects\Board
+}
+```
+
+### Update a board
+
+```php
+$response = $api->getBoard('314196580192594085');
+if (!$response->ok()) {
+    // Handle error
+}
+
+$board = $response->result(); // $board instanceof Objects\Board
+$board->name = 'New board name';
+$board->description = 'New board description';
+$response = $api->updateBoard($board);
+if (!$response->ok()) {
+    // Handle error
+}
+
+$updatedBoard = $response->result(); // $updatedBoard instanceof Objects\Board
+```
+
+### Get the boards of the authenticated user
+
+```php
+$response = $api->getUserBoards();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $boards = $pagedList->items(); // array of Objects\Board objects
+}
+```
+
+### Get the pins of the authenticated user
+
+```php
+$response = $api->getUserLikes();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $pins = $pagedList->items(); // array of Objects\Pin objects
+}
+```
+
+### Get the followers of the authenticated user
+
+```php
+$response = $api->getUserFollowers();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $users = $pagedList->items(); // array of Objects\User objects
+}
+```
+
+### Get the boards that the authenticated user follows
+
+```php
+$response = $api->getUserFollowingBoards();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $boards = $pagedList->items(); // array of Objects\Board objects
+}
+```
+
+### Get the users that the authenticated user follows
+
+```php
+$response = $api->getUserFollowing();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $users = $pagedList->items(); // array of Objects\User objects
+}
+```
+
+### Get the interests that the authenticated user follows
+
+Example: [Modern architecture](https://www.pinterest.com/explore/901179409185)
+
+```php
+$response = $api->getUserInterests();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $boards = $pagedList->items(); // array of Objects\Board objects
+}
+```
+
+### Follow a user
+
+```php
+$response = $api->followUser('otthans');
+if ($response->ok()) {
+    // Succeeded
+}
+```
+
+### Create a board
+
+```php
+$name = 'My new board';
+$optionalDescription = 'The description of the board';
+$response = $api->createBoard($name, $optionalDescription);
+if ($response->ok()) {
+    $board = $response->result(); // $board instanceof Objects\Board
+}
+```
+
+### Delete a board
+
+```php
+$boardId = '314196580192594085';
+$response = $api->createBoard($boardId);
+if ($response->ok()) {
+    // Succeeded
+}
+```
+
+### Create a pin
+
+```php
+$boardId = '314196580192594085';
+$note = 'This is an amazing pin!';
+$optionalLink = 'http://hansott.github.io/';
+
+// Load an image from a url.
+$image = Pinterest\Image::url('http://lorempixel.com/g/400/200/cats/');
+
+// Load an image from a file.
+$pathToFile = 'myfolder/myimage.png';
+$image = Pinterest\Image::file($pathToFile);
+
+// Load a base64 encoded image.
+$pathToFile = 'myfolder/myimage.png';
+$data = file_get_contents($pathToFile);
+$base64 = base64_encode($data);
+$image = Pinterest\Image::base64($base64);
+ 
+$response = $api->createPin($boardId, $note, $image, $optionalLink);
+if ($response->ok()) {
+    $pin = $response->result(); // $board instanceof Objects\Pin
+}
+```
+
+### Delete a pin
+
+```php
+$pinId = 'the-pin-id';
+$response = $api->deletePin($pinId);
+if ($response->ok()) {
+    // Succeeded
+}
+```
+
 ## Contributing
 
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

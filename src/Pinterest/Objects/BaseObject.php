@@ -20,5 +20,10 @@ namespace Pinterest\Objects;
  */
 interface BaseObject
 {
+    /**
+     * Get the required fields for the object.
+     *
+     * @return array
+     */
     public static function fields();
 }

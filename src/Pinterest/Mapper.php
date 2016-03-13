@@ -24,7 +24,7 @@ use Pinterest\Objects\PagedList;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class Mapper
+final class Mapper
 {
     protected $mapper;
 
