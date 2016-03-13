@@ -17,6 +17,7 @@ use Pinterest\Api;
 use Pinterest\Authentication;
 use Pinterest\Http\BuzzClient;
 use Pinterest\Image;
+use RuntimeException;
 
 class ApiTest extends TestCase
 {
@@ -30,6 +31,9 @@ class ApiTest extends TestCase
     public function setUp()
     {
         $cacheDir = sprintf('%s/responses', __DIR__);
+        if (!is_dir($cacheDir)) {
+            throw new RuntimeException('The cache directory does not exist or is not a directory');
+        }
         $client = new BuzzClient();
         $mocked = new MockClient($client, $cacheDir);
         $auth = Authentication::withAccessToken($mocked, null, null, getenv('ACCESS_TOKEN'));
@@ -48,7 +52,7 @@ class ApiTest extends TestCase
 
     public function test_it_gets_a_board()
     {
-        $this->assertBoard($this->api->getBoard('314196580192594085'));
+        $this->assertBoard($this->api->getBoard('314196580192658592'));
     }
 
     public function test_it_gets_the_users_boards()
@@ -127,7 +131,7 @@ class ApiTest extends TestCase
 
     public function imageProvider()
     {
-        $imageFixture = __DIR__.'/fixtures/test.png';
+        $imageFixture = __DIR__.'/fixtures/cat.jpg';
 
         return array(
             array(Image::url('http://lorempixel.com/g/400/200/cats/'), 'Test pin url'),
@@ -155,14 +159,14 @@ class ApiTest extends TestCase
 
     public function test_it_creates_and_updates_and_deletes_a_board()
     {
-        $response = $this->api->createBoard('My board!', 'A simple description');
+        $response = $this->api->createBoard('Unit test', 'A simple description');
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertInstanceOf('Pinterest\Objects\Board', $response->result());
         $this->assertTrue($response->ok());
 
         $board = $response->result();
         $boardId = $board->id;
-        $board->name = 'Updated My board!';
+        $board->name = 'Unit test update';
 
         $response = $this->api->updateBoard($board);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);

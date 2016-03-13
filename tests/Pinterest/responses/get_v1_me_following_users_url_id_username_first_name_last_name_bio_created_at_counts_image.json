@@ -2,29 +2,6 @@
     "body": {
         "data": {
             "0": {
-                "username": "toondaelman",
-                "bio": "",
-                "first_name": "Eng",
-                "last_name": "Agor",
-                "url": "https:\/\/www.pinterest.com\/toondaelman\/",
-                "created_at": "2015-10-13T13:00:05",
-                "image": {
-                    "60x60": {
-                        "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/toondaelman_1445949785_60.jpg",
-                        "width": 60,
-                        "height": 60
-                    }
-                },
-                "counts": {
-                    "pins": 19,
-                    "following": 3,
-                    "followers": 3,
-                    "boards": 2,
-                    "likes": 0
-                },
-                "id": "7670399273821775"
-            },
-            "1": {
                 "username": "engagor",
                 "bio": "All-in-one social media management tool.",
                 "first_name": "Engagor",
@@ -41,7 +18,7 @@
                 "counts": {
                     "pins": 148,
                     "following": 84,
-                    "followers": 83,
+                    "followers": 86,
                     "boards": 9,
                     "likes": 1
                 },
@@ -60,15 +37,15 @@
         "Cache-Control": "private",
         "Content-Type": "application\/json",
         "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "ed7874b",
+        "Pinterest-Version": "f2fe346",
         "Server": "nginx",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "810099887506",
-        "X-Ratelimit-Limit": "1000",
-        "X-Ratelimit-Remaining": "936",
-        "X-Varnish": "1386317227",
-        "Content-Length": "901",
-        "Date": "Sat, 16 Jan 2016 17:03:42 GMT",
+        "X-Pinterest-RID": "958591058335",
+        "X-Ratelimit-Limit": "200",
+        "X-Ratelimit-Remaining": "132",
+        "X-Varnish": "3204760262",
+        "Content-Length": "492",
+        "Date": "Sun, 13 Mar 2016 15:13:32 GMT",
         "Connection": "keep-alive"
     }
 }

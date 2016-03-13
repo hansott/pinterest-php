@@ -27,7 +27,7 @@ use stdClass;
  *
  * @author Hans Ott <hansott@hotmail.be>
  */
-class MockClient implements ClientInterface
+final class MockClient implements ClientInterface
 {
     /**
      * The http client to fallback.
@@ -47,6 +47,7 @@ class MockClient implements ClientInterface
      * Creates a new mocking client.
      *
      * @param ClientInterface $http The fallback client to use.
+     * @param string $cacheDir
      */
     public function __construct(ClientInterface $http, $cacheDir)
     {
