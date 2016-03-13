@@ -18,7 +18,6 @@ use Pinterest\Http\Exceptions\RateLimitedReached;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
-use Pinterest\Objects\PagedList;
 use Pinterest\Objects\Pin;
 use Pinterest\Objects\User;
 

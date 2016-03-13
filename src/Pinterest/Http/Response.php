@@ -129,7 +129,7 @@ final class Response
      * Parse the response json.
      *
      * @param string $rawBody The raw response body.
-     * @param bool $toArray Return as array?
+     * @param bool   $toArray Return as array?
      *
      * @throws MalformedJson
      *
