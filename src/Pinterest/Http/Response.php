@@ -178,4 +178,42 @@ final class Response
     {
         return $this->headers;
     }
+
+    /**
+     * Get a specific header.
+     *
+     * @param $header
+     *
+     * @return string|null The header value.
+     */
+    public function getHeader($header)
+    {
+        return isset($this->headers[$header])
+            ? $this->headers[$header]
+            : null;
+    }
+
+    /**
+     * Get the rate-limit.
+     *
+     * @return int|null The rate-limit.
+     */
+    public function getRateLimit()
+    {
+        $limit = $this->getHeader('X-Ratelimit-Limit');
+
+        return is_numeric($limit) ? (int) $limit : null;
+    }
+
+    /**
+     * Get the remaining requests before reaching the rate-limit.
+     *
+     * @return int|null The remaining requests.
+     */
+    public function getRemainingRequests()
+    {
+        $remaining = $this->getHeader('X-Ratelimit-Remaining');
+
+        return is_numeric($remaining) ? (int) $remaining : null;
+    }
 }

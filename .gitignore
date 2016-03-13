@@ -5,6 +5,7 @@ composer.phar
 Thumbs.db
 pinterest.sublime-workspace
 .env
+test.php
 
 # PHPStorm
 .idea

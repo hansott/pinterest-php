@@ -217,7 +217,7 @@ class Api
      *
      * @param string $usernameOrId The username or identifier of the user.
      *
-     * @return Objects\User The user.
+     * @return Response
      */
     public function getUser($usernameOrId)
     {
@@ -235,7 +235,7 @@ class Api
      *
      * @param string $boardId The board id.
      *
-     * @return Objects\Board The board.
+     * @return Response
      */
     public function getBoard($boardId)
     {
@@ -253,7 +253,7 @@ class Api
      *
      * @param Board $board The updated board.
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function updateBoard(Board $board)
     {
@@ -279,7 +279,7 @@ class Api
     /**
      * Get the boards of the authenticated user.
      *
-     * @return PagedList[Objects\Board] A list of boards.
+     * @return Response
      */
     public function getUserBoards()
     {
@@ -291,7 +291,7 @@ class Api
     /**
      * Get the pins of the authenticated user.
      *
-     * @return PagedList[Objects\Pin] A list of likes.
+     * @returnResponse
      */
     public function getUserLikes()
     {
@@ -303,7 +303,7 @@ class Api
     /**
      * Get the pins of the authenticated user.
      *
-     * @return PagedList[Objects\Pin] A list of pins.
+     * @return Response
      */
     public function getUserPins()
     {
@@ -315,7 +315,7 @@ class Api
     /**
      * Get the authenticated user.
      *
-     * @return Objects\User The authenticated user.
+     * @return Response
      */
     public function getCurrentUser()
     {
@@ -327,7 +327,7 @@ class Api
     /**
      * Get the followers of the authenticated user.
      *
-     * @return PagedList[Objects\User] The current User's followers.
+     * @return Response
      */
     public function getUserFollowers()
     {
@@ -339,7 +339,7 @@ class Api
     /**
      * Get the boards that the authenticated user follows.
      *
-     * @return PagedList[Objects\Board] The Boards the current user follows.
+     * @return Response
      */
     public function getUserFollowingBoards()
     {
@@ -351,7 +351,7 @@ class Api
     /**
      * Get the users that the authenticated user follows.
      *
-     * @return PagedList[Objects\User] A list of users.
+     * @return Response
      */
     public function getUserFollowing()
     {
@@ -365,7 +365,7 @@ class Api
      *
      * @link https://www.pinterest.com/explore/901179409185
      *
-     * @return PagedList[Objects\Board] The user's interests.
+     * @return Response
      */
     public function getUserInterests()
     {
@@ -379,7 +379,7 @@ class Api
      *
      * @param string $username The username of the user to follow.
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function followUser($username)
     {
@@ -404,7 +404,7 @@ class Api
      * @param string $name        The board name.
      * @param string $description The board description.
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function createBoard($name, $description = null)
     {
@@ -430,7 +430,7 @@ class Api
      *
      * @param int $boardId The board id.
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function deleteBoard($boardId)
     {
@@ -451,7 +451,7 @@ class Api
      * @param Image       $image   The image.
      * @param string|null $link    The link (Optional).
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function createPin($boardId, $note, Image $image, $link = null)
     {
@@ -490,7 +490,7 @@ class Api
      *
      * @param string $pinId The id of the pin to delete.
      *
-     * @return Http\Response The response.
+     * @return Response
      */
     public function deletePin($pinId)
     {
