@@ -119,7 +119,7 @@ if ($response->ok()) {
 ```php
 $response = $api->getBoard('314196580192594085');
 if (!$response->ok()) {
-    echo $response->getError();
+    die($response->getError());
 }
 
 $board = $response->result(); // $board instanceof Objects\Board
@@ -127,7 +127,7 @@ $board->name = 'New board name';
 $board->description = 'New board description';
 $response = $api->updateBoard($board);
 if (!$response->ok()) {
-    echo $response->getError();
+    die($response->getError());
 }
 
 $updatedBoard = $response->result(); // $updatedBoard instanceof Objects\Board
@@ -247,7 +247,7 @@ $image = Pinterest\Image::base64($base64);
  
 $response = $api->createPin($boardId, $note, $image, $optionalLink);
 if ($response->ok()) {
-    $pin = $response->result(); // $board instanceof Objects\Pin
+    $pin = $response->result(); // $pin instanceof Objects\Pin
 }
 ```
 
