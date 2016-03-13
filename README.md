@@ -2,8 +2,6 @@
 
 An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/).
 
-**Work in progress, but ready for production.**
-
 <p align="center">
     <img src="banner.png" alt="Pinterest PHP">
 </p>
