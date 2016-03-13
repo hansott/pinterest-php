@@ -33,10 +33,17 @@ final class Authentication implements ClientInterface
      *
      * @var string
      */
-    const BASE_URI = 'https://api.pinterest.com/v1/';
+    const BASE_URI = 'https://api.pinterest.com';
 
     /**
-     * The http client.
+     * The API version.
+     *
+     * @var string
+     */
+    const API_VERSION = 'v1';
+
+    /**
+     * The HTTP client.
      *
      * @var ClientInterface
      */
@@ -80,7 +87,7 @@ final class Authentication implements ClientInterface
     /**
      * Alternative constructor for when we already have an accessToken.
      *
-     * @param ClientInterface $client       The (un-authenticated) Http client.
+     * @param ClientInterface $client       The (un-authenticated) HTTP client.
      * @param string          $clientId     The client id.
      * @param string          $clientSecret The client secret.
      * @param string          $accessToken  The OAuth access token.
@@ -104,7 +111,7 @@ final class Authentication implements ClientInterface
      *
      * ATTENTION: only the execute method will work, as the others need client id and secret.
      *
-     * @param ClientInterface $client      The http client.
+     * @param ClientInterface $client      The HTTP client.
      * @param string          $accessToken The OAuth access token.
      *
      * @return static
@@ -117,6 +124,11 @@ final class Authentication implements ClientInterface
         $authentication->accessToken = (string) $accessToken;
 
         return $authentication;
+    }
+
+    private function getBaseUriWithVersion()
+    {
+        return sprintf('%s/%s/', static::BASE_URI, static::API_VERSION);
     }
 
     /**
@@ -192,7 +204,7 @@ final class Authentication implements ClientInterface
     {
         $request = new Request(
             'POST',
-            static::BASE_URI.'oauth/token',
+            $this->getBaseUriWithVersion().'oauth/token',
             array(
                 'grant_type' => 'authorization_code',
                 'client_id' => $this->clientId,
@@ -229,7 +241,7 @@ final class Authentication implements ClientInterface
 
         $authenticatedRequest = new Request(
             $request->getMethod(),
-            static::BASE_URI.$request->getEndpoint(),
+            $this->getBaseUriWithVersion().$request->getEndpoint(),
             $request->getParams(),
             $headers
         );

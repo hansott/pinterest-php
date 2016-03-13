@@ -559,7 +559,7 @@ class Api
         parse_str($components['query'], $params);
 
         $path = $components['path'];
-        $versionPath = '/v1/';
+        $versionPath = sprintf('/%s/', Authentication::API_VERSION);
         $versionPathLength = strlen($versionPath);
         $path = substr($path, $versionPathLength);
 
