@@ -158,7 +158,7 @@ See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 ### Get the pins of a board
 
 ```php
-$response = $api->getBoardPins();
+$response = $api->getBoardPins($boardId);
 if ($response->ok()) {
     $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
     $pins = $pagedList->items(); // array of Objects\Pin objects
