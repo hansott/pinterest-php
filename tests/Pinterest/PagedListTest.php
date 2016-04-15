@@ -1,5 +1,16 @@
 <?php
 
+/*
+ * This file is part of the Pinterest PHP library.
+ *
+ * (c) Hans Ott <hansott@hotmail.be>
+ *
+ * This source file is subject to the MIT license that is bundled
+ * with this source code in the file LICENSE.md.
+ *
+ * Source: https://github.com/hansott/pinterest-php
+ */
+
 namespace Pinterest\Tests;
 
 use InvalidArgumentException;
@@ -33,7 +44,7 @@ class PagedListTest extends TestCase
         $uri = Authentication::BASE_URI.'/v1/me';
         $pagedList = new PagedList(array(new User()), $uri);
         $this->assertTrue($pagedList->hasNext());
-        $this->assertEquals($uri, $pagedList->getNextUrl());
+        $this->assertSame($uri, $pagedList->getNextUrl());
 
         $pagedList = new PagedList(array(new User()));
         $this->assertFalse($pagedList->hasNext());
@@ -43,6 +54,6 @@ class PagedListTest extends TestCase
     {
         $items = array(new User(), new User());
         $pagedList = new PagedList($items);
-        $this->assertEquals($items, $pagedList->items());
+        $this->assertSame($items, $pagedList->items());
     }
 }

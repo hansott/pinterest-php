@@ -151,7 +151,7 @@ class Api
     /**
      * Fetch multiple boards and processes the response.
      *
-     * @param Request    $request
+     * @param Request  $request
      * @param string[] $fields
      *
      * @throws RateLimitedReached

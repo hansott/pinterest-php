@@ -46,8 +46,8 @@ final class MockClient implements ClientInterface
     /**
      * Creates a new mocking client.
      *
-     * @param ClientInterface $http The fallback client to use.
-     * @param string $cacheDir
+     * @param ClientInterface $http     The fallback client to use.
+     * @param string          $cacheDir
      */
     public function __construct(ClientInterface $http, $cacheDir)
     {

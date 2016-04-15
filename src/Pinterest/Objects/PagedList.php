@@ -91,7 +91,7 @@ final class PagedList
     private function guardThatTheseAreAllPinterestObjects(array $items)
     {
         foreach ($items as $item) {
-            if (! ($item instanceof BaseObject)) {
+            if (!($item instanceof BaseObject)) {
                 throw new InvalidArgumentException(sprintf(
                     'Expected "Pinterest\Objects\BaseObject" but instead got: "%s"',
                     is_object($item) ? get_class($item) : gettype($item)
