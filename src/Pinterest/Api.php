@@ -559,4 +559,23 @@ class Api
 
         return new Request('GET', $path, $params);
     }
+
+    /**
+     * Get the pins of a board.
+     *
+     * @param string $boardId
+     *
+     * @return Response
+     */
+    public function getBoardPins($boardId)
+    {
+        if (empty($boardId)) {
+            throw new InvalidArgumentException('The board id should not be empty.');
+        }
+
+        $endpoint = sprintf('boards/%s/pins/', $boardId);
+        $request = new Request('GET', $endpoint);
+
+        return $this->fetchMultiplePins($request);
+    }
 }

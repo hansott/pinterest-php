@@ -138,7 +138,7 @@ $updatedBoard = $response->result(); // $updatedBoard instanceof Objects\Board
 ```php
 $response = $api->getUserBoards();
 if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
     $boards = $pagedList->items(); // array of Objects\Board objects
 }
 ```
@@ -148,7 +148,19 @@ if ($response->ok()) {
 ```php
 $response = $api->getUserLikes();
 if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
+    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
+    $pins = $pagedList->items(); // array of Objects\Pin objects
+}
+```
+
+See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
+
+### Get the pins of a board
+
+```php
+$response = $api->getBoardPins();
+if ($response->ok()) {
+    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
     $pins = $pagedList->items(); // array of Objects\Pin objects
 }
 ```

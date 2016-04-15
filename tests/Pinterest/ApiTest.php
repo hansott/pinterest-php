@@ -27,7 +27,7 @@ class ApiTest extends TestCase
      */
     protected $api;
 
-    protected $board;
+    protected $boardId;
 
     public function setUp()
     {
@@ -39,7 +39,7 @@ class ApiTest extends TestCase
         $mocked = new MockClient($client, $cacheDir);
         $auth = Authentication::withAccessToken($mocked, null, null, getenv('ACCESS_TOKEN'));
         $this->api = new Api($auth);
-        $this->board = getenv('BOARD_ID');
+        $this->boardId = getenv('BOARD_ID');
     }
 
     public function test_it_gets_users()
@@ -114,7 +114,7 @@ class ApiTest extends TestCase
     public function test_it_creates_a_pin(Image $image, $note)
     {
         $response = $this->api->createPin(
-            $this->board,
+            $this->boardId,
             $note,
             $image
         );
@@ -145,7 +145,7 @@ class ApiTest extends TestCase
     {
         $data = $this->imageProvider();
         $createResponse = $this->api->createPin(
-            $this->board,
+            $this->boardId,
             $data[0][1],
             $data[0][0]
         );
@@ -184,5 +184,10 @@ class ApiTest extends TestCase
         $pagedList = new PagedList(array(), null);
         $this->setExpectedException('InvalidArgumentException');
         $this->api->getNextItems($pagedList);
+    }
+
+    public function test_it_returns_the_pins_of_a_board()
+    {
+        $this->assertMultiplePins($this->api->getBoardPins($this->boardId));
     }
 }
