@@ -37,7 +37,7 @@ $client = new Pinterest\Http\BuzzClient();
 $auth = new Pinterest\Authentication($client, $clientId, $clientSecret);
 ```
 
-Replace the `$clientId` and `$clientSecret` variables with the data of [https://developers.pinterest.com/apps/](your Pinterest application).
+Replace the `$clientId` and `$clientSecret` variables with the data of [your Pinterest application](https://developers.pinterest.com/apps/).
 
 You can now let your user authenticate with your application be redirecting them to the URL obtained by a call to `$auth->getAuthenticationUrl()`, like this:
 
