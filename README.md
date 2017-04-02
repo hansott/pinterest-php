@@ -18,7 +18,7 @@ An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/
 
 ## Install
 
-Via Composer
+Via [Composer](https://getcomposer.org/)
 
 ```bash
 $ composer require hansott/pinterest-php
@@ -28,9 +28,9 @@ $ composer require hansott/pinterest-php
 
 ### Authentication
 
-To use the API, you need an Access Token from pinterest. [https://developers.pinterest.com/apps/](Create a new Pinterest application) if you haven't already. You then get a client ID and a client secret, specific for that application.
+To use the API, you need an access token from Pinterest. [Create a new Pinterest application](https://developers.pinterest.com/apps/) if you haven't already. You then get a client ID and a client secret, specific for that application.
 
-Back in your PHP application, create a Client instance (the default is `BuzzClient`) and use it to create an Authentication instance:
+Back in your PHP application, create a `Pinterest\Http\ClientInterface` instance (the default is `Pinterest\Http\BuzzClient`) and use it to create an `Pinterest\Authentication` instance:
 
 ```php
 $client = new Pinterest\Http\BuzzClient();
@@ -63,9 +63,9 @@ exit;
 - The second parameter is an array of permissions your app needs on the user's account. There needs to be at least one here.
 - The validation state is a random code that you generate for the user registering, and persist (in SESSION for instance). Pinterest will send it back to us for further reference.
 
-When your application user agrees to let your app take control of their Pinterest account via the API, Pinterest will redirect them to the URL you provided as redirect URL, with some added GET parameters. The most important being "code", which we'll trade for an OAuth Access Token in the next step. They'll also send the validation state back to us as a GET parameter so we can check if we expected this call.
+When your application user agrees to let your app take control of their Pinterest account via the API, Pinterest will redirect them to the URL you provided as redirect URL, with some added GET parameters. The most important being "code", which we'll trade for an OAuth access token in the next step. They'll also send the validation state back to us as a GET parameter so we can check if we expected this call.
 
-The last step in the process is trading that code for an Access Token:
+The last step in the process is trading that code for an access token:
 
 ```php
 $code = $_GET['code'];
@@ -74,7 +74,7 @@ $token = $auth->requestAccessToken($code);
 
 You should persist that token safely at this point. You can use it from now on to connect to the Pinterest API from your application, on behalf of the user.
 
-Initialize the Api class:
+Initialize the `Pinterest\Api` class:
 
 ```php
 $auth = Pinterest\Authentication::onlyAccessToken($client, $token);
@@ -293,7 +293,7 @@ if (!$hasMoreItems) {
 }
 $response = $api->getNextItems($pagedList);
 if (!$response->ok()) {
-    echo $response->getError();
+    die($response->getError());
 }
 $nextPagedList = $response->result();
 ```
