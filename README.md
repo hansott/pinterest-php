@@ -11,7 +11,6 @@ An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square" alt="Code Coverage"></a>
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/v/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
-    <img src="https://img.shields.io/hhvm/hansott/pinterest-php/master.svg?style=flat-square" alt="HHVM">
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/dt/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
 </p>
 
