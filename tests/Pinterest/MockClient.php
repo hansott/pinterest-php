@@ -13,10 +13,10 @@
 
 namespace Pinterest\Tests;
 
-use Pinterest\Http\ClientInterface;
+use stdClass;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
-use stdClass;
+use Pinterest\Http\ClientInterface;
 
 /**
  * This http client mocks responses.

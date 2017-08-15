@@ -13,13 +13,13 @@
 
 namespace Pinterest;
 
-use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
-use Pinterest\Api\Exceptions\InvalidScopeException;
+use Pinterest\App\Scope;
+use Pinterest\Http\Request;
+use Pinterest\Http\ClientInterface;
 use Pinterest\Api\Exceptions\TokenMissing;
 use Pinterest\Api\Exceptions\TooManyScopesGiven;
-use Pinterest\App\Scope;
-use Pinterest\Http\ClientInterface;
-use Pinterest\Http\Request;
+use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
+use Pinterest\Api\Exceptions\InvalidScopeException;
 
 /**
  * This class is responsible for authenticating requests.

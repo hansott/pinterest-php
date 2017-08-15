@@ -13,14 +13,14 @@
 
 namespace Pinterest\Http;
 
-use Buzz\Browser;
-use Buzz\Client\Curl;
-use Buzz\Exception\RequestException;
-use Buzz\Message\Form\FormRequest;
-use Buzz\Message\Form\FormUpload;
-use Buzz\Message\Response as BuzzResponse;
 use Exception;
+use Buzz\Browser;
 use Pinterest\Image;
+use Buzz\Client\Curl;
+use Buzz\Message\Form\FormUpload;
+use Buzz\Message\Form\FormRequest;
+use Buzz\Exception\RequestException;
+use Buzz\Message\Response as BuzzResponse;
 
 /**
  * The implemented http client class (uses Buzz).

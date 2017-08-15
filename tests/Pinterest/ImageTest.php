@@ -13,8 +13,8 @@
 
 namespace Pinterest\Tests;
 
-use PHPUnit_Framework_TestCase;
 use Pinterest\Image;
+use PHPUnit_Framework_TestCase;
 
 class ImageTest extends PHPUnit_Framework_TestCase
 {
