@@ -143,18 +143,6 @@ if ($response->ok()) {
 }
 ```
 
-### Get the pins of the authenticated user
-
-```php
-$response = $api->getUserLikes();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
-    $pins = $pagedList->items(); // array of Objects\Pin objects
-}
-```
-
-See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
-
 ### Get the pins of a board
 
 ```php
