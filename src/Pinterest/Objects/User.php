@@ -28,7 +28,6 @@ final class User implements BaseObject
     public static function fields()
     {
         return array(
-            'url',
             'id',
             'username',
             'first_name',
@@ -37,15 +36,9 @@ final class User implements BaseObject
             'created_at',
             'counts',
             'image',
+            'url',
         );
     }
-
-    /**
-     * The url to the object on pinterest.
-     *
-     * @var string
-     */
-    public $url;
 
     /**
      * The user's id.
@@ -105,4 +98,11 @@ final class User implements BaseObject
      * @var array
      */
     public $image;
+
+    /**
+     * The url to the object on pinterest.
+     *
+     * @var string
+     */
+    public $url;
 }

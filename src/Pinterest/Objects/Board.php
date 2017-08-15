@@ -28,9 +28,9 @@ final class Board implements BaseObject
     public static function fields()
     {
         return array(
-            'url',
             'id',
             'name',
+            'url',
             'description',
             'creator',
             'created_at',
@@ -38,13 +38,6 @@ final class Board implements BaseObject
             'image',
         );
     }
-
-    /**
-     * The url to the object on pinterest.
-     *
-     * @var string
-     */
-    public $url;
 
     /**
      * The boards's id.
@@ -60,6 +53,13 @@ final class Board implements BaseObject
      * @var string
      */
     public $name;
+
+    /**
+     * The url to the object on pinterest.
+     *
+     * @var string
+     */
+    public $url;
 
     /**
      * The description of the board by the creator.
@@ -83,7 +83,7 @@ final class Board implements BaseObject
     public $created_at;
 
     /**
-     * The stats/counts of the Pin (repins,likes, comments).
+     * The stats/counts of the Board (pins, collaborators and followers).
      *
      * @var Stats
      */

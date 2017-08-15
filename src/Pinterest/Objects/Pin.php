@@ -28,9 +28,9 @@ final class Pin implements BaseObject
     public static function fields()
     {
         return array(
-            'url',
             'id',
             'link',
+            'url',
             'creator',
             'board',
             'created_at',
@@ -43,13 +43,6 @@ final class Pin implements BaseObject
             'metadata',
         );
     }
-
-    /**
-     * The url to the object on pinterest.
-     *
-     * @var string
-     */
-    public $url;
 
     /**
      * The Pin's id.
@@ -65,6 +58,13 @@ final class Pin implements BaseObject
      * @var string
      */
     public $link;
+
+    /**
+     * The url to the object on pinterest.
+     *
+     * @var string
+     */
+    public $url;
 
     /**
      * The user who created the pin.
