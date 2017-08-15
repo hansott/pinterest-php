@@ -19,8 +19,7 @@
                     "pins": 148,
                     "following": 84,
                     "followers": 86,
-                    "boards": 9,
-                    "likes": 1
+                    "boards": 9
                 },
                 "id": "144889450420243528"
             }
@@ -32,20 +31,18 @@
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "958591058335",
+        "X-Pinterest-RID": "880742284200",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "132",
-        "X-Varnish": "3204760262",
-        "Content-Length": "492",
-        "Date": "Sun, 13 Mar 2016 15:13:32 GMT",
-        "Connection": "keep-alive"
+        "X-Ratelimit-Remaining": "150",
+        "Content-Length": "480",
+        "Date": "Tue, 15 Aug 2017 14:48:12 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a012e88"
     }
 }

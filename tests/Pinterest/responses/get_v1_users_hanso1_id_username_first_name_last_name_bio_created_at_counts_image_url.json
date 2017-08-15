@@ -1,11 +1,11 @@
 {
     "body": {
         "data": {
-            "username": "otthans",
+            "username": "hanso1",
             "bio": "",
-            "first_name": "Hans",
-            "last_name": "Ott",
-            "url": "https:\/\/www.pinterest.com\/otthans\/",
+            "first_name": "H",
+            "last_name": "O",
+            "url": "https:\/\/www.pinterest.com\/hanso1\/",
             "created_at": "2014-08-31T12:45:22",
             "image": {
                 "60x60": {
@@ -18,28 +18,25 @@
                 "pins": 3,
                 "following": 1,
                 "followers": 24,
-                "boards": 2,
-                "likes": 1
+                "boards": 2
             },
             "id": "314196648911734959"
         }
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "803629678776",
+        "X-Pinterest-RID": "821907076156",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "135",
-        "X-Varnish": "2672921974",
-        "Content-Length": "407",
-        "Date": "Sun, 13 Mar 2016 15:13:31 GMT",
-        "Connection": "keep-alive"
+        "X-Ratelimit-Remaining": "158",
+        "Content-Length": "388",
+        "Date": "Tue, 15 Aug 2017 14:48:10 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a01a8e1"
     }
 }

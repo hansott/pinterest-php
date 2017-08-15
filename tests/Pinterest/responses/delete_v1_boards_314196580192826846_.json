@@ -10,12 +10,12 @@
         "Content-Type": "application\/json",
         "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "344576037898",
+        "X-Pinterest-RID": "369898179689",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "148",
+        "X-Ratelimit-Remaining": "139",
         "Content-Length": "14",
-        "Date": "Tue, 15 Aug 2017 14:48:12 GMT",
+        "Date": "Tue, 15 Aug 2017 14:48:16 GMT",
         "Connection": "keep-alive",
-        "Pinterest-Generated-By": "devplatform-devapi-prod-0a012305"
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a016efb"
     }
 }

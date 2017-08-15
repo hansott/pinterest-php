@@ -3,47 +3,47 @@
         "data": {
             "0": {
                 "id": "949133422105",
-                "name": "Programming"
+                "name": "programming"
             },
             "1": {
                 "id": "898364082388",
-                "name": "Airplanes"
+                "name": "airplanes"
             },
             "2": {
                 "id": "930106275255",
-                "name": "Funny Pictures"
+                "name": "Funny pictures"
             },
             "3": {
                 "id": "896604368580",
-                "name": "Game Of Thrones"
+                "name": "game of thrones"
             },
             "4": {
                 "id": "907002707958",
-                "name": "Illustrations"
+                "name": "illustrations"
             },
             "5": {
                 "id": "905860166503",
-                "name": "Photography"
+                "name": "photography"
             },
             "6": {
                 "id": "896755026367",
-                "name": "Web Design"
+                "name": "Web design"
             },
             "7": {
                 "id": "920295496421",
-                "name": "Industrial Design"
+                "name": "Industrial design"
             },
             "8": {
                 "id": "902065567321",
-                "name": "Design"
+                "name": "design"
             },
             "9": {
                 "id": "918105274631",
-                "name": "Architecture"
+                "name": "architecture"
             },
             "10": {
                 "id": "899319027242",
-                "name": "Suits"
+                "name": "suits"
             }
         },
         "page": {
@@ -53,20 +53,18 @@
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "990199149005",
+        "X-Pinterest-RID": "164337554420",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "131",
-        "X-Varnish": "2600785595",
+        "X-Ratelimit-Remaining": "149",
         "Content-Length": "569",
-        "Date": "Sun, 13 Mar 2016 15:13:33 GMT",
-        "Connection": "keep-alive"
+        "Date": "Tue, 15 Aug 2017 14:48:12 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a01af8e"
     }
 }

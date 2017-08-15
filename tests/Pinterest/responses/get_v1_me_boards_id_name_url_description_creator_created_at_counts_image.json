@@ -4,12 +4,12 @@
             "0": {
                 "description": "",
                 "creator": {
-                    "url": "https:\/\/www.pinterest.com\/otthans\/",
-                    "first_name": "Hans",
-                    "last_name": "Ott",
+                    "url": "https:\/\/www.pinterest.com\/hanso1\/",
+                    "first_name": "H",
+                    "last_name": "O",
                     "id": "314196648911734959"
                 },
-                "url": "https:\/\/www.pinterest.com\/otthans\/test\/",
+                "url": "https:\/\/www.pinterest.com\/hanso1\/test\/",
                 "created_at": "2016-03-13T14:59:11",
                 "image": {
                     "60x60": {
@@ -29,12 +29,12 @@
             "1": {
                 "description": "A simple description",
                 "creator": {
-                    "url": "https:\/\/www.pinterest.com\/otthans\/",
-                    "first_name": "Hans",
-                    "last_name": "Ott",
+                    "url": "https:\/\/www.pinterest.com\/hanso1\/",
+                    "first_name": "H",
+                    "last_name": "O",
                     "id": "314196648911734959"
                 },
-                "url": "https:\/\/www.pinterest.com\/otthans\/my-board\/",
+                "url": "https:\/\/www.pinterest.com\/hanso1\/my-board\/",
                 "created_at": "2016-03-13T14:57:24",
                 "image": {
                     "60x60": {
@@ -55,20 +55,18 @@
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "322803664000",
+        "X-Pinterest-RID": "788998400303",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "138",
-        "X-Varnish": "2755073302",
-        "Content-Length": "929",
-        "Date": "Sun, 13 Mar 2016 15:13:30 GMT",
-        "Connection": "keep-alive"
+        "X-Ratelimit-Remaining": "155",
+        "Content-Length": "915",
+        "Date": "Tue, 15 Aug 2017 14:48:10 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a01a899"
     }
 }

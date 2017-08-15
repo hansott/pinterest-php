@@ -3,12 +3,12 @@
         "data": {
             "description": "",
             "creator": {
-                "url": "https:\/\/www.pinterest.com\/otthans\/",
-                "first_name": "Hans",
-                "last_name": "Ott",
+                "url": "https:\/\/www.pinterest.com\/hanso1\/",
+                "first_name": "H",
+                "last_name": "O",
                 "id": "314196648911734959"
             },
-            "url": "https:\/\/www.pinterest.com\/otthans\/test\/",
+            "url": "https:\/\/www.pinterest.com\/hanso1\/test\/",
             "created_at": "2016-03-13T14:59:11",
             "image": {
                 "60x60": {
@@ -28,20 +28,18 @@
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "627032776384",
+        "X-Pinterest-RID": "123160994775",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "139",
-        "X-Varnish": "2482125297",
-        "Content-Length": "496",
-        "Date": "Sun, 13 Mar 2016 15:13:30 GMT",
-        "Connection": "keep-alive"
+        "X-Ratelimit-Remaining": "156",
+        "Content-Length": "489",
+        "Date": "Tue, 15 Aug 2017 14:48:10 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a0124b6"
     }
 }

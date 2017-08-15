@@ -8,20 +8,18 @@
     },
     "statusCode": 200,
     "headers": {
-        "Accept-Ranges": "bytes",
         "Access-Control-Allow-Origin": "*",
+        "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Generated-By": "None",
-        "Pinterest-Version": "f2fe346",
-        "Server": "nginx",
+        "Pinterest-Version": "4540e61",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "286458971336",
+        "X-Pinterest-RID": "665716851070",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "133",
-        "X-Varnish": "2286033875",
+        "X-Ratelimit-Remaining": "151",
         "Content-Length": "52",
-        "Date": "Sun, 13 Mar 2016 15:13:32 GMT",
-        "Connection": "keep-alive"
+        "Date": "Tue, 15 Aug 2017 14:48:11 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By": "devplatform-devapi-prod-0a016efb"
     }
 }
