@@ -13,46 +13,73 @@
 
 namespace Pinterest\Tests;
 
+use stdClass;
+use Pinterest\Objects\Pin;
+use Pinterest\Objects\User;
+use Pinterest\Objects\Board;
 use InvalidArgumentException;
 use Pinterest\Authentication;
 use Pinterest\Objects\PagedList;
-use Pinterest\Objects\User;
 
 class PagedListTest extends TestCase
 {
-    public function test_it_only_accepts_pinterest_objects()
+    public function validPinterestObjects()
     {
-        new PagedList(array(new User()));
+        return array(
+            array(array(new User)),
+            array(array(new Pin)),
+            array(array(new Board)),
+        );
+    }
 
-        $this->setExpectedException('InvalidArgumentException');
-        new PagedList(array(1));
+    /**
+     * @dataProvider validPinterestObjects
+     */
+    public function test_it_accepts_pinterest_objects(array $objects)
+    {
+        new PagedList($objects);
+    }
 
-        $this->setExpectedException('InvalidArgumentException');
-        new PagedList(array(1, new User()));
+    public function invalidPinterestObjects()
+    {
+        return array(
+            array(array(1, new User)),
+            array(array('string')),
+            array(array(new stdClass))
+        );
+    }
+
+    /**
+     * @dataProvider invalidPinterestObjects
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_does_not_accept_non_pinterest_objects(array $objects)
+    {
+        new PagedList($objects);
     }
 
     public function test_it_has_more_items()
     {
-        new PagedList(array(new User()), Authentication::BASE_URI.'/me');
+        new PagedList(array(new User), Authentication::BASE_URI.'/me');
 
         $this->setExpectedException('InvalidArgumentException');
-        new PagedList(array(new User()), 'next-uri');
+        new PagedList(array(new User), 'next-uri');
     }
 
     public function test_it_returns_the_next_uri()
     {
         $uri = Authentication::BASE_URI.'/v1/me';
-        $pagedList = new PagedList(array(new User()), $uri);
+        $pagedList = new PagedList(array(new User), $uri);
         $this->assertTrue($pagedList->hasNext());
         $this->assertSame($uri, $pagedList->getNextUrl());
 
-        $pagedList = new PagedList(array(new User()));
+        $pagedList = new PagedList(array(new User));
         $this->assertFalse($pagedList->hasNext());
     }
 
     public function test_it_returns_the_items()
     {
-        $items = array(new User(), new User());
+        $items = array(new User, new User);
         $pagedList = new PagedList($items);
         $this->assertSame($items, $pagedList->items());
     }

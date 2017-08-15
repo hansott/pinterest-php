@@ -179,10 +179,12 @@ class ApiTest extends TestCase
         $this->assertTrue($response->ok());
     }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
     public function test_it_cannot_get_more_items_for_an_empty_list()
     {
-        $pagedList = new PagedList(array(), null);
-        $this->setExpectedException('InvalidArgumentException');
+        $pagedList = new PagedList(array());
         $this->api->getNextItems($pagedList);
     }
 
