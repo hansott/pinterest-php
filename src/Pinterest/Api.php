@@ -31,7 +31,7 @@ use Pinterest\Objects\User;
 class Api
 {
     /**
-     *  The authentication client.
+     * The authentication client.
      *
      * @var Authentication
      */
@@ -53,7 +53,7 @@ class Api
      * @param Response $response  The response object.
      * @param callable $processor The response processor.
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function processResponse(Response $response, $processor)
     {
@@ -73,7 +73,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     public function execute(Request $request, $processor = null)
     {
@@ -95,7 +95,7 @@ class Api
      *
      * @param Request $request
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchUser(Request $request)
     {
@@ -115,7 +115,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchBoard(Request $request)
     {
@@ -135,7 +135,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchPin(Request $request)
     {
@@ -156,7 +156,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchMultipleBoards(Request $request, array $fields = null)
     {
@@ -177,7 +177,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchMultipleUsers(Request $request)
     {
@@ -198,7 +198,7 @@ class Api
      *
      * @throws RateLimitedReached
      *
-     * @return Response The response.
+     * @return Response The response
      */
     private function fetchMultiplePins(Request $request, array $fields = null)
     {
@@ -217,7 +217,7 @@ class Api
      *
      * @param string $usernameOrId The username or identifier of the user.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUser($usernameOrId)
     {
@@ -235,7 +235,7 @@ class Api
      *
      * @param string $boardId The board id.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getBoard($boardId)
     {
@@ -253,7 +253,7 @@ class Api
      *
      * @param Board $board The updated board.
      *
-     * @return Response
+     * @return Response The response
      */
     public function updateBoard(Board $board)
     {
@@ -279,7 +279,7 @@ class Api
     /**
      * Get the boards of the authenticated user.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserBoards()
     {
@@ -303,7 +303,7 @@ class Api
     /**
      * Get the pins of the authenticated user.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserPins()
     {
@@ -315,7 +315,7 @@ class Api
     /**
      * Get the authenticated user.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getCurrentUser()
     {
@@ -327,7 +327,7 @@ class Api
     /**
      * Get the followers of the authenticated user.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserFollowers()
     {
@@ -339,7 +339,7 @@ class Api
     /**
      * Get the boards that the authenticated user follows.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserFollowingBoards()
     {
@@ -351,7 +351,7 @@ class Api
     /**
      * Get the users that the authenticated user follows.
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserFollowing()
     {
@@ -365,7 +365,7 @@ class Api
      *
      * @link https://www.pinterest.com/explore/901179409185
      *
-     * @return Response
+     * @return Response The response
      */
     public function getUserInterests()
     {
@@ -379,7 +379,7 @@ class Api
      *
      * @param string $username The username of the user to follow.
      *
-     * @return Response
+     * @return Response The response
      */
     public function followUser($username)
     {
@@ -404,7 +404,7 @@ class Api
      * @param string $name        The board name.
      * @param string $description The board description.
      *
-     * @return Response
+     * @return Response The response
      */
     public function createBoard($name, $description = null)
     {
@@ -430,7 +430,7 @@ class Api
      *
      * @param int $boardId The board id.
      *
-     * @return Response
+     * @return Response The response
      */
     public function deleteBoard($boardId)
     {
@@ -451,7 +451,7 @@ class Api
      * @param Image       $image   The image.
      * @param string|null $link    The link (Optional).
      *
-     * @return Response
+     * @return Response The response
      */
     public function createPin($boardId, $note, Image $image, $link = null)
     {
@@ -490,7 +490,7 @@ class Api
      *
      * @param string $pinId The id of the pin to delete.
      *
-     * @return Response
+     * @return Response The response
      */
     public function deletePin($pinId)
     {
@@ -508,7 +508,7 @@ class Api
      *
      * @param PagedList $pagedList
      *
-     * @return Response
+     * @return Response The response
      */
     public function getNextItems(PagedList $pagedList)
     {
@@ -565,7 +565,7 @@ class Api
      *
      * @param string $boardId
      *
-     * @return Response
+     * @return Response The response
      */
     public function getBoardPins($boardId)
     {
