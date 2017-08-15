@@ -13,14 +13,14 @@
 
 namespace Pinterest;
 
-use InvalidArgumentException;
-use Pinterest\Http\Exceptions\RateLimitedReached;
+use Pinterest\Objects\Pin;
+use Pinterest\Objects\User;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Objects\Board;
+use InvalidArgumentException;
 use Pinterest\Objects\PagedList;
-use Pinterest\Objects\Pin;
-use Pinterest\Objects\User;
+use Pinterest\Http\Exceptions\RateLimitedReached;
 
 /**
  * The api client.
