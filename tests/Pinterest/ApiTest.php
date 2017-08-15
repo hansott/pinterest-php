@@ -61,11 +61,6 @@ class ApiTest extends TestCase
         $this->assertMultipleBoards($this->api->getUserBoards());
     }
 
-    public function test_it_gets_the_users_likes()
-    {
-        $this->assertMultiplePins($this->api->getUserLikes());
-    }
-
     public function test_it_gets_the_users_pins()
     {
         $this->assertMultiplePins($this->api->getUserPins());

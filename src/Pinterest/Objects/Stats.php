@@ -21,18 +21,11 @@ namespace Pinterest\Objects;
 final class Stats
 {
     /**
-     * The amount of repins.
+     * The amount of saves.
      *
      * @var int
      */
-    public $repins;
-
-    /**
-     * The amount of likes.
-     *
-     * @var int
-     */
-    public $likes;
+    public $saves;
 
     /**
      * The amount of comments.

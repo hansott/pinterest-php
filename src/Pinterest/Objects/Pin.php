@@ -102,7 +102,7 @@ final class Pin implements BaseObject
     public $color;
 
     /**
-     * The stats/counts of the Pin (repins,likes, comments).
+     * The stats/counts of the Pin (saves and comments).
      *
      * @var Stats
      */

@@ -291,18 +291,6 @@ class Api
     /**
      * Get the pins of the authenticated user.
      *
-     * @returnResponse
-     */
-    public function getUserLikes()
-    {
-        $request = new Request('GET', 'me/likes/');
-
-        return $this->fetchMultiplePins($request);
-    }
-
-    /**
-     * Get the pins of the authenticated user.
-     *
      * @return Response The response
      */
     public function getUserPins()
