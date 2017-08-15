@@ -14,11 +14,12 @@
 namespace Pinterest\Tests;
 
 use Pinterest\Api;
+use Pinterest\Image;
+use RuntimeException;
+use InvalidArgumentException;
 use Pinterest\Authentication;
 use Pinterest\Http\BuzzClient;
-use Pinterest\Image;
 use Pinterest\Objects\PagedList;
-use RuntimeException;
 
 class ApiTest extends TestCase
 {
@@ -26,7 +27,6 @@ class ApiTest extends TestCase
      * @var Api
      */
     protected $api;
-
     protected $boardId;
 
     public function setUp()
@@ -44,10 +44,15 @@ class ApiTest extends TestCase
 
     public function test_it_gets_users()
     {
-        $this->assertUser($this->api->getUser('otthans'));
+        $this->assertUser($this->api->getUser('hanso1'));
         $this->assertUser($this->api->getUser('314196648911734959'));
+    }
 
-        $this->setExpectedException('InvalidArgumentException');
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_refuses_to_fetch_user_without_username_or_id()
+    {
         $this->api->getUser('');
     }
 
@@ -130,7 +135,7 @@ class ApiTest extends TestCase
         $imageFixture = __DIR__.'/fixtures/cat.jpg';
 
         return array(
-            array(Image::url('http://lorempixel.com/g/400/200/cats/'), 'Test pin url'),
+            array(Image::url('http://via.placeholder.com/350x150'), 'Test pin url'),
             array(Image::file($imageFixture), 'Test pin file'),
             array(Image::base64(base64_encode(file_get_contents($imageFixture))), 'Test pin base64'),
         );
