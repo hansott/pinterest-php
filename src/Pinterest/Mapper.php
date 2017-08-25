@@ -34,6 +34,7 @@ final class Mapper
     {
         $this->class = $class;
         $this->mapper = new JsonMapper();
+        $this->mapper->bStrictNullTypes = false;    // don't throw exception if any field is null
     }
 
     public function toSingle(Response $response)
