@@ -15,7 +15,7 @@
     ],
     "require": {
         "kriswallsmith/buzz": "v0.15",
-        "netresearch/jsonmapper": "0.9.0"
+        "netresearch/jsonmapper": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.12",
