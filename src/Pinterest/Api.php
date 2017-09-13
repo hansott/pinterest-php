@@ -452,7 +452,7 @@ class Api
         }
 
         $params = array(
-            'board' => (int) $boardId,
+            'board' => $boardId,
             'note' => (string) $note,
         );
 
