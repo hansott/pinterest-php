@@ -1,6 +1,6 @@
 # Pinterest PHP
 
-An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/). If you like this package, feel free to [donate me a coffee](https://www.paypal.me/HansOtt/5) ☕️!
+An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/). If you like this package, feel free to [buy me a coffee](https://www.paypal.me/HansOtt/5) ☕️.
 
 <p align="center">
     <img src="banner.png" alt="Pinterest PHP">
