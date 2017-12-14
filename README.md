@@ -291,7 +291,7 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email [hansott@hotmail.be](mailto:hansott@hotmail.be) instead of using the issue tracker.
+If you discover any security related issues, please email **hansott at hotmail be** instead of using the issue tracker.
 
 ## Credits
 
