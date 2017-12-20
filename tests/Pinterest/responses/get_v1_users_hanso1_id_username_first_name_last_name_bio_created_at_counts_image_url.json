@@ -9,15 +9,15 @@
             "created_at": "2014-08-31T12:45:22",
             "image": {
                 "60x60": {
-                    "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/otthans_1409489123_60.jpg",
+                    "url": "https:\/\/i.pinimg.com\/60x60_RS\/d5\/d3\/89\/d5d3893094ce251893d83aeccb4ee889.jpg",
                     "width": 60,
                     "height": 60
                 }
             },
             "counts": {
-                "pins": 3,
+                "pins": 6,
                 "following": 1,
-                "followers": 24,
+                "followers": 23,
                 "boards": 2
             },
             "id": "314196648911734959"
@@ -29,14 +29,14 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "4540e61",
+        "Pinterest-Version": "716ae74",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "821907076156",
+        "X-Pinterest-RID": "488077918406",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "158",
-        "Content-Length": "388",
-        "Date": "Tue, 15 Aug 2017 14:48:10 GMT",
+        "X-Ratelimit-Remaining": "148",
+        "Content-Length": "393",
+        "Date": "Wed, 20 Dec 2017 09:08:00 GMT",
         "Connection": "keep-alive",
-        "Pinterest-Generated-By": "devplatform-devapi-prod-0a01a8e1"
+        "Pinterest-Generated-By:": ""
     }
 }

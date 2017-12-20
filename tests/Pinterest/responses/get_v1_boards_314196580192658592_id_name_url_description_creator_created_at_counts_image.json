@@ -18,9 +18,9 @@
                 }
             },
             "counts": {
-                "pins": 3,
+                "pins": 6,
                 "collaborators": 0,
-                "followers": 24
+                "followers": 23
             },
             "id": "314196580192658592",
             "name": "Test"
@@ -32,14 +32,14 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "4540e61",
+        "Pinterest-Version": "716ae74",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "123160994775",
+        "X-Pinterest-RID": "658129068695",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "156",
+        "X-Ratelimit-Remaining": "146",
         "Content-Length": "489",
-        "Date": "Tue, 15 Aug 2017 14:48:10 GMT",
+        "Date": "Wed, 20 Dec 2017 09:08:00 GMT",
         "Connection": "keep-alive",
-        "Pinterest-Generated-By": "devplatform-devapi-prod-0a0124b6"
+        "Pinterest-Generated-By:": ""
     }
 }

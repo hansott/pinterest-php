@@ -10,7 +10,7 @@
                 "created_at": "2012-02-21T08:17:20",
                 "image": {
                     "60x60": {
-                        "url": "https:\/\/s-media-cache-ak0.pinimg.com\/avatars\/engagor_1447169513_60.jpg",
+                        "url": "https:\/\/i.pinimg.com\/60x60_RS\/a3\/eb\/54\/a3eb54d6c88dfdad4d38eeced9282868.jpg",
                         "width": 60,
                         "height": 60
                     }
@@ -18,7 +18,7 @@
                 "counts": {
                     "pins": 148,
                     "following": 84,
-                    "followers": 86,
+                    "followers": 84,
                     "boards": 9
                 },
                 "id": "144889450420243528"
@@ -35,14 +35,14 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "4540e61",
+        "Pinterest-Version": "716ae74",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "880742284200",
+        "X-Pinterest-RID": "205825500025",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "150",
-        "Content-Length": "480",
-        "Date": "Tue, 15 Aug 2017 14:48:12 GMT",
+        "X-Ratelimit-Remaining": "140",
+        "Content-Length": "485",
+        "Date": "Wed, 20 Dec 2017 09:08:02 GMT",
         "Connection": "keep-alive",
-        "Pinterest-Generated-By": "devplatform-devapi-prod-0a012e88"
+        "Pinterest-Generated-By:": ""
     }
 }

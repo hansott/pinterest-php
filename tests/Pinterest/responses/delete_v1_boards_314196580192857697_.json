@@ -8,14 +8,14 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "4540e61",
+        "Pinterest-Version": "716ae74",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "949241335549",
+        "X-Pinterest-RID": "744190921630",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "142",
+        "X-Ratelimit-Remaining": "129",
         "Content-Length": "14",
-        "Date": "Tue, 15 Aug 2017 14:48:15 GMT",
+        "Date": "Wed, 20 Dec 2017 09:08:06 GMT",
         "Connection": "keep-alive",
-        "Pinterest-Generated-By": "devplatform-devapi-prod-0a0124b6"
+        "Pinterest-Generated-By:": ""
     }
 }
