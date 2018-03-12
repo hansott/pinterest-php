@@ -263,11 +263,11 @@ class Api
             throw new InvalidArgumentException('The board id is required.');
         }
 
-        if (!empty($board->name)) {
+        if (isset($board->name) && empty($board->name) === false) {
             $params['name'] = (string) $board->name;
         }
 
-        if (!empty($board->description)) {
+        if (isset($board->description) && empty($board->description) === false) {
             $params['description'] = (string) $board->description;
         }
 
@@ -404,7 +404,7 @@ class Api
             'name' => (string) $name,
         );
 
-        if (!empty($description)) {
+        if (empty($description) === false) {
             $params['description'] = (string) $description;
         }
 
@@ -456,7 +456,7 @@ class Api
             'note' => (string) $note,
         );
 
-        if (!empty($link)) {
+        if (empty($link) === false) {
             $params['link'] = (string) $link;
         }
 
