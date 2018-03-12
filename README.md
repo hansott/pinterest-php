@@ -86,9 +86,12 @@ Using the `Pinterest\Api` instance in `$api`, you can now make authenticated API
 
 ```php
 $response = $api->getCurrentUser();
-if ($response->ok()) {
-    $user = $response->result(); // $user instanceof Objects\User
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$user = $response->result(); // $user instanceof Objects\User
 ```
 
 ### Get a user
@@ -100,32 +103,48 @@ $response = $api->getUser('otthans');
 // Get user by user id
 $response = $api->getUser('314196648911734959');
 
-if ($response->ok()) {
-    $user = $response->result(); // $user instanceof Objects\User
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$user = $response->result(); // $user instanceof Objects\User
 ```
 
 ### Get a board
 
 ```php
 $response = $api->getBoard('314196580192594085');
-if ($response->ok()) {
-    $board = $response->result(); // $board instanceof Objects\Board
-}
-```
 
-### Update a board
-
-```php
-$response = $api->getBoard('314196580192594085');
 if (!$response->ok()) {
     die($response->getError());
 }
 
 $board = $response->result(); // $board instanceof Objects\Board
+```
+
+### Update a board
+
+```php
+// First, get the board using getBoard()
+$response = $api->getBoard('314196580192594085');
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$board = $response->result(); // $board instanceof Objects\Board
+
+// Or create a new board without getBoard()
+
+$board = new Board;
+$board->id = 'the-board-id';
+
+// Then, update the fields you want to change
+
 $board->name = 'New board name';
 $board->description = 'New board description';
 $response = $api->updateBoard($board);
+
 if (!$response->ok()) {
     die($response->getError());
 }
@@ -137,20 +156,26 @@ $updatedBoard = $response->result(); // $updatedBoard instanceof Objects\Board
 
 ```php
 $response = $api->getUserBoards();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
-    $boards = $pagedList->items(); // array of Objects\Board objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
+$boards = $pagedList->items(); // array of Objects\Board objects
 ```
 
 ### Get the pins of a board
 
 ```php
 $response = $api->getBoardPins($boardId);
-if ($response->ok()) {
-    $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
-    $pins = $pagedList->items(); // array of Objects\Pin objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
+$pins = $pagedList->items(); // array of Objects\Pin objects
 ```
 
 See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
@@ -159,10 +184,13 @@ See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ```php
 $response = $api->getUserFollowers();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
-    $users = $pagedList->items(); // array of Objects\User objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $boards instanceof Objects\PagedList
+$users = $pagedList->items(); // array of Objects\User objects
 ```
 
 See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
@@ -171,10 +199,13 @@ See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ```php
 $response = $api->getUserFollowingBoards();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
-    $boards = $pagedList->items(); // array of Objects\Board objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $boards instanceof Objects\PagedList
+$boards = $pagedList->items(); // array of Objects\Board objects
 ```
 
 See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
@@ -183,10 +214,13 @@ See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ```php
 $response = $api->getUserFollowing();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
-    $users = $pagedList->items(); // array of Objects\User objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $boards instanceof Objects\PagedList
+$users = $pagedList->items(); // array of Objects\User objects
 ```
 
 See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
@@ -197,10 +231,13 @@ Example: [Modern architecture](https://www.pinterest.com/explore/901179409185)
 
 ```php
 $response = $api->getUserInterests();
-if ($response->ok()) {
-    $pagedList = $response->result(); // $boards instanceof Objects\PagedList
-    $boards = $pagedList->items(); // array of Objects\Board objects
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pagedList = $response->result(); // $boards instanceof Objects\PagedList
+$boards = $pagedList->items(); // array of Objects\Board objects
 ```
 
 See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
@@ -209,8 +246,9 @@ See [Get the next items of a paged list](#get-the-next-items-of-a-paged-list)
 
 ```php
 $response = $api->followUser('otthans');
-if ($response->ok()) {
-    // Succeeded
+
+if (!$response->ok()) {
+    die($response->getError());
 }
 ```
 
@@ -220,9 +258,12 @@ if ($response->ok()) {
 $name = 'My new board';
 $optionalDescription = 'The description of the board';
 $response = $api->createBoard($name, $optionalDescription);
-if ($response->ok()) {
-    $board = $response->result(); // $board instanceof Objects\Board
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$board = $response->result(); // $board instanceof Objects\Board
 ```
 
 ### Delete a board
@@ -230,8 +271,9 @@ if ($response->ok()) {
 ```php
 $boardId = '314196580192594085';
 $response = $api->createBoard($boardId);
-if ($response->ok()) {
-    // Succeeded
+
+if (!$response->ok()) {
+    die($response->getError());
 }
 ```
 
@@ -256,9 +298,65 @@ $base64 = base64_encode($data);
 $image = Pinterest\Image::base64($base64);
  
 $response = $api->createPin($boardId, $note, $image, $optionalLink);
-if ($response->ok()) {
-    $pin = $response->result(); // $pin instanceof Objects\Pin
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pin = $response->result(); // $pin instanceof Objects\Pin
+```
+
+### Get a pin
+
+```php
+$pinId = 'the-pin-id';
+$response = $api->getPin($pinId);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$pin = $response->result(); // $pin instanceof Objects\Pin
+```
+
+### Update a pin
+
+```php
+// First, get the pin using getPin()
+
+$pinId = 'the-pin-id';
+$response = $api->getPin($pinId);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$pin = $response->result();
+
+// Or create a new Pin without getPin()
+
+$pin = new Pin;
+$pin->id = 'the-pin-id';
+
+// Then, update the fields you want to change
+
+// Update note
+$pin->note = 'a new note';
+
+// Update link
+$pin->link = 'https://google.com';
+
+// Move to another board
+$pin->board->name = 'board-name';
+$pin->board->creator->username = 'username';
+
+$response = $api->updatePin($pin);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$updatedPin = $response->result();
 ```
 
 ### Delete a pin
@@ -266,8 +364,9 @@ if ($response->ok()) {
 ```php
 $pinId = 'the-pin-id';
 $response = $api->deletePin($pinId);
-if ($response->ok()) {
-    // Succeeded
+
+if (!$response->ok()) {
+    die($response->getError());
 }
 ```
 
@@ -275,13 +374,17 @@ if ($response->ok()) {
 
 ```php
 $hasMoreItems = $pagedList->hasNext();
+
 if (!$hasMoreItems) {
     return;
 }
+
 $response = $api->getNextItems($pagedList);
+
 if (!$response->ok()) {
     die($response->getError());
 }
+
 $nextPagedList = $response->result();
 ```
 

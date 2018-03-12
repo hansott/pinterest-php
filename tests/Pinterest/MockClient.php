@@ -14,6 +14,7 @@
 namespace Pinterest\Tests;
 
 use stdClass;
+use Pinterest\Image;
 use Pinterest\Http\Request;
 use Pinterest\Http\Response;
 use Pinterest\Http\ClientInterface;
@@ -94,12 +95,15 @@ final class MockClient implements ClientInterface
             'image_url',
             'image_base64',
             'image',
-            'board',
         );
 
         foreach ($hiddenParams as $param) {
             if (isset($params[$param])) {
-                $params[$param] = 'data';
+                $value = $params[$param];
+                if ($value instanceof Image) {
+                    $value = $value->getData();
+                }
+                $params[$param] = md5($value);
             }
         }
 

@@ -263,11 +263,11 @@ class Api
             throw new InvalidArgumentException('The board id is required.');
         }
 
-        if (!empty($board->name)) {
+        if (isset($board->name) && empty($board->name) === false) {
             $params['name'] = (string) $board->name;
         }
 
-        if (!empty($board->description)) {
+        if (isset($board->description) && empty($board->description) === false) {
             $params['description'] = (string) $board->description;
         }
 
@@ -404,7 +404,7 @@ class Api
             'name' => (string) $name,
         );
 
-        if (!empty($description)) {
+        if (empty($description) === false) {
             $params['description'] = (string) $description;
         }
 
@@ -456,7 +456,7 @@ class Api
             'note' => (string) $note,
         );
 
-        if (!empty($link)) {
+        if (empty($link) === false) {
             $params['link'] = (string) $link;
         }
 
@@ -565,5 +565,66 @@ class Api
         $request = new Request('GET', $endpoint);
 
         return $this->fetchMultiplePins($request);
+    }
+
+    /**
+     * Get a single pin.
+     *
+     * @param string $pinId
+     *
+     * @return Response The Response
+     */
+    public function getPin($pinId)
+    {
+        if (empty($pinId)) {
+            throw new InvalidArgumentException('The pin id should not be empty.');
+        }
+
+        $endpoint = sprintf('pins/%s/', $pinId);
+        $request = new Request('GET', $endpoint);
+
+        return $this->fetchPin($request);
+    }
+
+    /**
+     * Update a pin.
+     *
+     * @param Pin $pin
+     *
+     * @return Response The response
+     */
+    public function updatePin(Pin $pin)
+    {
+        if (empty($pin->id)) {
+            throw new InvalidArgumentException('The pin id is required.');
+        }
+
+        $params = array();
+
+        if (isset($pin->note) && empty($pin->note) === false) {
+            $params['note'] = (string) $pin->note;
+        }
+
+        if (isset($pin->link) && empty($pin->link) === false) {
+            $params['link'] = (string) $pin->link;
+        }
+
+        if (
+            isset($pin->board, $pin->board->name, $pin->board->creator, $pin->board->creator->username)
+            && (empty($pin->board->name) === false && empty($pin->board->creator->username) === false)
+        ) {
+            $params['board'] = "{$pin->board->creator->username}/{$pin->board->name}";
+        }
+
+        if (empty($params)) {
+            throw new InvalidArgumentException(
+                "You're not changing any values. You can update a pin's note, link and/or board."
+            );
+        }
+
+        $endpoint = sprintf('pins/%s/', $pin->id);
+        $request = new Request('PATCH', $endpoint, $params);
+
+        return $this->fetchPin($request);
     }
 }

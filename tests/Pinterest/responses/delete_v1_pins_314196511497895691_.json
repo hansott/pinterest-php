@@ -8,13 +8,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "716ae74",
+        "Pinterest-Version": "31bdd35",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "612585128585",
+        "X-Pinterest-RID": "320195844322",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "136",
+        "X-Ratelimit-Remaining": "114",
         "Content-Length": "14",
-        "Date": "Wed, 20 Dec 2017 09:08:03 GMT",
+        "Date": "Mon, 12 Mar 2018 19:59:54 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

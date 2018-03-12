@@ -16,6 +16,7 @@ namespace Pinterest\Tests;
 use Pinterest\Api;
 use Pinterest\Image;
 use RuntimeException;
+use Pinterest\Objects\Pin;
 use InvalidArgumentException;
 use Pinterest\Authentication;
 use Pinterest\Http\BuzzClient;
@@ -141,21 +142,55 @@ class ApiTest extends TestCase
         );
     }
 
-    public function test_it_deletes_a_pin()
+    public function test_it_creates_updates_and_deletes_a_pin()
     {
         $data = $this->imageProvider();
         $createResponse = $this->api->createPin(
             $this->boardId,
-            $data[0][1],
+            'A note!',
             $data[0][0]
         );
         $this->assertInstanceOf('Pinterest\Http\Response', $createResponse);
         $this->assertTrue($createResponse->ok());
 
+        /** @var Pin $pin */
+        $pin = $createResponse->result();
+        $response = $this->api->getPin($pin->id);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+        $this->assertEquals($pin, $response->result());
+
+        $pin->note = 'A new note';
+        $pin->link = 'https://google.com';
+        $updateResponse = $this->api->updatePin($pin);
+        $this->assertInstanceOf('Pinterest\Http\Response', $updateResponse);
+        $this->assertTrue($updateResponse->ok());
+
         $pinId = $createResponse->result()->id;
         $response = $this->api->deletePin($pinId);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage The pin id is required.
+     */
+    public function test_it_throws_an_exception_when_trying_to_update_a_pin_without_id()
+    {
+        $pin = new Pin;
+        $this->api->updatePin($pin);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     * @expectedExceptionMessage You're not changing any values. You can update a pin's note, link and/or board.
+     */
+    public function test_it_throws_an_exception_if_only_id_is_set()
+    {
+        $pin = new Pin;
+        $pin->id = '1';
+        $this->api->updatePin($pin);
     }
 
     public function test_it_creates_and_updates_and_deletes_a_board()
