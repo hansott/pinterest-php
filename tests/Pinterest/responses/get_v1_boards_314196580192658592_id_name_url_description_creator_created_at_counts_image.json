@@ -12,7 +12,7 @@
             "created_at": "2016-03-13T14:59:11",
             "image": {
                 "60x60": {
-                    "url": "https:\/\/s-media-cache-ak0.pinimg.com\/60x60\/71\/f5\/64\/71f56468c6aaef1da0e4580d4e687914.jpg",
+                    "url": "https:\/\/i.pinimg.com\/60x60\/71\/f5\/64\/71f56468c6aaef1da0e4580d4e687914.jpg",
                     "width": 60,
                     "height": 60
                 }
@@ -32,13 +32,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "716ae74",
+        "Pinterest-Version": "31bdd35",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "658129068695",
+        "X-Pinterest-RID": "221481104739",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "146",
-        "Content-Length": "489",
-        "Date": "Wed, 20 Dec 2017 09:08:00 GMT",
+        "X-Ratelimit-Remaining": "128",
+        "Content-Length": "473",
+        "Date": "Mon, 12 Mar 2018 19:59:49 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

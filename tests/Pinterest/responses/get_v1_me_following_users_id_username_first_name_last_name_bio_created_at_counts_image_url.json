@@ -18,7 +18,7 @@
                 "counts": {
                     "pins": 148,
                     "following": 84,
-                    "followers": 84,
+                    "followers": 83,
                     "boards": 9
                 },
                 "id": "144889450420243528"
@@ -35,13 +35,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "716ae74",
+        "Pinterest-Version": "31bdd35",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "205825500025",
+        "X-Pinterest-RID": "766420834901",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "140",
+        "X-Ratelimit-Remaining": "122",
         "Content-Length": "485",
-        "Date": "Wed, 20 Dec 2017 09:08:02 GMT",
+        "Date": "Mon, 12 Mar 2018 19:59:51 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

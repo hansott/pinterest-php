@@ -256,9 +256,65 @@ $base64 = base64_encode($data);
 $image = Pinterest\Image::base64($base64);
  
 $response = $api->createPin($boardId, $note, $image, $optionalLink);
-if ($response->ok()) {
-    $pin = $response->result(); // $pin instanceof Objects\Pin
+
+if (!$response->ok()) {
+    die($response->getError());
 }
+
+$pin = $response->result(); // $pin instanceof Objects\Pin
+```
+
+### Get a pin
+
+```php
+$pinId = 'the-pin-id';
+$response = $api->getPin($pinId);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$pin = $response->result(); // $pin instanceof Objects\Pin
+```
+
+### Update a pin
+
+```php
+// First, get the pin using getPin()
+
+$pinId = 'the-pin-id';
+$response = $api->getPin($pinId);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$pin = $response->result();
+
+// Or create a new Pin without getPin()
+
+$pin = new Pin;
+$pin->id = 'the-pin-id';
+
+// Then, update the fields you want to change
+
+// Update note
+$pin->note = 'a new note';
+
+// Update link
+$pin->link = 'https://google.com';
+
+// Move to another board
+$pin->board->name = 'board-name';
+$pin->board->creator->username = 'username';
+
+$response = $api->updatePin($pin);
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$updatedPin = $response->result();
 ```
 
 ### Delete a pin

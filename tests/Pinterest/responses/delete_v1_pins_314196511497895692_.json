@@ -1,10 +1,6 @@
 {
     "body": {
-        "data": {},
-        "page": {
-            "cursor": null,
-            "next": null
-        }
+        "data": null
     },
     "statusCode": 200,
     "headers": {
@@ -14,11 +10,11 @@
         "Content-Type": "application\/json",
         "Pinterest-Version": "31bdd35",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "648676513276",
+        "X-Pinterest-RID": "761913415934",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "123",
-        "Content-Length": "52",
-        "Date": "Mon, 12 Mar 2018 19:59:50 GMT",
+        "X-Ratelimit-Remaining": "110",
+        "Content-Length": "14",
+        "Date": "Mon, 12 Mar 2018 19:59:56 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }
