@@ -572,7 +572,7 @@ class Api
      *
      * @param string $pinId
      *
-     * @return Response
+     * @return Response The Response
      */
     public function getPin($pinId)
     {
