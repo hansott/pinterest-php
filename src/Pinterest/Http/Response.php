@@ -68,10 +68,12 @@ final class Response
     /**
      * The constructor.
      *
-     * @param Request $request    The request object.
-     * @param int     $statusCode The status code.
-     * @param string  $rawBody    The raw response body.
-     * @param array   $headers    A key => value representation of response headers.
+     * @param Request $request The request object.
+     * @param int $statusCode The status code.
+     * @param string $rawBody The raw response body.
+     * @param array $headers A key => value representation of response headers.
+     *
+     * @throws MalformedJson
      */
     public function __construct(Request $request, $statusCode, $rawBody, array $headers)
     {
