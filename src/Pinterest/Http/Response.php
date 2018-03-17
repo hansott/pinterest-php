@@ -91,10 +91,11 @@ final class Response
      */
     public function ok()
     {
-        return
+        return (
             !isset($this->body->error)
             && $this->statusCode >= 200
-            && $this->statusCode < 300;
+            && $this->statusCode < 300
+        );
     }
 
     /**
