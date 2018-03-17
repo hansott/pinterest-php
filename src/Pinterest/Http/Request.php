@@ -131,7 +131,7 @@ final class Request
      */
     public function isPost()
     {
-        return $this->getMethod() === 'post';
+        return $this->getMethod() === 'POST';
     }
 
     /**
@@ -141,6 +141,6 @@ final class Request
      */
     public function isGet()
     {
-        return $this->getMethod() === 'get';
+        return $this->getMethod() === 'GET';
     }
 }
