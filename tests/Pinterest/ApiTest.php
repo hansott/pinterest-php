@@ -103,10 +103,45 @@ class ApiTest extends TestCase
         $response = $this->api->followUser($username);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
+    }
 
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_follow_a_user_with_empty_username()
+    {
         $this->setExpectedException('InvalidArgumentException');
         $username = '';
         $this->api->followUser($username);
+    }
+
+    public function test_it_follows_a_board()
+    {
+        $username = 'engagor';
+        $boardName = 'engagor-in-the-news';
+        $response = $this->api->followBoard($username, $boardName);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_follow_a_board_with_empty_username()
+    {
+        $username = '';
+        $boardName = 'engagor-in-the-news';
+        $this->api->followBoard($username, $boardName);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_follow_a_board_with_empty_board_name()
+    {
+        $username = 'engagor';
+        $boardName = '';
+        $this->api->followBoard($username, $boardName);
     }
 
     /**

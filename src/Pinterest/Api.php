@@ -411,6 +411,37 @@ class Api
     }
 
     /**
+     * Follow a board.
+     *
+     * @param string $username The username of the user that owns the board
+     * @param string $boardName The name of the board
+     *
+     * @return Response The response
+     *
+     * @throws RateLimitedReached
+     */
+    public function followBoard($username, $boardName)
+    {
+        if (empty($username)) {
+            throw new InvalidArgumentException('Username is required.');
+        }
+
+        if (empty($boardName)) {
+            throw new InvalidArgumentException('The board name is required.');
+        }
+
+        $request = new Request(
+            'POST',
+            'me/following/boards/',
+            array(
+                'board' => "{$username}/{$boardName}",
+            )
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
      * Create a board.
      *
      * @param string $name The board name.
