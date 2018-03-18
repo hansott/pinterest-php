@@ -97,10 +97,15 @@ class ApiTest extends TestCase
         $this->assertMultipleBoards($this->api->getUserInterests());
     }
 
-    public function test_it_follows_a_user()
+    public function test_it_follows_and_unfollows_a_user()
     {
         $username = 'engagor';
+
         $response = $this->api->followUser($username);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+
+        $response = $this->api->unfollowUser($username);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
     }
@@ -113,6 +118,16 @@ class ApiTest extends TestCase
         $this->setExpectedException('InvalidArgumentException');
         $username = '';
         $this->api->followUser($username);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_unfollow_a_user_with_empty_username()
+    {
+        $this->setExpectedException('InvalidArgumentException');
+        $username = '';
+        $this->api->unfollowUser($username);
     }
 
     public function test_it_follows_and_unfollows_a_board()

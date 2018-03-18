@@ -411,6 +411,29 @@ class Api
     }
 
     /**
+     * Unfollow a user.
+     *
+     * @param string $usernameOrUserId The username or ID of the user to unfollow.
+     *
+     * @throws RateLimitedReached
+     *
+     * @return Response The response
+     */
+    public function unfollowUser($usernameOrUserId)
+    {
+        if (empty($usernameOrUserId)) {
+            throw new InvalidArgumentException('Username or user ID is required.');
+        }
+
+        $request = new Request(
+            'DELETE',
+            "me/following/users/{$usernameOrUserId}"
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
      * Follow a board.
      *
      * @param string $username The username of the user that owns the board
