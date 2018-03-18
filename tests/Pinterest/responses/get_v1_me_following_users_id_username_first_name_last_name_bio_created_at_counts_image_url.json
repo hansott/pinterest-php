@@ -1,29 +1,6 @@
 {
     "body": {
-        "data": {
-            "0": {
-                "username": "engagor",
-                "bio": "All-in-one social media management tool.",
-                "first_name": "Engagor",
-                "last_name": "",
-                "url": "https:\/\/www.pinterest.com\/engagor\/",
-                "created_at": "2012-02-21T08:17:20",
-                "image": {
-                    "60x60": {
-                        "url": "https:\/\/i.pinimg.com\/60x60_RS\/a3\/eb\/54\/a3eb54d6c88dfdad4d38eeced9282868.jpg",
-                        "width": 60,
-                        "height": 60
-                    }
-                },
-                "counts": {
-                    "pins": 148,
-                    "following": 84,
-                    "followers": 83,
-                    "boards": 9
-                },
-                "id": "144889450420243528"
-            }
-        },
+        "data": {},
         "page": {
             "cursor": null,
             "next": null
@@ -35,13 +12,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "31bdd35",
+        "Pinterest-Version": "f8b94ab",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "766420834901",
+        "X-Pinterest-RID": "885011003009",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "122",
-        "Content-Length": "485",
-        "Date": "Mon, 12 Mar 2018 19:59:51 GMT",
+        "X-Ratelimit-Remaining": "189",
+        "Content-Length": "52",
+        "Date": "Sun, 18 Mar 2018 11:50:34 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

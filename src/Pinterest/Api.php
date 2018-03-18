@@ -95,6 +95,8 @@ class Api
      *
      * @param Request $request
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     private function fetchUser(Request $request)
@@ -151,7 +153,7 @@ class Api
     /**
      * Fetch multiple boards and processes the response.
      *
-     * @param Request  $request
+     * @param Request $request
      * @param string[] $fields
      *
      * @throws RateLimitedReached
@@ -217,6 +219,8 @@ class Api
      *
      * @param string $usernameOrId The username or identifier of the user.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getUser($usernameOrId)
@@ -235,6 +239,8 @@ class Api
      *
      * @param string $boardId The board id.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getBoard($boardId)
@@ -252,6 +258,8 @@ class Api
      * Update a board.
      *
      * @param Board $board The updated board.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -279,6 +287,8 @@ class Api
     /**
      * Get the boards of the authenticated user.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getUserBoards()
@@ -290,6 +300,8 @@ class Api
 
     /**
      * Get the pins of the authenticated user.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -303,6 +315,8 @@ class Api
     /**
      * Get the authenticated user.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getCurrentUser()
@@ -314,6 +328,8 @@ class Api
 
     /**
      * Get the followers of the authenticated user.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -327,6 +343,8 @@ class Api
     /**
      * Get the boards that the authenticated user follows.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getUserFollowingBoards()
@@ -338,6 +356,8 @@ class Api
 
     /**
      * Get the users that the authenticated user follows.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -353,6 +373,8 @@ class Api
      *
      * @link https://www.pinterest.com/explore/901179409185
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getUserInterests()
@@ -366,6 +388,8 @@ class Api
      * Follow a user.
      *
      * @param string $username The username of the user to follow.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -387,10 +411,94 @@ class Api
     }
 
     /**
+     * Unfollow a user.
+     *
+     * @param string $usernameOrUserId The username or ID of the user to unfollow.
+     *
+     * @throws RateLimitedReached
+     *
+     * @return Response The response
+     */
+    public function unfollowUser($usernameOrUserId)
+    {
+        if (empty($usernameOrUserId)) {
+            throw new InvalidArgumentException('Username or user ID is required.');
+        }
+
+        $request = new Request(
+            'DELETE',
+            "me/following/users/{$usernameOrUserId}"
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
+     * Follow a board.
+     *
+     * @param string $username The username of the user that owns the board
+     * @param string $boardName The name of the board
+     *
+     * @return Response The response
+     *
+     * @throws RateLimitedReached
+     */
+    public function followBoard($username, $boardName)
+    {
+        if (empty($username)) {
+            throw new InvalidArgumentException('Username is required.');
+        }
+
+        if (empty($boardName)) {
+            throw new InvalidArgumentException('The board name is required.');
+        }
+
+        $request = new Request(
+            'POST',
+            'me/following/boards/',
+            array(
+                'board' => "{$username}/{$boardName}",
+            )
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
+     * Unfollow a board.
+     *
+     * @param string $username The username of the user that owns the board
+     * @param string $boardName The name of the board
+     *
+     * @return Response The response
+     *
+     * @throws RateLimitedReached
+     */
+    public function unfollowBoard($username, $boardName)
+    {
+        if (empty($username)) {
+            throw new InvalidArgumentException('Username is required.');
+        }
+
+        if (empty($boardName)) {
+            throw new InvalidArgumentException('The board name is required.');
+        }
+
+        $request = new Request(
+            'DELETE',
+            "me/following/boards/{$username}/{$boardName}"
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
      * Create a board.
      *
-     * @param string $name        The board name.
+     * @param string $name The board name.
      * @param string $description The board description.
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -418,6 +526,8 @@ class Api
      *
      * @param int $boardId The board id.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function deleteBoard($boardId)
@@ -434,10 +544,12 @@ class Api
     /**
      * Create a pin on a board.
      *
-     * @param string      $boardId The board id.
-     * @param string      $note    The note.
-     * @param Image       $image   The image.
-     * @param string|null $link    The link (Optional).
+     * @param string $boardId The board id.
+     * @param string $note The note.
+     * @param Image $image The image.
+     * @param string|null $link The link (Optional).
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -478,6 +590,8 @@ class Api
      *
      * @param string $pinId The id of the pin to delete.
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function deletePin($pinId)
@@ -495,6 +609,8 @@ class Api
      * Get the next items for a paged list.
      *
      * @param PagedList $pagedList
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */
@@ -553,6 +669,8 @@ class Api
      *
      * @param string $boardId
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The response
      */
     public function getBoardPins($boardId)
@@ -572,6 +690,8 @@ class Api
      *
      * @param string $pinId
      *
+     * @throws RateLimitedReached
+     *
      * @return Response The Response
      */
     public function getPin($pinId)
@@ -590,6 +710,8 @@ class Api
      * Update a pin.
      *
      * @param Pin $pin
+     *
+     * @throws RateLimitedReached
      *
      * @return Response The response
      */

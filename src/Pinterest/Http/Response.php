@@ -68,10 +68,12 @@ final class Response
     /**
      * The constructor.
      *
-     * @param Request $request    The request object.
-     * @param int     $statusCode The status code.
-     * @param string  $rawBody    The raw response body.
-     * @param array   $headers    A key => value representation of response headers.
+     * @param Request $request The request object.
+     * @param int $statusCode The status code.
+     * @param string $rawBody The raw response body.
+     * @param array $headers A key => value representation of response headers.
+     *
+     * @throws MalformedJson
      */
     public function __construct(Request $request, $statusCode, $rawBody, array $headers)
     {
@@ -89,10 +91,11 @@ final class Response
      */
     public function ok()
     {
-        return
+        return (
             !isset($this->body->error)
             && $this->statusCode >= 200
-            && $this->statusCode < 300;
+            && $this->statusCode < 300
+        );
     }
 
     /**
