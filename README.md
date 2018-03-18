@@ -252,6 +252,36 @@ if (!$response->ok()) {
 }
 ```
 
+### Unfollow a user
+
+```php
+$response = $api->unfollowUser('otthans'); // username or user ID
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+```
+
+### Follow a board
+
+```php
+$response = $api->followBoard('teslamotors', 'model-x');
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+```
+
+### Unfollow a board
+
+```php
+$response = $api->unfollowBoard('teslamotors', 'model-x');
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+```
+
 ### Create a board
 
 ```php
