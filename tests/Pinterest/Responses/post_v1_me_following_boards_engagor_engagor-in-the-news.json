@@ -10,11 +10,11 @@
         "Content-Type": "application\/json",
         "Pinterest-Version": "f8b94ab",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "239105297059",
+        "X-Pinterest-RID": "935800434289",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "198",
+        "X-Ratelimit-Remaining": "185",
         "Content-Length": "14",
-        "Date": "Sun, 18 Mar 2018 11:49:01 GMT",
+        "Date": "Sun, 18 Mar 2018 11:50:35 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

@@ -1,0 +1,21 @@
+{
+    "body": {
+        "data": null
+    },
+    "statusCode": 200,
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Age": "0",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "Pinterest-Version": "f8b94ab",
+        "X-Content-Type-Options": "nosniff",
+        "X-Pinterest-RID": "674506845489",
+        "X-Ratelimit-Limit": "200",
+        "X-Ratelimit-Remaining": "171",
+        "Content-Length": "14",
+        "Date": "Sun, 18 Mar 2018 11:50:42 GMT",
+        "Connection": "keep-alive",
+        "Pinterest-Generated-By:": ""
+    }
+}

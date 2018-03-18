@@ -82,7 +82,7 @@
                     }
                 },
                 "counts": {
-                    "pins": 260,
+                    "pins": 261,
                     "following": 22,
                     "followers": 7,
                     "boards": 7
@@ -280,7 +280,7 @@
                     }
                 },
                 "counts": {
-                    "pins": 353,
+                    "pins": 356,
                     "following": 89,
                     "followers": 53,
                     "boards": 27
@@ -347,7 +347,7 @@
                 },
                 "counts": {
                     "pins": 128,
-                    "following": 154,
+                    "following": 155,
                     "followers": 53,
                     "boards": 5
                 },
@@ -390,9 +390,9 @@
                     }
                 },
                 "counts": {
-                    "pins": 223,
+                    "pins": 226,
                     "following": 87,
-                    "followers": 53,
+                    "followers": 54,
                     "boards": 11
                 },
                 "id": "520588175584823694"
@@ -456,9 +456,9 @@
                     }
                 },
                 "counts": {
-                    "pins": 11007,
-                    "following": 1965,
-                    "followers": 857,
+                    "pins": 11054,
+                    "following": 1968,
+                    "followers": 855,
                     "boards": 55
                 },
                 "id": "96194279449301856"
@@ -478,7 +478,7 @@
                     }
                 },
                 "counts": {
-                    "pins": 1099,
+                    "pins": 1103,
                     "following": 82,
                     "followers": 24,
                     "boards": 7
@@ -519,13 +519,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "31bdd35",
+        "Pinterest-Version": "f8b94ab",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "982837571924",
+        "X-Pinterest-RID": "640471420741",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "124",
+        "X-Ratelimit-Remaining": "191",
         "Content-Length": "9735",
-        "Date": "Mon, 12 Mar 2018 19:59:50 GMT",
+        "Date": "Sun, 18 Mar 2018 11:50:33 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }
