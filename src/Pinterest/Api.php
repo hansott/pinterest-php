@@ -442,6 +442,34 @@ class Api
     }
 
     /**
+     * Unfollow a board.
+     *
+     * @param string $username The username of the user that owns the board
+     * @param string $boardName The name of the board
+     *
+     * @return Response The response
+     *
+     * @throws RateLimitedReached
+     */
+    public function unfollowBoard($username, $boardName)
+    {
+        if (empty($username)) {
+            throw new InvalidArgumentException('Username is required.');
+        }
+
+        if (empty($boardName)) {
+            throw new InvalidArgumentException('The board name is required.');
+        }
+
+        $request = new Request(
+            'DELETE',
+            "me/following/boards/{$username}/{$boardName}"
+        );
+
+        return $this->execute($request);
+    }
+
+    /**
      * Create a board.
      *
      * @param string $name The board name.

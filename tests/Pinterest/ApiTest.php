@@ -115,11 +115,16 @@ class ApiTest extends TestCase
         $this->api->followUser($username);
     }
 
-    public function test_it_follows_a_board()
+    public function test_it_follows_and_unfollows_a_board()
     {
         $username = 'engagor';
         $boardName = 'engagor-in-the-news';
+
         $response = $this->api->followBoard($username, $boardName);
+        $this->assertInstanceOf('Pinterest\Http\Response', $response);
+        $this->assertTrue($response->ok());
+
+        $this->api->unfollowBoard($username, $boardName);
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
     }
@@ -142,6 +147,26 @@ class ApiTest extends TestCase
         $username = 'engagor';
         $boardName = '';
         $this->api->followBoard($username, $boardName);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_unfollow_a_board_with_empty_username()
+    {
+        $username = '';
+        $boardName = 'engagor-in-the-news';
+        $this->api->unfollowBoard($username, $boardName);
+    }
+
+    /**
+     * @expectedException InvalidArgumentException
+     */
+    public function test_it_throws_an_exception_when_trying_to_unfollow_a_board_with_empty_board_name()
+    {
+        $username = 'engagor';
+        $boardName = '';
+        $this->api->unfollowBoard($username, $boardName);
     }
 
     /**
