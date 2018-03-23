@@ -536,7 +536,7 @@ class Api
             throw new InvalidArgumentException('The board id should not be empty.');
         }
 
-        $request = new Request('DELETE', sprintf('boards/%d/', $boardId));
+        $request = new Request('DELETE', "boards/{$boardId}/");
 
         return $this->execute($request);
     }
@@ -600,7 +600,7 @@ class Api
             throw new InvalidArgumentException('The pin id should not be empty.');
         }
 
-        $request = new Request('DELETE', sprintf('pins/%d/', $pinId));
+        $request = new Request('DELETE', "pins/{$pinId}/");
 
         return $this->execute($request);
     }

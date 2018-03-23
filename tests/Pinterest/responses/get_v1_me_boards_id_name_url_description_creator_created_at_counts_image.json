@@ -19,7 +19,7 @@
                     }
                 },
                 "counts": {
-                    "pins": 4,
+                    "pins": 5,
                     "collaborators": 0,
                     "followers": 23
                 },
@@ -59,13 +59,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "f8b94ab",
+        "Pinterest-Version": "ae11cc5",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "773533508391",
+        "X-Pinterest-RID": "413581015316",
         "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "194",
+        "X-Ratelimit-Remaining": "196",
         "Content-Length": "899",
-        "Date": "Sun, 18 Mar 2018 11:50:33 GMT",
+        "Date": "Fri, 23 Mar 2018 22:03:32 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }
