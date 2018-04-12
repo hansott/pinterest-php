@@ -165,6 +165,19 @@ $pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
 $boards = $pagedList->items(); // array of Objects\Board objects
 ```
 
+### Get the pins of the authenticated user
+
+```php
+$response = $api->getUserPins();
+
+if (!$response->ok()) {
+    die($response->getError());
+}
+
+$pagedList = $response->result(); // $pagedList instanceof Objects\PagedList
+$pins = $pagedList->items(); // array of Objects\Pin objects
+```
+
 ### Get the pins of a board
 
 ```php
