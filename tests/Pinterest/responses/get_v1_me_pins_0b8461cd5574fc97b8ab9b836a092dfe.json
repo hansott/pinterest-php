@@ -118,7 +118,25 @@
                     "comments": 0
                 },
                 "id": "314196511484779371",
-                "metadata": {}
+                "metadata": {
+                    "article": {
+                        "published_at": "2015-05-27T00:00:00",
+                        "description": "Here is a helpful Mac terminal commands cheat sheet with frequently used commands. Use this cheat sheet as a unix command reference guide or to memorize.",
+                        "name": "A Quick Cheat Sheet to the Unix\/Mac Terminal",
+                        "authors": {
+                            "0": {
+                                "name": "Laurence Bradford"
+                            }
+                        }
+                    },
+                    "link": {
+                        "locale": "en",
+                        "title": "A Quick Cheat Sheet to the Unix\/Mac Terminal",
+                        "site_name": "Learn to Code With Me",
+                        "description": "Here is a helpful Mac terminal commands cheat sheet with frequently used commands. Use this cheat sheet as a unix command reference guide or to memorize.",
+                        "favicon": "https:\/\/i.pinimg.com\/favicons\/25d7452c726285e347a473b812084705ab4c924cb1617b869779000a.png?a32f814573f70a7b0624d3b629507fda"
+                    }
+                }
             },
             "3": {
                 "attribution": null,
@@ -206,7 +224,21 @@
                     "comments": 0
                 },
                 "id": "314196511484779365",
-                "metadata": {}
+                "metadata": {
+                    "article": {
+                        "published_at": "2016-01-03T00:00:00",
+                        "description": "The How to Teach Yourself Code Infographic presents sources to help you decide what programming language is best for you and how you can learn from others.",
+                        "name": "How to Teach Yourself Code Infographic",
+                        "authors": {}
+                    },
+                    "link": {
+                        "locale": "en",
+                        "title": "How to Teach Yourself Code Infographic - e-Learning Infographics",
+                        "site_name": "e-Learning Infographics",
+                        "description": "The\u00a0How to Teach Yourself Code Infographic\u00a0presents sources to help you decide what programming language is best for you and how you can learn from others.",
+                        "favicon": "https:\/\/i.pinimg.com\/favicons\/7c093cc0216286e8e7c1104d8d80727421e6b289986fd09629abee2f.ico?75cdee3956766caafbd7beef83363500"
+                    }
+                }
             }
         },
         "page": {
@@ -220,13 +252,13 @@
         "Age": "0",
         "Cache-Control": "private",
         "Content-Type": "application\/json",
-        "Pinterest-Version": "ae11cc5",
+        "Pinterest-Version": "4f9f34e",
         "X-Content-Type-Options": "nosniff",
-        "X-Pinterest-RID": "254878956878",
-        "X-Ratelimit-Limit": "200",
-        "X-Ratelimit-Remaining": "172",
-        "Content-Length": "5555",
-        "Date": "Fri, 23 Mar 2018 22:03:46 GMT",
+        "X-Pinterest-RID": "604783354391",
+        "X-Ratelimit-Limit": "10",
+        "X-Ratelimit-Remaining": "5",
+        "Content-Length": "7062",
+        "Date": "Sun, 22 Apr 2018 12:04:22 GMT",
         "Connection": "keep-alive",
         "Pinterest-Generated-By:": ""
     }

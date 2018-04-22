@@ -103,11 +103,11 @@ final class MockClient implements ClientInterface
                 if ($value instanceof Image) {
                     $value = $value->getData();
                 }
-                $params[$param] = md5($value);
+                $params[$param] = $value;
             }
         }
 
-        return implode('_', $params);
+        return md5(implode('_', $params));
     }
 
     /**
