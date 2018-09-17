@@ -213,7 +213,7 @@ final class Response
      */
     public function getRateLimit()
     {
-        $limit = $this->getHeader('X-Ratelimit-Limit');
+        $limit = $this->getHeader('X-RateLimit-Limit');
 
         return is_numeric($limit) ? (int) $limit : null;
     }
@@ -225,7 +225,7 @@ final class Response
      */
     public function getRemainingRequests()
     {
-        $remaining = $this->getHeader('X-Ratelimit-Remaining');
+        $remaining = $this->getHeader('X-RateLimit-Remaining');
 
         return is_numeric($remaining) ? (int) $remaining : null;
     }

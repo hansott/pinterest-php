@@ -1,0 +1,23 @@
+{
+    "body": {
+        "data": null
+    },
+    "statusCode": 200,
+    "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Cache-Control": "private",
+        "Content-Type": "application\/json",
+        "pinterest-generated-by": "coreapp-ngapi-prod-0a01ca6f",
+        "pinterest-version": "df0f6f7",
+        "x-content-type-options": "nosniff",
+        "x-envoy-upstream-service-time": "138",
+        "x-pinterest-rid": "554672669154",
+        "X-RateLimit-Limit": "10",
+        "X-RateLimit-Remaining": "7",
+        "Content-Length": "14",
+        "Date": "Mon, 17 Sep 2018 11:21:02 GMT",
+        "Connection": "keep-alive",
+        "Set-Cookie": "_ir=0; Max-Age=1800; HttpOnly; Secure",
+        "Age": "0"
+    }
+}
