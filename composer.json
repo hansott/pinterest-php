@@ -1,6 +1,12 @@
 {
     "name": "hansott/pinterest-php",
-    "description": "PHP Wrapper for consuming the Pinterest API.",
+    "description": "PHP client for the Pinterest API",
+    "keywords": [
+        "pinterest",
+        "oauth",
+        "api",
+        "repin"
+    ],
     "license": "MIT",
     "authors": [
         {
