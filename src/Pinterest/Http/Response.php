@@ -201,9 +201,14 @@ final class Response
      */
     public function getHeader($header)
     {
-        return isset($this->headers[$header])
-            ? $this->headers[$header]
-            : null;
+        $header = strtolower($header);
+        foreach ($this->headers as $name => $value) {
+            if (strtolower($name) === $header) {
+                return $value;
+            }
+        }
+
+        return null;
     }
 
     /**

@@ -197,11 +197,12 @@ class ApiTest extends TestCase
 
         $this->assertInstanceOf('Pinterest\Http\Response', $response);
         $this->assertTrue($response->ok());
-        $headers = $response->getHeaders();
-        $this->assertEquals($response->getRateLimit(), $headers['X-RateLimit-Limit']);
-        $this->assertEquals($response->getHeader('X-RateLimit-Limit'), $headers['X-RateLimit-Limit']);
-        $this->assertEquals($response->getRemainingRequests(), $headers['X-RateLimit-Remaining']);
-        $this->assertEquals($response->getHeader('X-RateLimit-Remaining'), $headers['X-RateLimit-Remaining']);
+        $this->assertInternalType('int', $response->getRateLimit());
+        $this->assertInternalType('string', $response->getHeader('X-RateLimit-Limit'));
+        $this->assertInternalType('string', $response->getHeader('x-ratelimit-limit'));
+        $this->assertInternalType('int', $response->getRemainingRequests());
+        $this->assertInternalType('string', $response->getHeader('X-RateLimit-Remaining'));
+        $this->assertInternalType('string', $response->getHeader('x-ratelimit-remaining'));
 
         $this->api->deletePin($response->result()->id);
     }
