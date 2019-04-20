@@ -1,12 +1,8 @@
-# Pinterest PHP
+# ![Pinterest PHP](art/pinterest-php.jpg)
 
-An easy-to-use wrapper for the [Pinterest API](https://developers.pinterest.com/tools/api-explorer/). If you like this package, feel free to [buy me a coffee](https://www.paypal.me/HansOtt/5) ☕️.
+If you like this package, feel free to [buy me a coffee](https://www.paypal.me/HansOtt/5) ☕️.
 
-<p align="center">
-    <img src="banner.png" alt="Pinterest PHP">
-</p>
-
-<p align="center">
+<p>
     <a href="https://travis-ci.org/hansott/pinterest-php"><img src="https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square" alt="Code Coverage"></a>
