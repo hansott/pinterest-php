@@ -1,7 +1,5 @@
 # ![Pinterest PHP](art/pinterest-php.jpg)
 
-If you like this package, feel free to [buy me a coffee](https://www.paypal.me/HansOtt/5) ☕️.
-
 <p>
     <a href="https://travis-ci.org/hansott/pinterest-php"><img src="https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
@@ -10,6 +8,7 @@ If you like this package, feel free to [buy me a coffee](https://www.paypal.me/H
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/dt/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
 </p>
 
+If you like this package, feel free to [buy me a coffee](https://www.paypal.me/HansOtt/5) ☕️.
 
 ## Install
 
