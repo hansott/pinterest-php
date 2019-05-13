@@ -8,7 +8,7 @@
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/dt/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
 </p>
 
-If you like this package, feel free to <a href="https://www.buymeacoffee.com/hansott" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>.
+If you like this package, feel free to <a href="https://www.buymeacoffee.com/hansott" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important; vertical-align: bottom;" ></a>
 
 ## Install
 
