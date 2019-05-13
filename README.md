@@ -18,7 +18,7 @@ $ composer require hansott/pinterest-php
 
 ## Donate
 
-If you like my repositories, please consider buying me a coffee. Thank you for your support! 🙇‍♂️
+If you like this package, please consider buying me a coffee. Thank you for your support! 🙇‍♂️
 
 <a href="https://www.buymeacoffee.com/hansott" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 
