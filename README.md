@@ -8,8 +8,6 @@
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/dt/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
 </p>
 
-If you like this package, feel free to <a href="https://www.buymeacoffee.com/hansott" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important; vertical-align: bottom;" ></a>
-
 ## Install
 
 Via [Composer](https://getcomposer.org/)
@@ -17,6 +15,12 @@ Via [Composer](https://getcomposer.org/)
 ```bash
 $ composer require hansott/pinterest-php
 ```
+
+## Donate
+
+If you like my repositories, please consider buying me a coffee. Thank you for your support! 🙇‍♂️
+
+<a href="https://www.buymeacoffee.com/hansott" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee"></a>
 
 ## Usage
 
