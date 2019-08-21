@@ -34,17 +34,24 @@ class BuzzClient implements ClientInterface
     /**
      * Buzz browser.
      *
-     * @var Buzz\Browser
+     * @var Browser
      */
     private $client;
 
     /**
      * Creates a new buzz client.
+     *
+     * @param \Buzz\Client\ClientInterface|null $client
      */
-    public function __construct()
+    public function __construct(\Buzz\Client\ClientInterface $client = null)
     {
-        $curl = new Curl();
-        $this->client = new Browser($curl);
+        if ($client instanceof ClientInterface) {
+            $this->client = $client;
+        } else {
+            // Backwards compatible
+            $curl = new Curl();
+            $this->client = new Browser($curl);
+        }
     }
 
     /**
