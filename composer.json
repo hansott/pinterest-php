@@ -1,6 +1,6 @@
 {
     "name": "hansott/pinterest-php",
-    "description": "PHP client for the Pinterest API",
+    "description": "PHP client for the official Pinterest API",
     "keywords": [
         "pinterest",
         "oauth",
