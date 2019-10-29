@@ -32,7 +32,6 @@ final class Board implements BaseObject
             'name',
             'url',
             'description',
-            'creator',
             'created_at',
             'counts',
             'image',
