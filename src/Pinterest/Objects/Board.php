@@ -32,7 +32,6 @@ final class Board implements BaseObject
             'name',
             'url',
             'description',
-            'creator',
             'created_at',
             'counts',
             'image',
@@ -67,13 +66,6 @@ final class Board implements BaseObject
      * @var string
      */
     public $description;
-
-    /**
-     * The user who created the board.
-     *
-     * @var User
-     */
-    public $creator;
 
     /**
      * ISO 8601 Timestamp of creation date.
