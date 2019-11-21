@@ -31,7 +31,6 @@ final class Pin implements BaseObject
             'id',
             'link',
             'url',
-            'creator',
             'board',
             'created_at',
             'note',
@@ -65,13 +64,6 @@ final class Pin implements BaseObject
      * @var string
      */
     public $url;
-
-    /**
-     * The user who created the pin.
-     *
-     * @var User
-     */
-    public $creator;
 
     /**
      * The board the Pin is in.
