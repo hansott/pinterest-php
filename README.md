@@ -388,10 +388,6 @@ $pin->note = 'a new note';
 // Update link
 $pin->link = 'https://google.com';
 
-// Move to another board
-$pin->board->name = 'board-name';
-$pin->board->creator->username = 'username';
-
 $response = $api->updatePin($pin);
 
 if (!$response->ok()) {
