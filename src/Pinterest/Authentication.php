@@ -217,7 +217,7 @@ final class Authentication implements ClientInterface
 
         $response = $this->http->execute($request);
 
-        if($response->rateLimited()) {
+        if ($response->rateLimited()) {
             throw new RateLimitedReached($response);
         }
 
