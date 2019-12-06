@@ -20,6 +20,7 @@ use Pinterest\Api\Exceptions\TokenMissing;
 use Pinterest\Api\Exceptions\TooManyScopesGiven;
 use Pinterest\Api\Exceptions\AtLeastOneScopeNeeded;
 use Pinterest\Api\Exceptions\InvalidScopeException;
+use Pinterest\Http\Exceptions\RateLimitedReached;
 
 /**
  * This class is responsible for authenticating requests.
@@ -199,6 +200,7 @@ final class Authentication implements ClientInterface
      * @return string The OAuth access token.
      *
      * @throws TokenMissing
+     * @throws RateLimitedReached
      */
     public function requestAccessToken($code)
     {
@@ -214,6 +216,10 @@ final class Authentication implements ClientInterface
         );
 
         $response = $this->http->execute($request);
+
+        if($response->rateLimited()) {
+            throw new RateLimitedReached($response);
+        }
 
         if (
             !isset($response->body)
