@@ -80,7 +80,7 @@ final class Response
         $this->request = $request;
         $this->statusCode = (int) $statusCode;
         $this->rawBody = (string) $rawBody;
-        $this->body = $this->parseJson($this->rawBody);
+        $this->body = $this->statusCode >= 200 && $this->statusCode < 300 ? $this->parseJson($this->rawBody) : null;
         $this->headers = $headers;
     }
 
