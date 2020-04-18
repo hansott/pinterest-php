@@ -1,7 +1,6 @@
 # ![Pinterest PHP](art/pinterest-php.jpg)
 
 <p>
-    <a href="https://travis-ci.org/hansott/pinterest-php"><img src="https://img.shields.io/travis/hansott/pinterest-php.svg?style=flat-square" alt="Build Status"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/g/hansott/pinterest-php.svg?style=flat-square" alt="Scrutinizer Code Quality"></a>
     <a href="https://scrutinizer-ci.com/g/hansott/pinterest-php/?branch=master"><img src="https://img.shields.io/scrutinizer/coverage/g/hansott/pinterest-php.svg?style=flat-square" alt="Code Coverage"></a>
     <a href="https://packagist.org/packages/hansott/pinterest-php"><img src="https://img.shields.io/packagist/v/hansott/pinterest-php.svg?style=flat-square" alt="Packagist"></a>
