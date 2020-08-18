@@ -321,7 +321,7 @@ if (!$response->ok()) {
 ### Create a pin
 
 ```php
-$boardId = '314196580192594085';
+$board = '<username>/<board_name>'; 
 $note = 'This is an amazing pin!';
 $optionalLink = 'http://hansott.github.io/';
 
@@ -338,7 +338,7 @@ $data = file_get_contents($pathToFile);
 $base64 = base64_encode($data);
 $image = Pinterest\Image::base64($base64);
  
-$response = $api->createPin($boardId, $note, $image, $optionalLink);
+$response = $api->createPin($board, $note, $image, $optionalLink);
 
 if (!$response->ok()) {
     die($response->getError());
